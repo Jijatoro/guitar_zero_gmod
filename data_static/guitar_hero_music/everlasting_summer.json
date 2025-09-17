@@ -1,0 +1,5179 @@
+{
+  "header": {
+    "keySignatures": [],
+    "meta": [],
+    "name": "",
+    "ppq": 43,
+    "tempos": [
+      {
+        "bpm": 120,
+        "ticks": 0
+      }
+    ],
+    "timeSignatures": []
+  },
+  "tracks": [
+    {
+      "channel": 0,
+      "controlChanges": {},
+      "pitchBends": [],
+      "instrument": {
+        "family": "piano",
+        "number": 0,
+        "name": "acoustic grand piano"
+      },
+      "name": "",
+      "notes": [
+        {
+          "duration": 0.1511627906976744,
+          "durationTicks": 13,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 0,
+          "time": 0,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 1.8372093023255816,
+          "durationTicks": 158,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6,
+          "time": 0.06976744186046512,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 2.0348837209302326,
+          "durationTicks": 175,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 293,
+          "time": 3.4069767441860463,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.023255813953488413,
+          "durationTicks": 2,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 590,
+          "time": 6.8604651162790695,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.023255813953488413,
+          "durationTicks": 2,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 593,
+          "time": 6.895348837209302,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 1.616279069767442,
+          "durationTicks": 139,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 596,
+          "time": 6.930232558139535,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.1627906976744189,
+          "durationTicks": 14,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 737,
+          "time": 8.569767441860465,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.10465116279069875,
+          "durationTicks": 9,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 756,
+          "time": 8.790697674418604,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.1627906976744189,
+          "durationTicks": 14,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 775,
+          "time": 9.011627906976743,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.06976744186046524,
+          "durationTicks": 6,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 783,
+          "time": 9.104651162790697,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 790,
+          "time": 9.186046511627907,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.03488372093023351,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 793,
+          "time": 9.220930232558139,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 800,
+          "time": 9.30232558139535,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.19767441860465063,
+          "durationTicks": 17,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 811,
+          "time": 9.430232558139535,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 818,
+          "time": 9.511627906976743,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.10465116279069697,
+          "durationTicks": 9,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 839,
+          "time": 9.755813953488373,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.058139534883720145,
+          "durationTicks": 5,
+          "midi": 41,
+          "name": "F2",
+          "ticks": 876,
+          "time": 10.186046511627907,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023351,
+          "durationTicks": 3,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 877,
+          "time": 10.19767441860465,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.40697674418604635,
+          "durationTicks": 35,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 881,
+          "time": 10.244186046511627,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 42,
+          "name": "F#2",
+          "ticks": 882,
+          "time": 10.255813953488373,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.7906976744186043,
+          "durationTicks": 68,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 882,
+          "time": 10.255813953488373,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.9534883720930232,
+          "durationTicks": 82,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 1418,
+          "time": 16.488372093023255,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.6046511627906987,
+          "durationTicks": 52,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 1476,
+          "time": 17.162790697674417,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 1476,
+          "time": 17.162790697674417,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 1480,
+          "time": 17.209302325581394,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 2,
+          "durationTicks": 172,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 1529,
+          "time": 17.77906976744186,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 1533,
+          "time": 17.825581395348838,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.5348837209302317,
+          "durationTicks": 46,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 1540,
+          "time": 17.906976744186046,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.2093023255813975,
+          "durationTicks": 18,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 1551,
+          "time": 18.03488372093023,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.2093023255813975,
+          "durationTicks": 18,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 1621,
+          "time": 18.848837209302324,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 1.2441860465116257,
+          "durationTicks": 107,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 1627,
+          "time": 18.91860465116279,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.06976744186046702,
+          "durationTicks": 6,
+          "midi": 70,
+          "name": "A#4",
+          "ticks": 1715,
+          "time": 19.941860465116278,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.651162790697672,
+          "durationTicks": 56,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 1768,
+          "time": 20.558139534883722,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.8372093023255793,
+          "durationTicks": 72,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 1823,
+          "time": 21.197674418604652,
+          "velocity": 0.3464566929133858
+        },
+        {
+          "duration": 0.7906976744186061,
+          "durationTicks": 68,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 1825,
+          "time": 21.22093023255814,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 1.709302325581394,
+          "durationTicks": 147,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 1919,
+          "time": 22.313953488372093,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.6627906976744171,
+          "durationTicks": 57,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 1921,
+          "time": 22.337209302325583,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 1.3720930232558146,
+          "durationTicks": 118,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 2012,
+          "time": 23.3953488372093,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.15116279069767202,
+          "durationTicks": 13,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 2030,
+          "time": 23.6046511627907,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2068,
+          "time": 24.046511627906977,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.08139534883720856,
+          "durationTicks": 7,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 2068,
+          "time": 24.046511627906977,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.39534883720930125,
+          "durationTicks": 34,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2088,
+          "time": 24.27906976744186,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.04651162790697683,
+          "durationTicks": 4,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2120,
+          "time": 24.651162790697676,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 1.069767441860467,
+          "durationTicks": 92,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 2122,
+          "time": 24.674418604651162,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.13953488372093048,
+          "durationTicks": 12,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2123,
+          "time": 24.686046511627907,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 1.2441860465116257,
+          "durationTicks": 107,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 2131,
+          "time": 24.77906976744186,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.04651162790697683,
+          "durationTicks": 4,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2145,
+          "time": 24.941860465116278,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.05813953488371837,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2155,
+          "time": 25.058139534883722,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.13953488372093048,
+          "durationTicks": 12,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2161,
+          "time": 25.127906976744185,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.46511627906976827,
+          "durationTicks": 40,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2212,
+          "time": 25.72093023255814,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2215,
+          "time": 25.75581395348837,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.7674418604651159,
+          "durationTicks": 66,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2221,
+          "time": 25.825581395348838,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.15116279069767558,
+          "durationTicks": 13,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 2301,
+          "time": 26.75581395348837,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.20930232558139394,
+          "durationTicks": 18,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 2319,
+          "time": 26.96511627906977,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.7674418604651159,
+          "durationTicks": 66,
+          "midi": 62,
+          "name": "D4",
+          "ticks": 2337,
+          "time": 27.174418604651162,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 1.8837209302325562,
+          "durationTicks": 162,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 2355,
+          "time": 27.38372093023256,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.8372093023255829,
+          "durationTicks": 72,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 2357,
+          "time": 27.406976744186046,
+          "velocity": 0.33070866141732286
+        },
+        {
+          "duration": 2.104651162790695,
+          "durationTicks": 181,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 2596,
+          "time": 30.186046511627907,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.034883720930235285,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 2649,
+          "time": 30.802325581395348,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2650,
+          "time": 30.813953488372093,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2656,
+          "time": 30.88372093023256,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.3720930232558146,
+          "durationTicks": 32,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2676,
+          "time": 31.11627906976744,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2681,
+          "time": 31.174418604651162,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.05813953488371837,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2691,
+          "time": 31.290697674418606,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.8604651162790731,
+          "durationTicks": 74,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 2709,
+          "time": 31.5,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.16279069767442067,
+          "durationTicks": 14,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 2715,
+          "time": 31.569767441860463,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.15116279069767558,
+          "durationTicks": 13,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 2716,
+          "time": 31.58139534883721,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 1.4883720930232585,
+          "durationTicks": 128,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 2801,
+          "time": 32.56976744186046,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 2811,
+          "time": 32.68604651162791,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 1.558139534883722,
+          "durationTicks": 134,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 2949,
+          "time": 34.2906976744186,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.27906976744186096,
+          "durationTicks": 24,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 2986,
+          "time": 34.72093023255814,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.6744186046511658,
+          "durationTicks": 58,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 3097,
+          "time": 36.01162790697674,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 42,
+          "name": "F#2",
+          "ticks": 3100,
+          "time": 36.04651162790697,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 3103,
+          "time": 36.08139534883721,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 3119,
+          "time": 36.26744186046512,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3173,
+          "time": 36.895348837209305,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 1.2906976744186096,
+          "durationTicks": 111,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3191,
+          "time": 37.104651162790695,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.1279069767441925,
+          "durationTicks": 11,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 3210,
+          "time": 37.325581395348834,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 3246,
+          "time": 37.74418604651163,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.4186046511627879,
+          "durationTicks": 36,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 3248,
+          "time": 37.76744186046512,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.4534883720930196,
+          "durationTicks": 39,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 3249,
+          "time": 37.77906976744186,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 1.0348837209302317,
+          "durationTicks": 89,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 3285,
+          "time": 38.19767441860465,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 3289,
+          "time": 38.24418604651163,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.3488372093023244,
+          "durationTicks": 30,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 3302,
+          "time": 38.395348837209305,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.6279069767441854,
+          "durationTicks": 54,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 3307,
+          "time": 38.45348837209303,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3319,
+          "time": 38.593023255813954,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3327,
+          "time": 38.68604651162791,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.23255813953488058,
+          "durationTicks": 20,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3343,
+          "time": 38.872093023255815,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 3393,
+          "time": 39.45348837209303,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.6046511627906952,
+          "durationTicks": 52,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3393,
+          "time": 39.45348837209303,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.2674418604651123,
+          "durationTicks": 23,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 3402,
+          "time": 39.55813953488372,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3448,
+          "time": 40.093023255813954,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 3449,
+          "time": 40.104651162790695,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3481,
+          "time": 40.47674418604651,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.23255813953488058,
+          "durationTicks": 20,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 3483,
+          "time": 40.5,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 1.2558139534883708,
+          "durationTicks": 108,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 3540,
+          "time": 41.16279069767442,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.6744186046511658,
+          "durationTicks": 58,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 3540,
+          "time": 41.16279069767442,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 3601,
+          "time": 41.872093023255815,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.6162790697674438,
+          "durationTicks": 53,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 3691,
+          "time": 42.91860465116279,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.08139534883721211,
+          "durationTicks": 7,
+          "midi": 28,
+          "name": "E1",
+          "ticks": 3712,
+          "time": 43.16279069767442,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.46511627906976827,
+          "durationTicks": 40,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3839,
+          "time": 44.63953488372093,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 3842,
+          "time": 44.674418604651166,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.40697674418604635,
+          "durationTicks": 35,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 3845,
+          "time": 44.7093023255814,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.6860465116279073,
+          "durationTicks": 59,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 3879,
+          "time": 45.104651162790695,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3880,
+          "time": 45.116279069767444,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 3881,
+          "time": 45.127906976744185,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3885,
+          "time": 45.174418604651166,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3895,
+          "time": 45.2906976744186,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.6627906976744171,
+          "durationTicks": 57,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 3896,
+          "time": 45.30232558139535,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 3899,
+          "time": 45.33720930232558,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3907,
+          "time": 45.43023255813954,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3920,
+          "time": 45.58139534883721,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3948,
+          "time": 45.906976744186046,
+          "velocity": 0.2755905511811024
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 3950,
+          "time": 45.93023255813954,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3951,
+          "time": 45.94186046511628,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.16279069767441712,
+          "durationTicks": 14,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 3954,
+          "time": 45.97674418604651,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3956,
+          "time": 46,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3959,
+          "time": 46.03488372093023,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 3959,
+          "time": 46.03488372093023,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 3968,
+          "time": 46.13953488372093,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 3973,
+          "time": 46.19767441860465,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3980,
+          "time": 46.27906976744186,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.17441860465115866,
+          "durationTicks": 15,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 3985,
+          "time": 46.33720930232558,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 3986,
+          "time": 46.348837209302324,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.11627906976743674,
+          "durationTicks": 10,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 3995,
+          "time": 46.45348837209303,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 3998,
+          "time": 46.48837209302326,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 3999,
+          "time": 46.5,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.5,
+          "durationTicks": 43,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4007,
+          "time": 46.593023255813954,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4010,
+          "time": 46.627906976744185,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4015,
+          "time": 46.68604651162791,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4021,
+          "time": 46.75581395348837,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4031,
+          "time": 46.872093023255815,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4037,
+          "time": 46.94186046511628,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.081395348837205,
+          "durationTicks": 7,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4057,
+          "time": 47.174418604651166,
+          "velocity": 0.31496062992125984
+        },
+        {
+          "duration": 0.23255813953488058,
+          "durationTicks": 20,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4065,
+          "time": 47.26744186046512,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.418604651162795,
+          "durationTicks": 36,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 4097,
+          "time": 47.63953488372093,
+          "velocity": 0.3779527559055118
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4097,
+          "time": 47.63953488372093,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.4534883720930196,
+          "durationTicks": 39,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4098,
+          "time": 47.651162790697676,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.15116279069767558,
+          "durationTicks": 13,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4104,
+          "time": 47.72093023255814,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.8720930232558146,
+          "durationTicks": 75,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 4133,
+          "time": 48.05813953488372,
+          "velocity": 0.3700787401574803
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4134,
+          "time": 48.06976744186046,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 72,
+          "name": "C5",
+          "ticks": 4137,
+          "time": 48.104651162790695,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4138,
+          "time": 48.116279069767444,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4142,
+          "time": 48.16279069767442,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4147,
+          "time": 48.22093023255814,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.3953488372093048,
+          "durationTicks": 34,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4150,
+          "time": 48.25581395348837,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 4155,
+          "time": 48.31395348837209,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4165,
+          "time": 48.43023255813954,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4172,
+          "time": 48.51162790697674,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4176,
+          "time": 48.55813953488372,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4178,
+          "time": 48.58139534883721,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.581395348837205,
+          "durationTicks": 50,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4192,
+          "time": 48.74418604651163,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.38372093023255616,
+          "durationTicks": 33,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4192,
+          "time": 48.74418604651163,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4196,
+          "time": 48.7906976744186,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 4197,
+          "time": 48.80232558139535,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.06976744186047057,
+          "durationTicks": 6,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 4215,
+          "time": 49.01162790697674,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4233,
+          "time": 49.22093023255814,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 4237,
+          "time": 49.26744186046512,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.02325581395349019,
+          "durationTicks": 2,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 4243,
+          "time": 49.33720930232558,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 4244,
+          "time": 49.348837209302324,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 1.7325581395348877,
+          "durationTicks": 149,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4255,
+          "time": 49.47674418604651,
+          "velocity": 0.2992125984251969
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4262,
+          "time": 49.55813953488372,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4270,
+          "time": 49.651162790697676,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4276,
+          "time": 49.72093023255814,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.058139534883714816,
+          "durationTicks": 5,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4280,
+          "time": 49.76744186046512,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4282,
+          "time": 49.7906976744186,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4288,
+          "time": 49.86046511627907,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.11627906976743674,
+          "durationTicks": 10,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4288,
+          "time": 49.86046511627907,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4294,
+          "time": 49.93023255813954,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4300,
+          "time": 50,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4319,
+          "time": 50.22093023255814,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4325,
+          "time": 50.2906976744186,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4331,
+          "time": 50.36046511627907,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.1279069767441925,
+          "durationTicks": 11,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4355,
+          "time": 50.63953488372093,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.5697674418604635,
+          "durationTicks": 49,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4389,
+          "time": 51.03488372093023,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4407,
+          "time": 51.24418604651163,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.02325581395349019,
+          "durationTicks": 2,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 4424,
+          "time": 51.44186046511628,
+          "velocity": 0.33858267716535434
+        },
+        {
+          "duration": 0.6744186046511587,
+          "durationTicks": 58,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 4426,
+          "time": 51.46511627906977,
+          "velocity": 0.3543307086614173
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 72,
+          "name": "C5",
+          "ticks": 4426,
+          "time": 51.46511627906977,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 4432,
+          "time": 51.53488372093023,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.06976744186047057,
+          "durationTicks": 6,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4438,
+          "time": 51.604651162790695,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.40697674418604635,
+          "durationTicks": 35,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4439,
+          "time": 51.616279069767444,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4445,
+          "time": 51.68604651162791,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.08139534883721211,
+          "durationTicks": 7,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 4446,
+          "time": 51.69767441860465,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.4418604651162852,
+          "durationTicks": 38,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4449,
+          "time": 51.73255813953488,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 4454,
+          "time": 51.7906976744186,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 4459,
+          "time": 51.848837209302324,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.1279069767441925,
+          "durationTicks": 11,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4484,
+          "time": 52.13953488372093,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.6511627906976756,
+          "durationTicks": 56,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4484,
+          "time": 52.13953488372093,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4491,
+          "time": 52.22093023255814,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4503,
+          "time": 52.36046511627907,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4515,
+          "time": 52.5,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.02325581395349019,
+          "durationTicks": 2,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 4537,
+          "time": 52.75581395348837,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.5581395348837219,
+          "durationTicks": 48,
+          "midi": 72,
+          "name": "C5",
+          "ticks": 4539,
+          "time": 52.77906976744186,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4540,
+          "time": 52.7906976744186,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.16279069767442422,
+          "durationTicks": 14,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 4543,
+          "time": 52.825581395348834,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4545,
+          "time": 52.848837209302324,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4552,
+          "time": 52.93023255813954,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.3372093023255758,
+          "durationTicks": 29,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4557,
+          "time": 52.98837209302326,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4560,
+          "time": 53.02325581395349,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4566,
+          "time": 53.093023255813954,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4572,
+          "time": 53.16279069767442,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4578,
+          "time": 53.23255813953488,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4579,
+          "time": 53.24418604651163,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4585,
+          "time": 53.31395348837209,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4591,
+          "time": 53.383720930232556,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.5348837209302317,
+          "durationTicks": 46,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4596,
+          "time": 53.44186046511628,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 4598,
+          "time": 53.46511627906977,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4649,
+          "time": 54.05813953488372,
+          "velocity": 0.33070866141732286
+        },
+        {
+          "duration": 0.17441860465115866,
+          "durationTicks": 15,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 4657,
+          "time": 54.151162790697676,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.6511627906976756,
+          "durationTicks": 56,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 4688,
+          "time": 54.51162790697674,
+          "velocity": 0.3543307086614173
+        },
+        {
+          "duration": 0.418604651162795,
+          "durationTicks": 36,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4688,
+          "time": 54.51162790697674,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 1.8953488372092977,
+          "durationTicks": 163,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4689,
+          "time": 54.52325581395349,
+          "velocity": 0.2755905511811024
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4725,
+          "time": 54.94186046511628,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 4726,
+          "time": 54.95348837209303,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.3953488372093048,
+          "durationTicks": 34,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 4746,
+          "time": 55.18604651162791,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.7674418604651194,
+          "durationTicks": 66,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 4746,
+          "time": 55.18604651162791,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4751,
+          "time": 55.24418604651163,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4756,
+          "time": 55.30232558139535,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4761,
+          "time": 55.36046511627907,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4766,
+          "time": 55.41860465116279,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4782,
+          "time": 55.604651162790695,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.5348837209302388,
+          "durationTicks": 46,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 4785,
+          "time": 55.63953488372093,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.40697674418604635,
+          "durationTicks": 35,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4786,
+          "time": 55.651162790697676,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.8837209302325562,
+          "durationTicks": 76,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 4832,
+          "time": 56.18604651162791,
+          "velocity": 0.3464566929133858
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4868,
+          "time": 56.604651162790695,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4869,
+          "time": 56.616279069767444,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4872,
+          "time": 56.651162790697676,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.43023255813952943,
+          "durationTicks": 37,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4877,
+          "time": 56.7093023255814,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.15116279069767558,
+          "durationTicks": 13,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4880,
+          "time": 56.74418604651163,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4894,
+          "time": 56.906976744186046,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 1.2906976744186096,
+          "durationTicks": 111,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 4906,
+          "time": 57.04651162790697,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4910,
+          "time": 57.093023255813954,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.6627906976744171,
+          "durationTicks": 57,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 4923,
+          "time": 57.24418604651163,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4927,
+          "time": 57.2906976744186,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.1046511627906952,
+          "durationTicks": 9,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 4934,
+          "time": 57.372093023255815,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.22093023255813904,
+          "durationTicks": 19,
+          "midi": 70,
+          "name": "A#4",
+          "ticks": 4943,
+          "time": 57.47674418604651,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.2674418604651194,
+          "durationTicks": 23,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 4945,
+          "time": 57.5,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.6627906976744171,
+          "durationTicks": 57,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 5015,
+          "time": 58.31395348837209,
+          "velocity": 0.30708661417322836
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5017,
+          "time": 58.33720930232558,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5023,
+          "time": 58.406976744186046,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5024,
+          "time": 58.41860465116279,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5029,
+          "time": 58.47674418604651,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5035,
+          "time": 58.54651162790697,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.1046511627907023,
+          "durationTicks": 9,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 5035,
+          "time": 58.54651162790697,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5042,
+          "time": 58.627906976744185,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.7093023255813975,
+          "durationTicks": 61,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5048,
+          "time": 58.69767441860465,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.11627906976743674,
+          "durationTicks": 10,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5073,
+          "time": 58.98837209302326,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.48837209302325135,
+          "durationTicks": 42,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5073,
+          "time": 58.98837209302326,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.5930232558139537,
+          "durationTicks": 51,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 5075,
+          "time": 59.01162790697674,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5086,
+          "time": 59.13953488372093,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5091,
+          "time": 59.19767441860465,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5108,
+          "time": 59.395348837209305,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 5126,
+          "time": 59.604651162790695,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 5139,
+          "time": 59.75581395348837,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5146,
+          "time": 59.83720930232558,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.23255813953488058,
+          "durationTicks": 20,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5146,
+          "time": 59.83720930232558,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.08139534883721211,
+          "durationTicks": 7,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5166,
+          "time": 60.06976744186046,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.15116279069767558,
+          "durationTicks": 13,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5172,
+          "time": 60.13953488372093,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.1046511627907023,
+          "durationTicks": 9,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5174,
+          "time": 60.16279069767442,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.5581395348837219,
+          "durationTicks": 48,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5184,
+          "time": 60.27906976744186,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5186,
+          "time": 60.30232558139535,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5235,
+          "time": 60.872093023255815,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5238,
+          "time": 60.906976744186046,
+          "velocity": 0.3228346456692913
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5241,
+          "time": 60.94186046511628,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5245,
+          "time": 60.98837209302326,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.40697674418604635,
+          "durationTicks": 35,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 5276,
+          "time": 61.348837209302324,
+          "velocity": 0.3779527559055118
+        },
+        {
+          "duration": 0.1046511627906952,
+          "durationTicks": 9,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5277,
+          "time": 61.36046511627907,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.6511627906976685,
+          "durationTicks": 56,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5277,
+          "time": 61.36046511627907,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5287,
+          "time": 61.47674418604651,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.1046511627906952,
+          "durationTicks": 9,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5299,
+          "time": 61.616279069767444,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5312,
+          "time": 61.76744186046512,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 5313,
+          "time": 61.77906976744186,
+          "velocity": 0.2992125984251969
+        },
+        {
+          "duration": 0.5697674418604706,
+          "durationTicks": 49,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5314,
+          "time": 61.7906976744186,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.9883720930232514,
+          "durationTicks": 85,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5318,
+          "time": 61.83720930232558,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 5330,
+          "time": 61.97674418604651,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5334,
+          "time": 62.02325581395349,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 5337,
+          "time": 62.05813953488372,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5339,
+          "time": 62.08139534883721,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 5340,
+          "time": 62.093023255813954,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5346,
+          "time": 62.16279069767442,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.02325581395349019,
+          "durationTicks": 2,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 5351,
+          "time": 62.22093023255814,
+          "velocity": 0.3228346456692913
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5351,
+          "time": 62.22093023255814,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.802325581395344,
+          "durationTicks": 69,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 5353,
+          "time": 62.24418604651163,
+          "velocity": 0.3228346456692913
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5369,
+          "time": 62.43023255813954,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.4186046511627879,
+          "durationTicks": 36,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5377,
+          "time": 62.52325581395349,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5388,
+          "time": 62.651162790697676,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5400,
+          "time": 62.7906976744186,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5410,
+          "time": 62.906976744186046,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.02325581395349019,
+          "durationTicks": 2,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 5423,
+          "time": 63.05813953488372,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5423,
+          "time": 63.05813953488372,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 72,
+          "name": "C5",
+          "ticks": 5424,
+          "time": 63.06976744186046,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5429,
+          "time": 63.127906976744185,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 5430,
+          "time": 63.13953488372093,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.02325581395349019,
+          "durationTicks": 2,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5435,
+          "time": 63.19767441860465,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5439,
+          "time": 63.24418604651163,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5444,
+          "time": 63.30232558139535,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5451,
+          "time": 63.383720930232556,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5456,
+          "time": 63.44186046511628,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5457,
+          "time": 63.45348837209303,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5460,
+          "time": 63.48837209302326,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5463,
+          "time": 63.52325581395349,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.08139534883721211,
+          "durationTicks": 7,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5467,
+          "time": 63.56976744186046,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5470,
+          "time": 63.604651162790695,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.09302325581395365,
+          "durationTicks": 8,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5470,
+          "time": 63.604651162790695,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5475,
+          "time": 63.66279069767442,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.5348837209302388,
+          "durationTicks": 46,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5477,
+          "time": 63.68604651162791,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5478,
+          "time": 63.69767441860465,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.03488372093023173,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5488,
+          "time": 63.81395348837209,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5494,
+          "time": 63.883720930232556,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5495,
+          "time": 63.895348837209305,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.046511627906973274,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5500,
+          "time": 63.95348837209303,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5506,
+          "time": 64.02325581395348,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.05813953488370771,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5507,
+          "time": 64.03488372093024,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5512,
+          "time": 64.09302325581395,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5519,
+          "time": 64.17441860465117,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5522,
+          "time": 64.20930232558139,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5525,
+          "time": 64.24418604651163,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.27906976744185386,
+          "durationTicks": 24,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5535,
+          "time": 64.36046511627907,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5537,
+          "time": 64.38372093023256,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5543,
+          "time": 64.45348837209302,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5549,
+          "time": 64.52325581395348,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.7906976744185954,
+          "durationTicks": 68,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5572,
+          "time": 64.79069767441861,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.023255813953497295,
+          "durationTicks": 2,
+          "midi": 57,
+          "name": "A3",
+          "ticks": 5608,
+          "time": 65.20930232558139,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.2906976744185954,
+          "durationTicks": 25,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 5610,
+          "time": 65.23255813953489,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.5465116279069662,
+          "durationTicks": 47,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5610,
+          "time": 65.23255813953489,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5617,
+          "time": 65.31395348837209,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5621,
+          "time": 65.36046511627907,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5627,
+          "time": 65.43023255813954,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 51,
+          "name": "D#3",
+          "ticks": 5627,
+          "time": 65.43023255813954,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5633,
+          "time": 65.5,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.4534883720930196,
+          "durationTicks": 39,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 5647,
+          "time": 65.66279069767442,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5648,
+          "time": 65.67441860465117,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.4534883720930196,
+          "durationTicks": 39,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5664,
+          "time": 65.86046511627907,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 5666,
+          "time": 65.88372093023256,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.09302325581396076,
+          "durationTicks": 8,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5666,
+          "time": 65.88372093023256,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.2325581395348877,
+          "durationTicks": 20,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 5673,
+          "time": 65.96511627906976,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5675,
+          "time": 65.98837209302326,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.30232558139535115,
+          "durationTicks": 26,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5682,
+          "time": 66.06976744186046,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5704,
+          "time": 66.32558139534883,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 59,
+          "name": "B3",
+          "ticks": 5718,
+          "time": 66.48837209302326,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 5719,
+          "time": 66.5,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.2093023255814046,
+          "durationTicks": 18,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 5721,
+          "time": 66.52325581395348,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.11627906976742963,
+          "durationTicks": 10,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5722,
+          "time": 66.53488372093024,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5722,
+          "time": 66.53488372093024,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5733,
+          "time": 66.66279069767442,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.22093023255814614,
+          "durationTicks": 19,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5736,
+          "time": 66.69767441860465,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5740,
+          "time": 66.74418604651163,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5748,
+          "time": 66.83720930232558,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5755,
+          "time": 66.9186046511628,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5756,
+          "time": 66.93023255813954,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.023255813953497295,
+          "durationTicks": 2,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5759,
+          "time": 66.96511627906976,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 47,
+          "name": "B2",
+          "ticks": 5760,
+          "time": 66.97674418604652,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5762,
+          "time": 67,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5763,
+          "time": 67.01162790697674,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5765,
+          "time": 67.03488372093024,
+          "velocity": 0.2755905511811024
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5768,
+          "time": 67.06976744186046,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.08139534883721922,
+          "durationTicks": 7,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5769,
+          "time": 67.0813953488372,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.32558139534883423,
+          "durationTicks": 28,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5776,
+          "time": 67.16279069767442,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 5779,
+          "time": 67.19767441860465,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.15116279069768268,
+          "durationTicks": 13,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 5784,
+          "time": 67.25581395348837,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5788,
+          "time": 67.30232558139535,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.10465116279068809,
+          "durationTicks": 9,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5793,
+          "time": 67.36046511627907,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.5116279069767415,
+          "durationTicks": 44,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5803,
+          "time": 67.47674418604652,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5819,
+          "time": 67.66279069767442,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 5827,
+          "time": 67.75581395348837,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5828,
+          "time": 67.76744186046511,
+          "velocity": 0.3228346456692913
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 5835,
+          "time": 67.84883720930233,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.09302325581396076,
+          "durationTicks": 8,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5849,
+          "time": 68.01162790697674,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.6627906976744242,
+          "durationTicks": 57,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 5866,
+          "time": 68.20930232558139,
+          "velocity": 0.3858267716535433
+        },
+        {
+          "duration": 0.1046511627907023,
+          "durationTicks": 9,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5866,
+          "time": 68.20930232558139,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.6744186046511658,
+          "durationTicks": 58,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5866,
+          "time": 68.20930232558139,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 1.4302325581395365,
+          "durationTicks": 123,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 5876,
+          "time": 68.32558139534883,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 1.2558139534883708,
+          "durationTicks": 108,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 5902,
+          "time": 68.62790697674419,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.8023255813953512,
+          "durationTicks": 69,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 5924,
+          "time": 68.88372093023256,
+          "velocity": 0.2755905511811024
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5925,
+          "time": 68.8953488372093,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5967,
+          "time": 69.38372093023256,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.06976744186047767,
+          "durationTicks": 6,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5974,
+          "time": 69.46511627906976,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 5986,
+          "time": 69.6046511627907,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 1.5,
+          "durationTicks": 129,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6011,
+          "time": 69.8953488372093,
+          "velocity": 0.3779527559055118
+        },
+        {
+          "duration": 0.5348837209302388,
+          "durationTicks": 46,
+          "midi": 67,
+          "name": "G4",
+          "ticks": 6011,
+          "time": 69.8953488372093,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 70,
+          "name": "A#4",
+          "ticks": 6084,
+          "time": 70.74418604651163,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6087,
+          "time": 70.77906976744185,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 1.081395348837205,
+          "durationTicks": 93,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6139,
+          "time": 71.38372093023256,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.04651162790696617,
+          "durationTicks": 4,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6147,
+          "time": 71.47674418604652,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 6158,
+          "time": 71.6046511627907,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6178,
+          "time": 71.83720930232558,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6182,
+          "time": 71.88372093023256,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6196,
+          "time": 72.04651162790698,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 6197,
+          "time": 72.05813953488372,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6198,
+          "time": 72.06976744186046,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6203,
+          "time": 72.12790697674419,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.16279069767441,
+          "durationTicks": 14,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6218,
+          "time": 72.30232558139535,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.40697674418603924,
+          "durationTicks": 35,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6233,
+          "time": 72.47674418604652,
+          "velocity": 0.33858267716535434
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6236,
+          "time": 72.51162790697674,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.2325581395348877,
+          "durationTicks": 20,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6252,
+          "time": 72.69767441860465,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.2325581395348877,
+          "durationTicks": 20,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6261,
+          "time": 72.80232558139535,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6271,
+          "time": 72.9186046511628,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.32558139534883423,
+          "durationTicks": 28,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6273,
+          "time": 72.94186046511628,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.4418604651162781,
+          "durationTicks": 38,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6278,
+          "time": 73,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 1.4069767441860392,
+          "durationTicks": 121,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6287,
+          "time": 73.1046511627907,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6302,
+          "time": 73.27906976744185,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.38372093023255616,
+          "durationTicks": 33,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6306,
+          "time": 73.32558139534883,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6314,
+          "time": 73.4186046511628,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6317,
+          "time": 73.45348837209302,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.09302325581394655,
+          "durationTicks": 8,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6331,
+          "time": 73.61627906976744,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6348,
+          "time": 73.81395348837209,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.3139534883720927,
+          "durationTicks": 27,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6354,
+          "time": 73.88372093023256,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.15116279069766847,
+          "durationTicks": 13,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6369,
+          "time": 74.05813953488372,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6383,
+          "time": 74.22093023255815,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.32558139534883423,
+          "durationTicks": 28,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6385,
+          "time": 74.24418604651163,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.7558139534883708,
+          "durationTicks": 65,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6400,
+          "time": 74.4186046511628,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6401,
+          "time": 74.43023255813954,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6409,
+          "time": 74.52325581395348,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6419,
+          "time": 74.63953488372093,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.6046511627906881,
+          "durationTicks": 52,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6426,
+          "time": 74.72093023255815,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.22093023255814614,
+          "durationTicks": 19,
+          "midi": 70,
+          "name": "A#4",
+          "ticks": 6436,
+          "time": 74.83720930232558,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.4186046511627808,
+          "durationTicks": 36,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6454,
+          "time": 75.04651162790698,
+          "velocity": 0.31496062992125984
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 6478,
+          "time": 75.32558139534883,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6490,
+          "time": 75.46511627906976,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.8139534883720927,
+          "durationTicks": 70,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 6491,
+          "time": 75.47674418604652,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 6491,
+          "time": 75.47674418604652,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.16279069767441,
+          "durationTicks": 14,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6492,
+          "time": 75.48837209302326,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6509,
+          "time": 75.68604651162791,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 6530,
+          "time": 75.93023255813954,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 6548,
+          "time": 76.13953488372093,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.5930232558139608,
+          "durationTicks": 51,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6549,
+          "time": 76.15116279069767,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.7209302325581461,
+          "durationTicks": 62,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 6569,
+          "time": 76.38372093023256,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.6395348837209411,
+          "durationTicks": 55,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 6602,
+          "time": 76.76744186046511,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.32558139534883423,
+          "durationTicks": 28,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 6639,
+          "time": 77.19767441860465,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.5930232558139608,
+          "durationTicks": 51,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 6678,
+          "time": 77.65116279069767,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.40697674418603924,
+          "durationTicks": 35,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 6711,
+          "time": 78.03488372093024,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.43023255813953654,
+          "durationTicks": 37,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 6746,
+          "time": 78.44186046511628,
+          "velocity": 0.3543307086614173
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 6747,
+          "time": 78.45348837209302,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.40697674418603924,
+          "durationTicks": 35,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 6749,
+          "time": 78.47674418604652,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.2093023255814046,
+          "durationTicks": 18,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6759,
+          "time": 78.59302325581395,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6766,
+          "time": 78.67441860465117,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6783,
+          "time": 78.87209302325581,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 6784,
+          "time": 78.88372093023256,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 6788,
+          "time": 78.93023255813954,
+          "velocity": 0.2992125984251969
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6790,
+          "time": 78.95348837209302,
+          "velocity": 0.29133858267716534
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6797,
+          "time": 79.03488372093024,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6804,
+          "time": 79.11627906976744,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.7209302325581461,
+          "durationTicks": 62,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6822,
+          "time": 79.32558139534883,
+          "velocity": 0.3700787401574803
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6823,
+          "time": 79.33720930232558,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.1046511627907023,
+          "durationTicks": 9,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6828,
+          "time": 79.3953488372093,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 6828,
+          "time": 79.3953488372093,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6842,
+          "time": 79.55813953488372,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.32558139534883423,
+          "durationTicks": 28,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6849,
+          "time": 79.63953488372093,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.081395348837205,
+          "durationTicks": 7,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6852,
+          "time": 79.67441860465117,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.08139534883721922,
+          "durationTicks": 7,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 6860,
+          "time": 79.76744186046511,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.16279069767441,
+          "durationTicks": 14,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6868,
+          "time": 79.86046511627907,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.15116279069766847,
+          "durationTicks": 13,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6883,
+          "time": 80.03488372093024,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6901,
+          "time": 80.24418604651163,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.7441860465116292,
+          "durationTicks": 64,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 6934,
+          "time": 80.62790697674419,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.3604651162790731,
+          "durationTicks": 31,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6941,
+          "time": 80.70930232558139,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.04651162790696617,
+          "durationTicks": 4,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6975,
+          "time": 81.1046511627907,
+          "velocity": 0.10236220472440945
+        },
+        {
+          "duration": 0.2325581395348877,
+          "durationTicks": 20,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 6981,
+          "time": 81.17441860465117,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.32558139534884845,
+          "durationTicks": 28,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 6990,
+          "time": 81.27906976744185,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7010,
+          "time": 81.51162790697674,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.38372093023255616,
+          "durationTicks": 33,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7010,
+          "time": 81.51162790697674,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.45348837209303383,
+          "durationTicks": 39,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7017,
+          "time": 81.59302325581395,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 7025,
+          "time": 81.68604651162791,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.17441860465115155,
+          "durationTicks": 15,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7044,
+          "time": 81.90697674418605,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7061,
+          "time": 82.1046511627907,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.6279069767441854,
+          "durationTicks": 54,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7077,
+          "time": 82.29069767441861,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.8255813953488342,
+          "durationTicks": 71,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7079,
+          "time": 82.31395348837209,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.43023255813953654,
+          "durationTicks": 37,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7079,
+          "time": 82.31395348837209,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.7558139534883708,
+          "durationTicks": 65,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7118,
+          "time": 82.76744186046511,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.3139534883720927,
+          "durationTicks": 27,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 7137,
+          "time": 82.98837209302326,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.5930232558139465,
+          "durationTicks": 51,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7190,
+          "time": 83.6046511627907,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.7441860465116292,
+          "durationTicks": 64,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7228,
+          "time": 84.04651162790698,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.2093023255814046,
+          "durationTicks": 18,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7264,
+          "time": 84.46511627906976,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.3953488372092977,
+          "durationTicks": 34,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7300,
+          "time": 84.88372093023256,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.40697674418603924,
+          "durationTicks": 35,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7336,
+          "time": 85.30232558139535,
+          "velocity": 0.3700787401574803
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 7336,
+          "time": 85.30232558139535,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.3953488372092977,
+          "durationTicks": 34,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7337,
+          "time": 85.31395348837209,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 7373,
+          "time": 85.73255813953489,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.081395348837205,
+          "durationTicks": 7,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7375,
+          "time": 85.75581395348837,
+          "velocity": 0.25984251968503935
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7379,
+          "time": 85.80232558139535,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7383,
+          "time": 85.84883720930233,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 1.1395348837209411,
+          "durationTicks": 98,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7387,
+          "time": 85.8953488372093,
+          "velocity": 0.3858267716535433
+        },
+        {
+          "duration": 0.45348837209303383,
+          "durationTicks": 39,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7404,
+          "time": 86.09302325581395,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.43023255813953654,
+          "durationTicks": 37,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 7429,
+          "time": 86.38372093023256,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.023255813953497295,
+          "durationTicks": 2,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7447,
+          "time": 86.59302325581395,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.1279069767441996,
+          "durationTicks": 11,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7447,
+          "time": 86.59302325581395,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.40697674418603924,
+          "durationTicks": 35,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7454,
+          "time": 86.67441860465117,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.43023255813953654,
+          "durationTicks": 37,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7466,
+          "time": 86.81395348837209,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.09302325581396076,
+          "durationTicks": 8,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 7467,
+          "time": 86.82558139534883,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.2093023255814046,
+          "durationTicks": 18,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7490,
+          "time": 87.09302325581395,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7503,
+          "time": 87.24418604651163,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.27906976744185386,
+          "durationTicks": 24,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 7503,
+          "time": 87.24418604651163,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7504,
+          "time": 87.25581395348837,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7508,
+          "time": 87.30232558139535,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7513,
+          "time": 87.36046511627907,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.04651162790696617,
+          "durationTicks": 4,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 7523,
+          "time": 87.47674418604652,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.8372093023255758,
+          "durationTicks": 72,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 7523,
+          "time": 87.47674418604652,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 7530,
+          "time": 87.55813953488372,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.27906976744185386,
+          "durationTicks": 24,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 7535,
+          "time": 87.61627906976744,
+          "velocity": 0.14173228346456693
+        },
+        {
+          "duration": 0.04651162790696617,
+          "durationTicks": 4,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 7561,
+          "time": 87.9186046511628,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.3953488372092977,
+          "durationTicks": 34,
+          "midi": 62,
+          "name": "D4",
+          "ticks": 7578,
+          "time": 88.11627906976744,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.1046511627907023,
+          "durationTicks": 9,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 7597,
+          "time": 88.33720930232558,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.24418604651162923,
+          "durationTicks": 21,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 7605,
+          "time": 88.43023255813954,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.22093023255814614,
+          "durationTicks": 19,
+          "midi": 70,
+          "name": "A#4",
+          "ticks": 7613,
+          "time": 88.52325581395348,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.09302325581394655,
+          "durationTicks": 8,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 7631,
+          "time": 88.73255813953489,
+          "velocity": 0.33858267716535434
+        },
+        {
+          "duration": 0.2325581395348877,
+          "durationTicks": 20,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 7640,
+          "time": 88.83720930232558,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.19767441860466306,
+          "durationTicks": 17,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 7667,
+          "time": 89.15116279069767,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.4186046511627808,
+          "durationTicks": 36,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7668,
+          "time": 89.16279069767442,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.83720930232559,
+          "durationTicks": 72,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7704,
+          "time": 89.5813953488372,
+          "velocity": 0.33858267716535434
+        },
+        {
+          "duration": 0.19767441860466306,
+          "durationTicks": 17,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7705,
+          "time": 89.59302325581395,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.16279069767441,
+          "durationTicks": 14,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7722,
+          "time": 89.79069767441861,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7724,
+          "time": 89.81395348837209,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.6046511627907023,
+          "durationTicks": 52,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 7724,
+          "time": 89.81395348837209,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7741,
+          "time": 90.01162790697674,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.418604651162795,
+          "durationTicks": 36,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7742,
+          "time": 90.02325581395348,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.38372093023255616,
+          "durationTicks": 33,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7778,
+          "time": 90.44186046511628,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.418604651162795,
+          "durationTicks": 36,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 7779,
+          "time": 90.45348837209302,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7796,
+          "time": 90.65116279069767,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7813,
+          "time": 90.84883720930233,
+          "velocity": 0.2283464566929134
+        },
+        {
+          "duration": 0.3372093023255758,
+          "durationTicks": 29,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7815,
+          "time": 90.87209302325581,
+          "velocity": 0.30708661417322836
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 42,
+          "name": "F#2",
+          "ticks": 7816,
+          "time": 90.88372093023256,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7819,
+          "time": 90.9186046511628,
+          "velocity": 0.2204724409448819
+        },
+        {
+          "duration": 0.04651162790696617,
+          "durationTicks": 4,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7835,
+          "time": 91.1046511627907,
+          "velocity": 0.18110236220472442
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 7850,
+          "time": 91.27906976744185,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7852,
+          "time": 91.30232558139535,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.34883720930233153,
+          "durationTicks": 30,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7854,
+          "time": 91.32558139534883,
+          "velocity": 0.2125984251968504
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7869,
+          "time": 91.5,
+          "velocity": 0.12598425196850394
+        },
+        {
+          "duration": 0.13953488372092693,
+          "durationTicks": 12,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 7880,
+          "time": 91.62790697674419,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.2093023255813904,
+          "durationTicks": 18,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7888,
+          "time": 91.72093023255815,
+          "velocity": 0.3464566929133858
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7893,
+          "time": 91.77906976744185,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 62,
+          "name": "D4",
+          "ticks": 7899,
+          "time": 91.84883720930233,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7902,
+          "time": 91.88372093023256,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.15116279069766847,
+          "durationTicks": 13,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7907,
+          "time": 91.94186046511628,
+          "velocity": 0.3228346456692913
+        },
+        {
+          "duration": 0.06976744186047767,
+          "durationTicks": 6,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7909,
+          "time": 91.96511627906976,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.13953488372094114,
+          "durationTicks": 12,
+          "midi": 62,
+          "name": "D4",
+          "ticks": 7909,
+          "time": 91.96511627906976,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7923,
+          "time": 92.12790697674419,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.04651162790698038,
+          "durationTicks": 4,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7923,
+          "time": 92.12790697674419,
+          "velocity": 0.2992125984251969
+        },
+        {
+          "duration": 0.09302325581396076,
+          "durationTicks": 8,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 7923,
+          "time": 92.12790697674419,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.15116279069766847,
+          "durationTicks": 13,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7928,
+          "time": 92.18604651162791,
+          "velocity": 0.31496062992125984
+        },
+        {
+          "duration": 0.05813953488370771,
+          "durationTicks": 5,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7931,
+          "time": 92.22093023255815,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 0.081395348837205,
+          "durationTicks": 7,
+          "midi": 28,
+          "name": "E1",
+          "ticks": 7933,
+          "time": 92.24418604651163,
+          "velocity": 0.08661417322834646
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 7941,
+          "time": 92.33720930232558,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.12790697674418539,
+          "durationTicks": 11,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 7942,
+          "time": 92.34883720930233,
+          "velocity": 0.2992125984251969
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7958,
+          "time": 92.53488372093024,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.023255813953483084,
+          "durationTicks": 2,
+          "midi": 43,
+          "name": "G2",
+          "ticks": 7960,
+          "time": 92.55813953488372,
+          "velocity": 0.23622047244094488
+        },
+        {
+          "duration": 0.11627906976744384,
+          "durationTicks": 10,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7961,
+          "time": 92.56976744186046,
+          "velocity": 0.2677165354330709
+        },
+        {
+          "duration": 0.3488372093023173,
+          "durationTicks": 30,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7965,
+          "time": 92.61627906976744,
+          "velocity": 0.1968503937007874
+        },
+        {
+          "duration": 0.2674418604651265,
+          "durationTicks": 23,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7973,
+          "time": 92.70930232558139,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.36046511627905886,
+          "durationTicks": 31,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 7996,
+          "time": 92.97674418604652,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.40697674418603924,
+          "durationTicks": 35,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 7997,
+          "time": 92.98837209302326,
+          "velocity": 0.29133858267716534
+        },
+        {
+          "duration": 0.7674418604651123,
+          "durationTicks": 66,
+          "midi": 63,
+          "name": "D#4",
+          "ticks": 8017,
+          "time": 93.22093023255815,
+          "velocity": 0.13385826771653545
+        },
+        {
+          "duration": 0.22093023255814614,
+          "durationTicks": 19,
+          "midi": 60,
+          "name": "C4",
+          "ticks": 8026,
+          "time": 93.32558139534883,
+          "velocity": 0.14960629921259844
+        },
+        {
+          "duration": 0.744186046511615,
+          "durationTicks": 64,
+          "midi": 56,
+          "name": "G#3",
+          "ticks": 8033,
+          "time": 93.40697674418605,
+          "velocity": 0.1732283464566929
+        },
+        {
+          "duration": 0.38372093023255616,
+          "durationTicks": 33,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 8039,
+          "time": 93.47674418604652,
+          "velocity": 0.16535433070866143
+        },
+        {
+          "duration": 0.05813953488372192,
+          "durationTicks": 5,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 8074,
+          "time": 93.88372093023256,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 44,
+          "name": "G#2",
+          "ticks": 8081,
+          "time": 93.96511627906976,
+          "velocity": 0.09448818897637795
+        },
+        {
+          "duration": 0.17441860465116577,
+          "durationTicks": 15,
+          "midi": 58,
+          "name": "A#3",
+          "ticks": 8110,
+          "time": 94.30232558139535,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.08139534883721922,
+          "durationTicks": 7,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 8123,
+          "time": 94.45348837209302,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.09302325581396076,
+          "durationTicks": 8,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 8145,
+          "time": 94.70930232558139,
+          "velocity": 0.28346456692913385
+        },
+        {
+          "duration": 0.22093023255814614,
+          "durationTicks": 19,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 8154,
+          "time": 94.81395348837209,
+          "velocity": 0.1889763779527559
+        },
+        {
+          "duration": 0.32558139534883423,
+          "durationTicks": 28,
+          "midi": 62,
+          "name": "D4",
+          "ticks": 8163,
+          "time": 94.9186046511628,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.19767441860464885,
+          "durationTicks": 17,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 8190,
+          "time": 95.23255813953489,
+          "velocity": 0.2047244094488189
+        },
+        {
+          "duration": 0.1860465116279073,
+          "durationTicks": 16,
+          "midi": 65,
+          "name": "F4",
+          "ticks": 8198,
+          "time": 95.32558139534883,
+          "velocity": 0.11811023622047244
+        },
+        {
+          "duration": 0.06976744186046346,
+          "durationTicks": 6,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 8217,
+          "time": 95.54651162790698,
+          "velocity": 0.3543307086614173
+        },
+        {
+          "duration": 0.2325581395348877,
+          "durationTicks": 20,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 8224,
+          "time": 95.62790697674419,
+          "velocity": 0.25196850393700787
+        },
+        {
+          "duration": 0.034883720930224626,
+          "durationTicks": 3,
+          "midi": 45,
+          "name": "A2",
+          "ticks": 8228,
+          "time": 95.67441860465117,
+          "velocity": 0.15748031496062992
+        },
+        {
+          "duration": 0.09302325581396076,
+          "durationTicks": 8,
+          "midi": 46,
+          "name": "A#2",
+          "ticks": 8231,
+          "time": 95.70930232558139,
+          "velocity": 0.11023622047244094
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 53,
+          "name": "F3",
+          "ticks": 8246,
+          "time": 95.88372093023256,
+          "velocity": 0.07874015748031496
+        },
+        {
+          "duration": 0.03488372093023884,
+          "durationTicks": 3,
+          "midi": 54,
+          "name": "F#3",
+          "ticks": 8253,
+          "time": 95.96511627906976,
+          "velocity": 0.07086614173228346
+        },
+        {
+          "duration": 1.7790697674418539,
+          "durationTicks": 153,
+          "midi": 48,
+          "name": "C3",
+          "ticks": 8255,
+          "time": 95.98837209302326,
+          "velocity": 0.2440944881889764
+        },
+        {
+          "duration": 0.08139534883721922,
+          "durationTicks": 7,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 8258,
+          "time": 96.02325581395348,
+          "velocity": 0.2992125984251969
+        },
+        {
+          "duration": 0.6744186046511658,
+          "durationTicks": 58,
+          "midi": 55,
+          "name": "G3",
+          "ticks": 8266,
+          "time": 96.11627906976744,
+          "velocity": 0.25196850393700787
+        }
+      ],
+      "endOfTrackTicks": 8408
+    }
+  ]
+}
