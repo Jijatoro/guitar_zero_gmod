@@ -22,19 +22,19 @@ function PANEL:Paint(w, h)
 
     if (self.draw) then
         if (self.Hovered) or (self:GetStatus()) then 
-            self:SetTextColor(theme["title_btn"])
+            self:SetTextColor(theme["title_btn_hover"])
             draw.RoundedBox(32, 0, 0, w, h, theme["btn_line_hover"])
             draw.RoundedBox(32, 3, 3, w-6, h-6, theme["btn_hover"])
         else
-            self:SetTextColor(theme["title_btn_hover"])
+            self:SetTextColor(theme["title_btn"])
             draw.RoundedBox(32, 0, 0, w, h, theme["btn_line"])
             draw.RoundedBox(32, 3, 3, w-6, h-6, theme["btn"])
         end
     else
         if (self.Hovered) or (self:GetStatus()) then 
-            self:SetTextColor(theme["title_btn"])
-        else
             self:SetTextColor(theme["title_btn_hover"])
+        else
+            self:SetTextColor(theme["title_btn"])
         end
     end
 end

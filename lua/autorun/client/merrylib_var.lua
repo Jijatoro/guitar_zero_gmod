@@ -2,7 +2,7 @@
 --[+] Тех. переменные :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
 ----------------------------------------------------------------------------------------------|>
 Merry = {}
-Merry.Theme = "Merry"
+Merry.Theme = "Blue"
 Merry.CanTheme = true
 Merry.Themes = {
 	["Merry"] = {
@@ -42,7 +42,7 @@ Merry.Themes = {
 		["btn_hover"] = Color(85, 85, 95), ["btn_line_hover"] = Color(110, 110, 120),
 		-- *Title
 		["title_head"] = Color(170, 170, 180), ["title_h1"] = Color(190, 190, 200), 
-		["title_p1"] = Color(150, 150, 160), ["title_btn"] = Color(200, 200, 210),
+		["title_p1"] = Color(160, 160, 160), ["title_btn"] = Color(200, 200, 210),
 		["title_btn_hover"] = Color(220, 220, 230),
 		-- *Slider
 		["slider"] = Color(80, 80, 90), ["slider_border"] = Color(100, 100, 110),
@@ -64,9 +64,9 @@ Merry.Themes = {
 		["btn"] = Color(220, 220, 225), ["btn_line"] = Color(160, 160, 170),
 		["btn_hover"] = Color(200, 200, 205), ["btn_line_hover"] = Color(130, 130, 140),
 		-- *Title
-		["title_head"] = Color(50, 50, 60), ["title_h1"] = Color(30, 30, 40), 
-		["title_p1"] = Color(70, 70, 80), ["title_btn"] = Color(40, 40, 50),
-		["title_btn_hover"] = Color(20, 20, 30),
+		["title_head"] = Color(50, 50, 60), ["title_h1"] = Color(40, 40, 40), 
+		["title_p1"] = Color(70, 70, 80), ["title_btn"] = Color(80, 80, 80),
+		["title_btn_hover"] = Color(20, 20, 20),
 		-- *Slider
 		["slider"] = Color(200, 200, 210), ["slider_border"] = Color(150, 150, 160),
 		-- *Switch
@@ -87,10 +87,8 @@ Merry.Themes = {
 		["btn"] = Color(90, 110, 140), ["btn_line"] = Color(100, 120, 150),
 		["btn_hover"] = Color(110, 130, 160), ["btn_line_hover"] = Color(130, 150, 180),
 		-- *Title
-		["title_head"] = Color(167, 189, 231),
-		["title_h1"] = Color(183, 199, 230),
-		["title_p1"] = Color(200, 210, 230),
-		["title_btn"] = Color(200, 210, 230),
+		["title_head"] = Color(167, 189, 231), ["title_h1"] = Color(183, 199, 230),
+		["title_p1"] = Color(200, 210, 230), ["title_btn"] = Color(200, 210, 230),
 		["title_btn_hover"] = Color(174,191,224),
 		-- *Slider
 		["slider"] = Color(110, 130, 160), ["slider_border"] = Color(130, 150, 180),

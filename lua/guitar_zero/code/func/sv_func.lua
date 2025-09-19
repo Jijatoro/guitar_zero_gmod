@@ -42,7 +42,8 @@ function Guitar_Hero.LoadJson()
 	for _, v in pairs(data) do
 		timer.Simple(delay, function()
 			amount = amount + 1
-			Guitar_Hero.JsonData[v] = util.JSONToTable(file.Read(path .. v, "GAME"))
+			local target = util.JSONToTable(file.Read(path .. v, "GAME"))
+			Guitar_Hero.JsonData[v] = #target["tracks"][1]["notes"]
 
 			if (amount >= #data) then
 				Guitar_Hero.JsonReady = true
@@ -123,7 +124,7 @@ function Guitar_Hero.ValidResultHero(ply, result, type)
 	if not (ply.GH_Play) or not (ply.GH_Music) then return end
 	local music_ply = ply.GH_MusicName .. ".json"
 	if not (Guitar_Hero.JsonData[music_ply]) then return end
-	local long = #Guitar_Hero.JsonData[music_ply]["tracks"][1]["notes"]
+	local long = Guitar_Hero.JsonData[music_ply]
 	if not (ply.GH_CanReward) then
 		ply.GH_Bool = false
 		ply.GH_Sum = 0

@@ -49,7 +49,6 @@ net.Receive("GuitarHero.Play", function(len, sender)
 	local data = net.ReadTable()
 	ValidData(data, sender)
 
-	if not (data.type) or not (Guitar_Hero.Modes[data.type]) then return end
 	if (data.type == "fail") then
 		Guitar_Hero.StopPlay(sender, "hero", "fail")
 		return
