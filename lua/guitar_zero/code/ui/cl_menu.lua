@@ -4,6 +4,7 @@
 local alpha = 0
 local language_sel, theme_sel, sound_ui, btn_ready
 local guitar
+local ui_menu, ui_welcome
 
 --[*] Блэк лист
 local function blacklist(ply, music)
@@ -23,16 +24,15 @@ end
 
 --[*] Затычка
 local function closeready(p1, p2)
-	p1:Remove()
-	p2:Remove()
+	p1:Remove() p2:Remove()
 end
 
 --[*] Отладка
-local function Debug(panel)
-	panel:Remove()
-
-	timer.Simple(0.2, function()
-		Guitar_Hero.UI_Menu()
+local function Debug()
+	if (IsValid(ui_menu)) then ui_menu:Remove() end
+	if (IsValid(ui_welcome)) then ui_welcome:Remove() end
+	timer.Simple(0.1, function()
+		Guitar_Hero.UI_Start()
 	end)
 end
 
@@ -44,7 +44,6 @@ local function DrawElements(parent)
 	timer.Create("MerryUI.Alpha", 0.01, 0, function()
 		if (alpha >= 255) then alpha = 255 timer.Remove("MerryUI.Alpha") return end
 		if not (IsValid(parent)) then alpha = 255 timer.Remove("MerryUI.Alpha") return end
-		
 		parent:SetAlpha(alpha)
 		alpha = alpha + 5
 	end)	
@@ -62,10 +61,43 @@ local function HoverSound(self, sound)
 	end
 end
 
+--[*] Окно об ошибке
+local function MyError(reason)
+	MerryUI.Warning("question", reason, nil)
+	Guitar_Hero.Sound("buzzer", "ui")
+end
+
+--[*] Обработчик для создания плейлиста
+local function ValidPlaylist(frame, type, switches, name, playlist, my_setting, text, old_name)
+	if (table.IsEmpty(switches)) then MyError(text["Вы не выбрали даже одной музыки"]) return end
+
+	if (type == "create") then
+		if (name == "") or (name == "-") then MyError(text["Такое название плейлиста недопусимо!"]) return end
+		for id, _ in pairs(playlist) do
+			if (id == name) then MyError(text["Такое название плейлиста уже есть!"]) return end
+		end
+
+		Guitar_Hero.MySetting["setting"]["playlist"][name] = switches
+		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])				
+	end
+
+	if (type == "edit") then
+		if (name == "") or (name == "-") then MyError(text["Такое название плейлиста недопусимо!"]) return end
+		for id, _ in pairs(playlist) do
+			if (id == name) and (name != old_name) then MyError(text["Такое название плейлиста уже есть!"]) return end
+		end
+
+		Guitar_Hero.MySetting["setting"]["playlist"][name] = switches
+		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])				
+	end	
+
+	frame:Remove() Debug() Guitar_Hero.Sound("save", "ui")
+end
+
 ----------------------------------------------------------------------------------------------|>
 --[+] Контент настроек :--:--:--:--:--:--:--:--:--:--:--:}>                                   |>
 ----------------------------------------------------------------------------------------------|>
-local function SettingContent(pnl_setting, my_setting, text, type)
+local function SettingContent(pnl_setting, my_setting, text)
 	--[*] Выбор языка
 	local all_languages = {}
 	for key, _ in pairs(Guitar_Hero.Languages) do
@@ -82,7 +114,6 @@ local function SettingContent(pnl_setting, my_setting, text, type)
 		for key, _ in pairs(Merry.Themes) do
 			table.insert(all_themes, key)
 		end
-
 		theme_sel = vgui.Create("MerryUI.SelectorText", pnl_setting)
 		MerryUI.Selector(theme_sel, nil, text["Тема"], Merry.Theme, all_themes, true, TOP, 75, 0, 75, 0)
 		theme_sel:SetPosX(-23)
@@ -93,7 +124,6 @@ local function SettingContent(pnl_setting, my_setting, text, type)
 	for key, _ in pairs(Guitar_Hero.Modes) do
 		table.insert(all_modes, key)
 	end
-
 	mode_sel = vgui.Create("MerryUI.SelectorText", pnl_setting)
 	MerryUI.Selector(mode_sel, nil, text["Мод"], my_setting["mode"], all_modes, true, TOP, 75, 0, 75, 0)
 	mode_sel:SetPosX(-23)
@@ -105,7 +135,6 @@ local function SettingContent(pnl_setting, my_setting, text, type)
 	else 
 		if (sound_date != 0) then sound_date = sound_date*100 end
 	end
-
 	sound_ui = vgui.Create("MerryUI.SliderText", pnl_setting)
 	MerryUI.Slider(sound_ui, text["Громкость звуков"], 0, 100, sound_date, TOP, 85, 15, 75, 3)
 	sound_ui.slider.OnValueChanged = function(self, value) 
@@ -115,6 +144,7 @@ local function SettingContent(pnl_setting, my_setting, text, type)
 	--[*] Готово
 	btn_ready = vgui.Create("MerryUI.Button", pnl_setting)
 	MerryUI.Button(btn_ready, text["Изменить"], true, nil, TOP, 190, 30, 190, 0)
+	btn_ready.Think = function(self) HoverSound(self, "cursor") end		
 	btn_ready.DoClick = function()
 		Guitar_Hero.MySetting["setting"]["language"] = language_sel:GetValue()
 		Guitar_Hero.MySetting["setting"]["mode"] = mode_sel:GetValue()
@@ -128,31 +158,16 @@ local function SettingContent(pnl_setting, my_setting, text, type)
 		end
 		Guitar_Hero.MySetting["setting"]["sound_ui"] = sound_date
 		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
-
-		if (form == "menu") then
-			Debug(frame)
-		else
-			pnl_setting:GetParent():Close()
-			timer.Simple(0.1, function ()
-				Guitar_Hero.UI_Start()
-			end)
-		end
-
-		Guitar_Hero.Sound("save", "ui")
+		Debug() Guitar_Hero.Sound("save", "ui")
 	end
 
-	btn_ready.Think = function(self)
-		HoverSound(self, "cursor")
-	end	
-
-	--[*] Прорисовка всех элементов
 	DrawElements(pnl_setting:GetParent())
 end
 
 ----------------------------------------------------------------------------------------------|>
 --[+] Контент биндов :--:--:--:--:--:--:--:--:--:--:--:}>                                     |>
 ----------------------------------------------------------------------------------------------|>
-local function BindsContent(pnl_binds, my_setting, text, type)
+local function BindsContent(pnl_binds, my_setting, text)
 	local data = my_setting["binds"]
 	local data_keys = {}
 
@@ -171,28 +186,187 @@ local function BindsContent(pnl_binds, my_setting, text, type)
 		for id, key in ipairs(data_keys) do
 			new_button[id] = key:GetValue()
 		end
-
 		Guitar_Hero.MySetting["setting"]["binds"] = new_button
 		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
-
-		if (form == "menu") then
-			Debug(frame)
-		else
-			pnl_binds:GetParent():Close()
-			timer.Simple(0.1, function ()
-				Guitar_Hero.UI_Start()
-			end)
-		end
-
-		Guitar_Hero.Sound("save", "ui")
+		Debug() Guitar_Hero.Sound("save", "ui")
 	end
 
 	btn_ready.Think = function(self)
 		HoverSound(self, "cursor")
 	end	
 
-	--[*] Прорисовка всех элементов
 	DrawElements(pnl_binds:GetParent())
+end
+
+----------------------------------------------------------------------------------------------|>
+--[+] Создание плейлиста :--:--:--:--:--:--:--:--:--:--:--:}>                                 |>
+----------------------------------------------------------------------------------------------|>
+local function UI_CreatePlaylist(my_setting, text, playlist, type, old_name)
+	--[*] Само меню
+	local frame = vgui.Create("MerryUI.FrameSimple")
+	MerryUI.FrameSimple(frame, "round", nil, true, 700, 730)
+
+	--[*] Название плейлиста
+	local name_playlist = vgui.Create("MerryUI.TextEntry", frame)
+	MerryUI.TextEntry(name_playlist, text["Название плейлиста..."], true, TOP, 200, 15, 200, 0)
+	if (type == "edit") then name_playlist:SetValue(old_name) end
+
+	--[*] Окно с музыкой
+	local pnl_main = vgui.Create("MerryUI.Scroll", frame)
+	MerryUI.Scroll(pnl_main, false, 700, 655)
+	pnl_main:SetVisible(true)
+	pnl_main:Dock(TOP)
+	pnl_main:DockMargin(20, 5, 20, 0)
+
+	--[*] Музыка
+	local music_date = file.Find("sound/zero_guitar/music/*.mp3", "GAME")
+	local all_ava = file.Find("materials/zero_guitar/music/*.png", "GAME")
+	local data_switches = {}
+
+	for _, music in pairs(music_date) do
+		local pnl_mus = vgui.Create("MerryUI.Panel", pnl_main)
+		MerryUI.Panel(pnl_mus, true, false, "round", nil, 300, 60, TOP, 15, 5, 15, 5, false)
+
+		local ava = vgui.Create("MerryUI.Panel", pnl_mus)
+		MerryUI.Panel(ava, true, false, "round", nil, 54, 54, LEFT, 7, 5, 0, 5, false)
+
+		for _, icons in pairs(all_ava) do
+			if (MerryUI.sub(music, 1, MerryUI.len(music)-4) == MerryUI.sub(icons, 1, MerryUI.len(icons)-4)) then
+				ava:SetImageType("circle")
+				ava:SetValue("materials/zero_guitar/music/" .. icons)
+			end
+		end
+
+		local name = vgui.Create("MerryUI.Label", pnl_mus)
+		MerryUI.Label(name, MerryUI.sub(music, 1, MerryUI.len(music)-4), "p1", 435, 60, 1, LEFT, 15, 0, 0, 13)
+		
+		local status = false
+		if (type == "edit") then
+			for k, v in pairs(playlist[old_name]) do
+				if (v == music) then status = true end
+			end
+		end
+
+		local switch = vgui.Create("MerryUI.Switch", pnl_mus)
+		MerryUI.Switch(switch, status, "", LEFT, 12, 10, 0, 10)
+		data_switches[music] = switch
+	end
+
+	--[*] Создать/Изменить
+	local name_ready = text["Создать"]
+	if (type == "edit") then
+		name_ready  =  text["Изменить"]
+	end
+
+	local btn_ready = vgui.Create("MerryUI.Button", frame)
+	MerryUI.Button(btn_ready, name_ready, true, nil, TOP, 230, 5, 230, 0)
+	btn_ready.Think = function(self) HoverSound(self, "cursor") end		
+	btn_ready.DoClick = function()
+		local data = {}
+		for k, v in pairs(data_switches) do
+			if (v:GetValue()) then
+				table.insert(data, k)
+			end
+		end
+		ValidPlaylist(frame, type, data, name_playlist:GetValue(), playlist, my_setting, text, old_name)
+	end	
+end
+
+----------------------------------------------------------------------------------------------|>
+--[+] Контент плейлистов :--:--:--:--:--:--:--:--:--:--:--:}>                                 |>
+----------------------------------------------------------------------------------------------|>
+local function PlaylistContent(pnl_playlist, my_setting, text)
+	local playlist = my_setting["playlist"]
+	local playlist_current = my_setting["playlist_current"]
+	playlist["-"] = true
+
+	local data_list = {}
+	local size_playlist = 0
+	local check_current = false
+	for name, _ in pairs(playlist) do
+		table.insert(data_list, name)
+		size_playlist = size_playlist + 1
+		if (playlist_current == name) then check_current = true end
+	end
+	if not (check_current) then playlist_current = "-" end
+	local playlist_sel = vgui.Create("MerryUI.SelectorText", pnl_playlist)
+	MerryUI.Selector(playlist_sel, nil, text["Выбранный плейлист"], playlist_current, data_list, true, TOP, 75, 0, 75, 0)
+	playlist_sel:SetPosX(-23)	
+
+	--[*] Готово
+	local btn_ready = vgui.Create("MerryUI.Button", pnl_playlist)
+	MerryUI.Button(btn_ready, text["Готово"], true, nil, TOP, 220, 10, 220, 0)
+	btn_ready.Think = function(self) HoverSound(self, "cursor") end		
+	btn_ready.DoClick = function()
+		Guitar_Hero.MySetting["setting"]["playlist_current"] = playlist_sel:GetValue()
+		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
+
+		Debug()
+		Guitar_Hero.Sound("save", "ui")
+	end
+
+	--[*] Ваши плейлисты
+	if (size_playlist > 1) then
+		local my_playlist = vgui.Create("MerryUI.Scroll", pnl_playlist)
+		MerryUI.Scroll(my_playlist, false, 500, 400)
+		my_playlist:Dock(TOP)
+		my_playlist:DockMargin(35, 25, 35, 0)
+		my_playlist:SetVisible(true)
+
+		for n, v in pairs(playlist) do
+			if (n == "-") then continue end
+			local slot = vgui.Create("MerryUI.Panel", my_playlist)
+			MerryUI.Panel(slot, true, false, "round", nil, 300, 60, TOP, 15, 5, 15, 5, false)
+
+			local name = vgui.Create("MerryUI.Label", slot)
+			MerryUI.Label(name, n, "p1", 360, 60, 1, LEFT, 15, 0, 0, 13)
+			
+			--[*] Изменить
+			local btn_edit = vgui.Create("MerryUI.ButtonIcon", slot)
+			MerryUI.ButtonIcon(btn_edit, Merry.Mat["edit"], 55, 55, LEFT, 5, 5, 0, 5)
+			btn_edit.Think = function(self)
+				HoverSound(self, "cursor")
+			end
+			btn_edit.DoClick = function()
+				UI_CreatePlaylist(my_setting, text, playlist, "edit", n)
+				Guitar_Hero.Sound("select", "ui")
+			end
+
+			--[*] Удалить
+			local btn_delete = vgui.Create("MerryUI.ButtonIcon", slot)
+			MerryUI.ButtonIcon(btn_delete, Merry.Mat["close"], 55, 55, LEFT, 5, 5, 0, 5)
+			btn_delete.Think = function(self)
+				HoverSound(self, "cursor")
+			end
+			btn_delete.DoClick = function()
+				local function delete_it()
+					Guitar_Hero.MySetting["setting"]["playlist"][n] = nil
+					Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
+					Debug()
+					Guitar_Hero.Sound("save", "ui")					
+				end 
+				local accept = vgui.Create("MerryUI.Accept")
+				accept:Center()
+				accept:SetFunc(delete_it)
+				accept:MakePopup()
+				accept:SetText(text["Вы точно хотите удалить этот плейлист?"])
+				accept.btnaccept:SetText(text["Хочу"]) 
+				accept.btnreject:SetText(text["Нет"])
+				Guitar_Hero.Sound("picnic", "ui")
+			end	
+		end
+	end
+
+	--[*] Создать плейлист
+	local btn_create = vgui.Create("MerryUI.Button", pnl_playlist)
+	MerryUI.Button(btn_create, text["Создать новый"], true, nil, TOP, 135, 10, 135, 0)
+	btn_create.Think = function(self) HoverSound(self, "cursor") end		
+	btn_create.DoClick = function()
+		UI_CreatePlaylist(my_setting, text, playlist, "create", nil)
+		Guitar_Hero.Sound("picnic", "ui")
+	end
+
+	DrawElements(pnl_playlist:GetParent())
 end
 
 ----------------------------------------------------------------------------------------------|>
@@ -209,16 +383,8 @@ local function UI_Submit(parent, music, text, my_setting)
 		end
 	end
 
-	local d_name = ""
-	local d_author = ""
-	local complexity = 1
-	local d_music = Guitar_Hero.DataMusic[music] or nil
-
-	if (d_music) then
-		d_name = d_music.name
-		d_author = d_music.author
-		d_complexity = d_music.complexity		
-	end
+	local d_name = "" local d_author = "" local complexity = 1 local d_music = Guitar_Hero.DataMusic[music] or nil
+	if (d_music) then d_name = d_music.name d_author = d_music.author d_complexity = d_music.complexity	end
 
 	--[*] Описание музыки
 	local name = vgui.Create("MerryUI.Label", frame)
@@ -243,13 +409,13 @@ local function UI_Submit(parent, music, text, my_setting)
 		MerryUI.ButtonIcon(star, Merry.Mat["star"], 50, 50, LEFT, pos_x, 5, 5, 5)
 		star:SetMouseInputEnabled(false)
 		star:SetCursor("arrow")		
-		
 		if (i <= amout) then star:SetStatus(true) end
 	end	
 
 	--[*] Ну, пошла Родная... (или нет?)
 	local btn_play = vgui.Create("MerryUI.Button", frame)
 	MerryUI.Button(btn_play, text["Играть"], true, nil, TOP, 235, 25, 235, 0)
+	btn_play.Think = function(self) HoverSound(self, "cursor") end	
 	btn_play.DoClick = function()
 		local music = string.sub(music, 1, string.len(music)-4)
 		local cfg = Guitar_Hero.Config
@@ -271,22 +437,17 @@ local function UI_Submit(parent, music, text, my_setting)
 			elseif not (Guitar_Hero.Config["List_Music"][music].Need(LocalPlayer())) then need = text["Неизвестно"] return
 			else need = Guitar_Hero.Config["List_Music"][music].Need(LocalPlayer()) end
 
-			closeready(frame, parent)
-			Guitar_Hero.Sound("buzzer", "ui")
+			closeready(frame, parent) Guitar_Hero.Sound("buzzer", "ui")
 			chat.AddText(Color(230, 230, 230), text["Белый список"], Color(170, 240, 112), text["Нужно: "], Color(249, 237, 205), need)
 			return 
 		end
 
 		if (LocalPlayer():GetActiveWeapon():GetClass() != "guitar_zero") then
-			closeready(parent, frame)
-			Guitar_Hero.Sound("buzzer", "ui")
-			return
+			closeready(parent, frame) Guitar_Hero.Sound("buzzer", "ui") return
 		end
 
 		if (Guitar_Hero.JsonReady) then
-			closeready(frame, parent)
-			Guitar_Hero.Sound("super_smash_impact", "ui")
-
+			closeready(frame, parent) Guitar_Hero.Sound("super_smash_impact", "ui")
 			if (my_setting["mode"] == "hero") then
 				Guitar_Hero.PlayNet("hero", my_setting["binds"], music)
 			elseif (my_setting["mode"] == "classic") then
@@ -296,13 +457,8 @@ local function UI_Submit(parent, music, text, my_setting)
 			Guitar_Hero.Sound("buzzer", "ui")
 		end	
 	end	
-	
-	btn_play.Think = function(self)
-		HoverSound(self, "cursor")
-	end	
 
-	parent:SetVisible(false)
-	DrawElements(frame)
+	parent:SetVisible(false) DrawElements(frame)
 end
 
 ----------------------------------------------------------------------------------------------|>
@@ -310,52 +466,55 @@ end
 ----------------------------------------------------------------------------------------------|>
 local function UI_Welcome(my_setting, text)
 	--[*] Само меню
-	local frame = vgui.Create("MerryUI.FrameSimple")
-	MerryUI.FrameSimple(frame, "round", nil, true, 700, 730)
+	ui_welcome = vgui.Create("MerryUI.FrameSimple")
+	MerryUI.FrameSimple(ui_welcome, "round", nil, true, 700, 730)
 
-	local label = vgui.Create("MerryUI.Label", frame)
+	local label = vgui.Create("MerryUI.Label", ui_welcome)
 	MerryUI.Label(label, text["Добро пожаловать"], "head", 150, 40, 5, TOP, 25, 3, 25, 0)
 
 	--[*] Окно с настройками
-	local pnl_setting = vgui.Create("MerryUI.Scroll", frame)
+	local pnl_setting = vgui.Create("MerryUI.Scroll", ui_welcome)
 	MerryUI.Scroll(pnl_setting, false, 700, 720)
 	pnl_setting:SetVisible(true)
 	pnl_setting:Dock(BOTTOM)
 	pnl_setting:DockMargin(35, 0, 35, 0)
 
 	--[*] Настройки
-	SettingContent(pnl_setting, my_setting, text, "welcome")
+	SettingContent(pnl_setting, my_setting, text)
 end
 
 ----------------------------------------------------------------------------------------------|>
 --[+] Меню гитары :--:--:--:--:--:--:--:--:--:--:--:}>                                        |>
 ----------------------------------------------------------------------------------------------|>
 local function UI_Menu(my_setting, text)
-	--[*] Тех. параметры
-	local my_setting = Guitar_Hero.MySetting["setting"]
-
 	--[*] Само меню
-	local frame = vgui.Create("MerryUI.FrameSimple")
-	MerryUI.FrameSimple(frame, "round", nil, true, 700, 730)
+	ui_menu = vgui.Create("MerryUI.FrameSimple")
+	MerryUI.FrameSimple(ui_menu, "round", nil, true, 700, 730)
 
 	--[*] Окно с музыкой
-	local pnl_main = vgui.Create("MerryUI.Scroll", frame)
+	local pnl_main = vgui.Create("MerryUI.Scroll", ui_menu)
 	MerryUI.Scroll(pnl_main, false, 700, 720)
 	pnl_main:SetVisible(true)
 	pnl_main:Dock(BOTTOM)
 	pnl_main:DockMargin(20, 0, 20, 0)
 
 	--[*] Окно с настройками
-	local pnl_setting = vgui.Create("MerryUI.Scroll", frame)
+	local pnl_setting = vgui.Create("MerryUI.Scroll", ui_menu)
 	MerryUI.Scroll(pnl_setting, false, 700, 720)
 	pnl_setting:Dock(BOTTOM)
 	pnl_setting:DockMargin(35, 0, 35, 0)
 
 	--[*] Окно с биндами
-	local pnl_binds = vgui.Create("MerryUI.Scroll", frame)
+	local pnl_binds = vgui.Create("MerryUI.Scroll", ui_menu)
 	MerryUI.Scroll(pnl_binds, false, 700, 720)
 	pnl_binds:Dock(BOTTOM)
-	pnl_binds:DockMargin(35, 0, 35, 0)			
+	pnl_binds:DockMargin(35, 0, 35, 0)
+
+	--[*] Окно с плейлистами
+	local pnl_playlist = vgui.Create("MerryUI.Scroll", ui_menu)
+	MerryUI.Scroll(pnl_playlist, false, 700, 720)
+	pnl_playlist:Dock(BOTTOM)
+	pnl_playlist:DockMargin(35, 0, 35, 0)				
 
 	--[*] Параметры переключения
 	local page_date = {
@@ -367,28 +526,51 @@ local function UI_Menu(my_setting, text)
 			size = 100
 		},
 		[2] = {
+			panel = pnl_playlist,
+			mat = Merry.Mat["star"],
+			text = "Плейлист",
+			left = 7,
+			size = 100			
+		},
+		[3] = {
 			panel = pnl_setting,
 			mat = Merry.Mat["setting"],
 			text = "Настройки",
 			left = 7,
-			size = 100
+			size = 100			
 		},
-		[3] = {
+		[4] = {
 			panel = pnl_binds,
 			mat = Merry.Mat["cube"],
 			text = "Бинды",
 			left = 7,
 			size = 100
-		}
+		}		
 	}
 
 	--[*] Выбор окна
-	local page = vgui.Create("MerryUI.Chapter", frame)
-	MerryUI.Chapter(page, "panel", "round", 1, page_date, nil, TOP, 255, 3, 255, 3)
+	local page = vgui.Create("MerryUI.Chapter", ui_menu)
+	MerryUI.Chapter(page, "panel", "round", 1, page_date, nil, TOP, 230, 3, 230, 3)
+
+	--[*] Обработка плейлиста
+	local playlist = my_setting["playlist"]
+	local playlist_current = my_setting["playlist_current"]
+	playlist["-"] = true
+
+	local check_current = false
+	for name, _ in pairs(playlist) do
+		if (playlist_current == name) then check_current = true end
+	end
+	if not (check_current) then 
+		Guitar_Hero.MySetting["setting"]["playlist_current"] = "-"
+		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])		
+		Debug() return
+	end	
 
 	--[*] Музыка
 	local music_date = file.Find("sound/zero_guitar/music/*.mp3", "GAME")
 	local all_ava = file.Find("materials/zero_guitar/music/*.png", "GAME")
+	if (playlist_current != "-") then music_date = playlist[playlist_current] end 
 
 	for _, music in pairs(music_date) do
 		local pnl_mus = vgui.Create("MerryUI.Panel", pnl_main)
@@ -409,20 +591,19 @@ local function UI_Menu(my_setting, text)
 		
 		local btn_started = vgui.Create("MerryUI.Button", pnl_mus)
 		MerryUI.Button(btn_started, text["Начать"], true, nil, RIGHT, 0, 5, 7, 5)
+		btn_started.Think = function(self) HoverSound(self, "cursor") end	
 		btn_started.DoClick = function()
-			UI_Submit(frame, music, text, my_setting)
+			UI_Submit(ui_menu, music, text, my_setting)
 			Guitar_Hero.Sound("select", "ui")
 		end
-
-		btn_started.Think = function(self)
-			HoverSound(self, "cursor")
-		end	
 	end
 
 	--[*] Настройки
-	SettingContent(pnl_setting, my_setting, text, "menu")
+	SettingContent(pnl_setting, my_setting, text)
 	--[*] Бинды
-	BindsContent(pnl_binds, my_setting, text, "menu")
+	BindsContent(pnl_binds, my_setting, text)
+	--[*] Окно с плейлистами
+	PlaylistContent(pnl_playlist, my_setting, text)
 end
 
 ----------------------------------------------------------------------------------------------|>

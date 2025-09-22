@@ -459,6 +459,8 @@ function MerryUI.Accept(frame, func, text)
 			accept:SetText(text)
 		end 
 	end
+
+	return accept
 end
 
 ----------------------------------------------------------------------------------------------|>

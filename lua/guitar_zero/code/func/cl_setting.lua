@@ -19,7 +19,9 @@ local file_data = {
 			    [3] = KEY_D,
 			    [4] = KEY_F,
 			    [5] = KEY_G
-			}
+			},
+			["playlist"] = {},
+			["playlist_current"] = "-"
 		}
 	}
 }

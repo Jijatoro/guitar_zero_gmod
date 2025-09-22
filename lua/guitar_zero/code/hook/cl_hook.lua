@@ -18,7 +18,9 @@ local file_data = {
 			    [3] = KEY_D,
 			    [4] = KEY_F,
 			    [5] = KEY_G
-			}
+			},
+			["playlist"] = {},
+			["playlist_current"] = "-"
 		}
 	}
 }
@@ -55,7 +57,15 @@ local valid_date = {
  			if (key < 0) or (key > 159) then return false end
  		end
 		return true
-	end
+	end,
+	["playlist"] = function(val)
+		if not (val) or not (istable(val)) then return false end
+		return true
+	end,	
+	["playlist_current"] = function(val)
+		if not (val) or not (isstring(val)) then return false end
+		return true
+	end,
 }
 
 ----------------------------------------------------------------------------------------------|>
@@ -79,7 +89,27 @@ hook.Add("InitPostEntity", "Guitar_Hero.Ready", function()
 			end
 		end 
 	end
-	Guitar_Hero.UpdateThemes(Guitar_Hero.MySetting["setting"]["theme"])	
+
+	--[*] Закрепляющая обработка
+	for k, v in pairs(file_data["setting"].data_default) do
+		if (Guitar_Hero.MySetting["setting"][k] == nil) then
+			Guitar_Hero.MySetting["setting"][k] = v
+		end
+	end
+
+	--[*] Очищаем удалённую музыку из плейлистов
+	for key, music in pairs(Guitar_Hero.MySetting["setting"]["playlist"]) do
+		if (key == "-") then continue end
+		for id, name in ipairs(music) do
+			local mp3, fold = file.Find("sound/zero_guitar/music/" .. name, "GAME")
+			if not (mp3) or (mp3 == nil) or (table.IsEmpty(mp3)) then
+				Guitar_Hero.MySetting["setting"]["playlist"][key] = nil
+			end
+		end
+	end
+
+	Guitar_Hero.UpdateThemes(Guitar_Hero.MySetting["setting"]["theme"])
+	Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
 end)
 
 ----------------------------------------------------------------------------------------------|>

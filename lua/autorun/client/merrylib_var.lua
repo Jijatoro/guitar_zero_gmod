@@ -15,8 +15,8 @@ Merry.Themes = {
 		-- *Panel
 		["p_body"] = Color(170, 154, 105), ["p_line"] = Color(104, 97, 74),
 		-- *Button
-		["btn"] = Color(213, 194, 138), ["btn_line"] = Color(104, 97, 74),
-		["btn_hover"] = Color(235, 215, 155), ["btn_line_hover"] = Color(120, 110, 85),
+		["btn"] = Color(235, 215, 155), ["btn_line"] = Color(120, 110, 85),
+		["btn_hover"] = Color(213, 194, 138), ["btn_line_hover"] = Color(104, 97, 74),
 		-- *Title
 		["title_head"] = Color(98, 90, 63), ["title_h1"] = Color(88, 81, 57), 
 		["title_p1"] = Color(98, 90, 63), ["title_btn"] = Color(98, 90, 63),
@@ -95,7 +95,7 @@ Merry.Themes = {
 		-- *Switch
 		["switch_rd"] = Color(200, 80, 90), ["switch_gr"] = Color(80, 200, 100),
 		-- *Checkbox // Progress
-		["checkbox"] = Color(130, 150, 180), ["progress"] = Color(80, 200, 100)
+		["checkbox"] = Color(88,120,167), ["progress"] = Color(80, 200, 100)
 	}
 }
 

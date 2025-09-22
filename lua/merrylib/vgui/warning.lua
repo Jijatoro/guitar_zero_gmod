@@ -38,7 +38,7 @@ function PANEL:Paint(w, h)
 	draw.RoundedBox(32, 3, 3, w-6, h-6, theme["p_body"])
 
     surface.SetMaterial(Merry.Mat[self:GetMat()].mat)
-    surface.SetDrawColor(theme["color_icon"])
+    surface.SetDrawColor(theme["color_icon_active"])
     surface.DrawTexturedRect(155, 5, 90, 90)
 end
 

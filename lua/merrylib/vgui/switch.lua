@@ -78,6 +78,10 @@ function PANEL:GetValue()
     return self.status
 end
 
+function PANEL:SetValue(val)
+    self:SetStatus(val) 
+end
+
 function PANEL:DoClick()
     if (self:GetStatus()) then
         self:SetStatus(false)
