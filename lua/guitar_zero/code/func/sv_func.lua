@@ -43,7 +43,10 @@ function Guitar_Hero.LoadJson()
 		timer.Simple(delay, function()
 			amount = amount + 1
 			local target = util.JSONToTable(file.Read(path .. v, "GAME"))
-			Guitar_Hero.JsonData[v] = #target["tracks"][1]["notes"]
+			Guitar_Hero.JsonData[v] = {}
+			Guitar_Hero.JsonData[v]["size"] = #target["tracks"][1]["notes"]
+			local c_sound = "zero_guitar/music/" .. string.sub(v, 1, string.len(v)-5) .. ".mp3"
+			Guitar_Hero.JsonData[v]["duration"] = math.Round(SoundDuration(c_sound))		
 
 			if (amount >= #data) then
 				Guitar_Hero.JsonReady = true
@@ -97,7 +100,7 @@ local function PlayMusic(ply, music, time, type)
 	local swep = ply:GetActiveWeapon()
 	if (swep:GetClass() != "guitar_zero") then return end
 	local c_sound = "zero_guitar/music/" .. music .. ".mp3"
-	local duration = SoundDuration(c_sound)
+	local duration = Guitar_Hero.JsonData[music .. ".json"]["duration"]
 	ply.GH_Play = true
 	ply.GH_Music = c_sound
 	ply.GH_MusicName = music
@@ -124,7 +127,7 @@ function Guitar_Hero.ValidResultHero(ply, result, type)
 	if not (ply.GH_Play) or not (ply.GH_Music) then return end
 	local music_ply = ply.GH_MusicName .. ".json"
 	if not (Guitar_Hero.JsonData[music_ply]) then return end
-	local long = Guitar_Hero.JsonData[music_ply]
+	local long = Guitar_Hero.JsonData[music_ply]["size"]
 	if not (ply.GH_CanReward) then
 		ply.GH_Bool = false
 		ply.GH_Sum = 0
@@ -165,7 +168,7 @@ function Guitar_Hero.Play(ply, type, music)
 			PlayMusic(ply, music, 2.1, type)
 
 			local c_sound = "zero_guitar/music/" .. music .. ".mp3"
-			local duration = SoundDuration(c_sound)
+			local duration = Guitar_Hero.JsonData[music .. ".json"]["duration"]
 			timer.Create("GuitarHero.TickHero." .. ply:SteamID(), duration-rand-0.2, 1, function()
 				ply.GH_CanReward = true
 			end)
