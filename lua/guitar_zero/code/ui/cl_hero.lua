@@ -1,6 +1,18 @@
 ----------------------------------------------------------------------------------------------|>
 --[+] Тех. переменные и функции :--:--:--:--:--:--:--:--:--:--:--:}>                          |>
 ----------------------------------------------------------------------------------------------|>
+local function icon()
+    return jlib.cfg.icons[jlib.cfg.icon]  or {}
+end
+
+local function clr()
+    return jlib.cfg.themes[jlib.cfg.theme]  or {}
+end
+
+local function lan()
+    return jlib.cfg.lans[jlib.cfg.lan] or {}
+end
+
 local alpha = 0
 local long = 700
 local width = 400
@@ -121,20 +133,6 @@ local type_note = {
 	}
 }
 
---[*] Прорисовка всех элементов
-local function DrawElements(parent)
-	parent:SetAlpha(0)
-	alpha = 0
-
-	timer.Create("MerryUI.Alpha", 0.01, 0, function()
-		if (alpha >= 255) then alpha = 255 timer.Remove("MerryUI.Alpha") return end
-		if not (IsValid(parent)) then alpha = 255 timer.Remove("MerryUI.Alpha") return end
-		
-		parent:SetAlpha(alpha)
-		alpha = alpha + 5
-	end)	
-end
-
 ----------------------------------------------------------------------------------------------|>
 --[+] Анимация кнопок :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
 ----------------------------------------------------------------------------------------------|>
@@ -197,8 +195,9 @@ end
 ----------------------------------------------------------------------------------------------|>
 local function CreateNote(type)
 	if not (IsValid(background)) then return end
-	local note = vgui.Create("MerryUI.Panel", background)
-	MerryUI.Panel(note, false, false, "base", nil, 50, 50, nil, nil, nil, nil, nil, nil)
+	local note = jlib.vgui.Create("panel", background)
+	note:SetType("base")
+	note:SetSize(50, 50)
 	note:SetPos(type_note[type].pos.x, type_note[type].pos.y)
 	note.n_type = type
 	note.ready = false
@@ -314,9 +313,12 @@ function Guitar_Hero.UI_Play(name, reward, my_tick)
 	end
 
 	--[*] Само меню
-	Guitar_Hero.Panel_Play = vgui.Create("MerryUI.Panel")
-	MerryUI.Panel(Guitar_Hero.Panel_Play, false, true, "base", nil, width, long, nil, nil, nil, nil, nil, false)
+	Guitar_Hero.Panel_Play = jlib.vgui.Create("panel")
+	Guitar_Hero.Panel_Play:SetType("base")
+	Guitar_Hero.Panel_Play:SetSize(width, long)
+	Guitar_Hero.Panel_Play:Center()
 	Guitar_Hero.Panel_Play:CenterVertical(0.68)
+	Guitar_Hero.Panel_Play:MakePopup()
 	Guitar_Hero.Panel_Play.OnRemove = function(self)
 		timer.Remove("Merry.HG.AnimElements")
 		hook.Remove("Think", "HG.CreateNote")
@@ -325,8 +327,11 @@ function Guitar_Hero.UI_Play(name, reward, my_tick)
 	end
 
 	--[*] Доп. для тех. части
-	background = vgui.Create("MerryUI.Panel", Guitar_Hero.Panel_Play)
-	MerryUI.Panel(background, false, false, "none", nil, width, long, FILL, 0, 0, 0, 0, false)	
+	background = jlib.vgui.Create("panel", Guitar_Hero.Panel_Play)
+	background:SetType("none")
+	background:SetSize(width, long)
+	background:Dock(FILL)
+	background:DockMargin(0, 0, 0, 0)	
 
 	--[*] Рандомим скин
 	local mat_skin = "merry_world/swep/hero_guitar/ui/skin/" .. tostring(math.random(1, 8)) .. ".png"
@@ -335,11 +340,13 @@ function Guitar_Hero.UI_Play(name, reward, my_tick)
 
 	--[*] Стандартные элементы движения
 	for _, v in ipairs(adjustmoves) do
-		v.object = vgui.Create("MerryUI.Panel", Guitar_Hero.Panel_Play)
-		MerryUI.Panel(v.object, false, false, "base", v.mat, v.size.x, v.size.y, nil, nil, nil, nil, nil, nil)
+		v.object = jlib.vgui.Create("panel", Guitar_Hero.Panel_Play)
+		v.object:SetType("base")
+		v.object:SetImage(v.mat)
+		v.object:SetSize(v.size.x, v.size.y)
 		v.object:SetPos(v.pos.x, v.pos.y)
 		v.object.Paint = function(self, w, h)
-            surface.SetMaterial(Material(self:GetValue(), "noclamp smooth"))
+            surface.SetMaterial(Material(self:GetImage(), "noclamp smooth"))
             surface.SetDrawColor(Color(255, 255, 255))
             surface.DrawTexturedRect(3, 0, w-6, h)
 		end
@@ -347,20 +354,26 @@ function Guitar_Hero.UI_Play(name, reward, my_tick)
 
 	--[*] Струны
 	for _, s in pairs(all_strings) do
-		local strings_line = vgui.Create("MerryUI.Panel", Guitar_Hero.Panel_Play)
-		MerryUI.Panel(strings_line, false, false, "base", "merry_world/swep/hero_guitar/ui/body/line.png", 10, long, nil, nil, nil, nil, nil, nil)
+		local strings_line = jlib.vgui.Create("panel", Guitar_Hero.Panel_Play)
+		strings_line:SetType("none")
+		strings_line:SetSize(10, long)
+		strings_line:SetImage("merry_world/swep/hero_guitar/ui/body/line.png")
 		strings_line:SetPos(s.pos.x, s.pos.y)	
 	end
 
 	--[*] Панель с кнопками
-	local panel_btn = vgui.Create("MerryUI.Panel", Guitar_Hero.Panel_Play)
-	MerryUI.Panel(panel_btn, false, false, "none", nil, width, 72, nil, nil, nil, nil, nil, false)
+	local panel_btn = jlib.vgui.Create("panel", Guitar_Hero.Panel_Play)
+	panel_btn:SetType("none")
+	panel_btn:SetSize(width, 72)
 	panel_btn:SetPos(0, pos_bar)
 
 	--[*] Кнопки
 	for i = 1, 5 do 
-		local pnl_btn = vgui.Create("MerryUI.Panel", panel_btn)
-		MerryUI.Panel(pnl_btn, false, false, "none", nil, 74, 70, LEFT, 5, 2, 0, 2, false)
+		local pnl_btn = jlib.vgui.Create("panel", panel_btn)
+		pnl_btn:SetType("none")
+		pnl_btn:SetSize(74, 70)
+		pnl_btn:Dock(LEFT)
+		pnl_btn:DockMargin(5, 2, 0, 2)		
 
 		local button = vgui.Create("DModelPanel", pnl_btn)
 		button:SetModel("models/merry_world/swep/hero_guitar_view/button.mdl")
@@ -387,12 +400,14 @@ function Guitar_Hero.UI_Play(name, reward, my_tick)
 	end
 
 	AnimElements(Guitar_Hero.Panel_Play)
-	DrawElements(Guitar_Hero.Panel_Play)
 	GeneralNote(reward, my_tick)
 
 	--[*] Счётчик
-	counter_text = vgui.Create("MerryUI.Label", Guitar_Hero.Panel_Play)
-	MerryUI.Label(counter_text, tostring(counter), "head", 400, 90, 5, nil, nil, nil, nil, nil)
+	counter_text = jlib.vgui.Create("label", Guitar_Hero.Panel_Play)
+	counter_text:SetText(tostring(counter))
+	counter_text:SetFont("s1-24")
+	counter_text:SetSize(400, 90)
+	counter_text:SetContentAlignment(5)
 	counter_text:SetPos(0, long-80)
 end
 

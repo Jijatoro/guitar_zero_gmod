@@ -1,16 +1,16 @@
 ----------------------------------------------------------------------------------------------|>
---[+] UI-звук :--:--:--:--:--:--:--:--:--:--:--:}>                                            |>
+--[+] Тех. переменные и функции :--:--:--:--:--:--:--:--:--:--:--:}>                          |>
 ----------------------------------------------------------------------------------------------|>
-function Guitar_Hero.Sound(name, type)
-	local ply = LocalPlayer()
-	local my_setting = Guitar_Hero.MySetting["setting"]
+local function icon()
+    return jlib.cfg.icons[jlib.cfg.icon]  or {}
+end
 
-	if (type == "ui") then
-		path = 
-		ply:EmitSound("merry_world/ui/" .. name .. ".mp3", 75, 100, my_setting["sound_ui"], CHAN_AUTO)
-	end
+local function clr()
+    return jlib.cfg.themes[jlib.cfg.theme]  or {}
+end
 
-	ply:EmitSound(name .. ".mp3", 75, 100, my_setting["sound_ui"], CHAN_AUTO)
+local function lan()
+    return jlib.cfg.lans[jlib.cfg.lan] or {}
 end
 
 ----------------------------------------------------------------------------------------------|>
@@ -20,7 +20,6 @@ local current_progress, end_progress
 local function DrawLoad()
 	local w, h = ScrW(), ScrH()
 	local ply = LocalPlayer()
-	local theme = Merry.Themes[Merry.Theme]
 	local my_setting = Guitar_Hero.MySetting["setting"]
 	local text = Guitar_Hero.Languages[my_setting["language"]]
 
@@ -29,10 +28,10 @@ local function DrawLoad()
 	local t1_w, t2_w = w*0.4+172, w*0.4+170
 	local t1_h, t2_h = h-44-24, h-27
 
-	draw.RoundedBox(32, b1_w, b1_h, 350, 90, theme["line"])
-	draw.RoundedBox(32, b2_w, b2_h, 350-6, 90-6, theme["head"])
-	draw.SimpleTextOutlined(text["Загрузка музыки"], "Merry.h1", t1_w, t1_h, theme["title_head"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
-	draw.SimpleTextOutlined(tostring(current_progress) .. "/" .. tostring(end_progress), "Merry.p2_b", t2_w, t2_h, theme["title_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
+	draw.RoundedBox(32, b1_w, b1_h, 350, 90, clr()["line"])
+	draw.RoundedBox(32, b2_w, b2_h, 350-6, 90-6, clr()["head"])
+	draw.SimpleTextOutlined(text["Загрузка музыки"], "s1-32", t1_w, t1_h, clr()["t_head"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
+	draw.SimpleTextOutlined(tostring(current_progress) .. "/" .. tostring(end_progress), "s1-24", t2_w, t2_h, clr()["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
 end
 
 function Guitar_Hero.LoadJson()

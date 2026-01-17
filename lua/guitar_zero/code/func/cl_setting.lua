@@ -1,17 +1,27 @@
 ----------------------------------------------------------------------------------------------|>
 --[+] Тех. переменные :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
 ----------------------------------------------------------------------------------------------|>
+local function icon()
+    return jlib.cfg.icons[jlib.cfg.icon]  or {}
+end
+
+local function clr()
+    return jlib.cfg.themes[jlib.cfg.theme]  or {}
+end
+
+local function lan()
+    return jlib.cfg.lans[jlib.cfg.lan] or {}
+end
+
 Guitar_Hero.MySetting = {}
 local file_data = {
 	["setting"] = {
 		name = "setting",
-		folder = "merry_world", 
+		folder = "jlib", 
 		path = "guitar_hero.json", 
 		data_default = {
 			["language"] = "en",
-			["theme"] = "Blue",
 			["mode"] = "classic",
-			["sound_ui"] = 0.4,
 			["first"] = true,
 			["binds"] = {
 			    [1] = KEY_A,
@@ -25,14 +35,6 @@ local file_data = {
 		}
 	}
 }
-
-----------------------------------------------------------------------------------------------|>
---[+] Обновляем тему :--:--:--:--:--:--:--:--:--:--:--:}>                                     |>
-----------------------------------------------------------------------------------------------|>
-function Guitar_Hero.UpdateThemes(arg)
-	if not (Merry.CanTheme) then return end
-	Merry.Theme = arg
-end
 
 ----------------------------------------------------------------------------------------------|>
 --[+] Получаем данные :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
@@ -55,7 +57,6 @@ end
 function Guitar_Hero.SaveSetting(name, data)
 	local new_data = util.TableToJSON(data, true) 
 	file.Write(file_data[name].folder .. "/" .. file_data[name].path, new_data) 
-	Guitar_Hero.UpdateThemes(data["theme"])	
 end 
 
 -->                      _M_                                                   

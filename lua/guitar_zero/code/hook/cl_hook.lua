@@ -4,13 +4,11 @@
 local file_data = {
 	["setting"] = {
 		name = "setting",
-		folder = "merry_world", 
+		folder = "jlib", 
 		path = "guitar_hero.json", 
 		data_default = {
 			["language"] = "en",
-			["theme"] = "Blue",
 			["mode"] = "classic",
-			["sound_ui"] = 0.4,
 			["first"] = true,
 			["binds"] = {
 			    [1] = KEY_A,
@@ -31,19 +29,9 @@ local valid_date = {
  		if not (Guitar_Hero.Languages[val]) then return false end
  		return true
 	end,
-	["theme"] = function(val)
-		if not (val) or not (isstring(val)) then return false end
- 		if not (Merry.Themes[val]) then return false end	
-		return true
-	end,
 	["mode"] = function(val)
 		if not (val) or not (isstring(val)) then return false end
  		if not (Guitar_Hero.Modes[val]) then return false end	
-		return true
-	end,
-	["sound_ui"] = function(val)
-		if not (val) or not (isnumber(val)) then return false end
- 		if (val > 1) or (val < 0) then return false end	
 		return true
 	end,
 	["first"] = function(val)
@@ -65,7 +53,7 @@ local valid_date = {
 	["playlist_current"] = function(val)
 		if not (val) or not (isstring(val)) then return false end
 		return true
-	end,
+	end
 }
 
 ----------------------------------------------------------------------------------------------|>
@@ -108,7 +96,6 @@ hook.Add("InitPostEntity", "Guitar_Hero.Ready", function()
 		end
 	end
 
-	Guitar_Hero.UpdateThemes(Guitar_Hero.MySetting["setting"]["theme"])
 	Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
 end)
 
@@ -123,18 +110,18 @@ hook.Add("Guitar_Hero.EndPlay", "Guitar_Hero.End", function(ply, type, reason, c
 	timer.Simple(0.1, function()
 		if (type == "hero") then
 			if (reason == "won") then
-				Guitar_Hero.Sound("quest_complete", "ui")
+				jlib.vgui.PlaySound("jlib/ui/main/quest_complete.mp3", nil, true)
 			elseif (reason == "fail") then
-				Guitar_Hero.Sound("fail", "ui")
+				jlib.vgui.PlaySound("fail", nil, true)
 				Guitar_Hero.PlayNet("fail", nil, nil)
 			end return
 		end
 
 		if (type == "hero_r") then
 			if (reason == "won") then
-				Guitar_Hero.Sound("quest_complete", "ui")
+				jlib.vgui.PlaySound("jlib/ui/main/quest_complete.mp3", nil, true)
 			elseif (reason == "fail") then
-				Guitar_Hero.Sound("fail", "ui")
+				jlib.vgui.PlaySound("fail", nil, true)
 				Guitar_Hero.PlayNet("fail", nil, nil)
 			end return		
 		end
