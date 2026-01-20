@@ -44,12 +44,13 @@ function PANEL:Init()
     self:SetSize(0, 0)
     self:Dock(NODOCK)
     self:SetZPos(9999)
+    self:SetDrawOnTop(true)
 
     self.text = ""
     self.font = jlib.vgui.GetFont(data_font, "txt")
     self.object = nil
-    self.object_p = nil
     self.status = false
+    self.toppos = false
 end
 
 function PANEL:Paint(w, h)
@@ -60,19 +61,11 @@ function PANEL:Paint(w, h)
     end
 end
 
-function PANEL:SetObject(arg, par)
+function PANEL:SetObject(arg, pos_top)
     if not (arg) or not (IsValid(arg)) then return end
+    if (pos_top) then self.toppos = true end
     self.object = arg
     self.status = true
-
-    for i = 1, 10 do
-        if (self.object:GetParent() == self:GetParent()) then
-            self.object_p = self.object
-            break
-        else
-            self.object_p = self.object:GetParent()
-        end
-    end
 end
 
 function PANEL:SetText(arg)
@@ -94,20 +87,17 @@ end
 
 function PANEL:Think()
     if not (self.object) then return end
-    if not (self.object_p) then return end
 
     if (self.object.Hovered) and not (self.status) then
         self.status = true
+        local mouse_x, mouse_y = self.object:LocalToScreen(0, 0)
+        local wide, tall = self:GetSize()
+        local wideobj, tallobj = self.object:GetSize()
+        local newpos_x = mouse_x+(wideobj*0.5)-(wide*0.5)
+        local newpos_y = mouse_y+tallobj+15
+        if (self.toppos) then newpos_y = mouse_y-tall-15 end
 
-        local abs_x, abs_y = self:LocalToScreen(0, 0)
-        local parent = self:GetParent()
-        local parent_x, parent_y = parent:ScreenToLocal(abs_x, abs_y)
-        local wide = self:GetWide()
-        local width_obj = self.object:GetWide()
-        local objpos_x, objpos_y = self.object_p:GetPos()  
-        local r_posx, r_posy = parent_x+objpos_x+(width_obj*0.4)-(wide*0.4), parent_y+objpos_y+60
-
-        self:SetPos(r_posx, r_posy)
+        self:SetPos(newpos_x, newpos_y)
         return
     end
 
@@ -117,18 +107,18 @@ function PANEL:Think()
     end   
 end
 
-function PANEL:PerformLayout()
-    local text = self.text
-    if (text != "") or (text != nil) then
-        surface.SetFont(self.font)
-        local text_w, text_h = surface.GetTextSize(text)
-        local w, h = self:GetSize()
+-- function PANEL:PerformLayout()
+--     local text = self.text
+--     if (text != "") or (text != nil) then
+--         surface.SetFont(self.font)
+--         local text_w, text_h = surface.GetTextSize(text)
+--         local w, h = self:GetSize()
         
-        if (w < (text_w + 15)) then
-            self:SetSize(text_w + 15, text_h + 15)
-        end
-    end
-end
+--         if (w < (text_w + 15)) then
+--             self:SetSize(text_w + 15, text_h + 15)
+--         end
+--     end
+-- end
 
 vgui.Register("jlib.tip-main", PANEL, "Panel")
 

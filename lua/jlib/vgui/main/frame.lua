@@ -50,6 +50,7 @@ function PANEL:Init()
 	self:SetPaintBackgroundEnabled(false)
 	self:SetPaintBorderEnabled(false)
 	self.m_fCreateTime = SysTime()
+	self.color_alpha = 200
 
     self.image = nil
     self.image_alpha = 255
@@ -147,38 +148,21 @@ function PANEL:GetColor()
     return self.image_clr
 end
 
-
-
-
-
-
-
-
-
-
-local function mask(self, w, h)
-    surface.SetDrawColor(255, 255, 255, 255)
-    surface.DrawRect(0, 0, 100, 100)	
-end
-
-local function image(self, w, h)
-    surface.SetMaterial(Material(self:GetImage()))
-    surface.SetDrawColor(ColorAlpha(self:GetColor(), self.image_alpha))
-    surface.DrawTexturedRect(0, 0, 100, 100) 	
+function PANEL:SetColorAlpha(arg)
+    self.color_alpha = arg
 end
 
 function PANEL:Paint(w, h)
-	local alpha = 255
 	local size_head = 60
 	local ad_pos, ad_size = 3, 6
 	local img_p_x, img_p_y, img_w_y, img_h_y = 0, 0, 0, 0
 	img_h_y = math.ceil(size_head/2)
 	img_p_y = img_h_y
-	if not (self:GetHide()) then alpha = 0 end
+	if not (self:GetHide()) then self.color_alpha = 0 end
 
 	--[*] Body (BG)
-	draw.RoundedBoxEx(32, 0, 0, w, h, ColorAlpha(clr()["line"], alpha), true, true, false, false)
-	draw.RoundedBoxEx(32, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(clr()["bg"], alpha), true, true, false, false)
+	draw.RoundedBoxEx(32, 0, 0, w, h, ColorAlpha(clr()["line"], self.color_alpha), true, true, false, false)
+	draw.RoundedBoxEx(32, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(clr()["bg"], self.color_alpha), true, true, false, false)
 
 	--[*] BG Image
     if (self:GetImage()) then

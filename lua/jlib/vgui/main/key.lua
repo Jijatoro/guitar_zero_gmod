@@ -85,7 +85,7 @@ function PANEL:Init()
     end
 
     self:SetSize(315, 50)
-    self.key:SetTip(lan()["tip-for-bind"], self:GetParent())
+    self.key:SetTip(lan()["tip-for-bind"], true)
 end
 
 function PANEL:SetType(type)

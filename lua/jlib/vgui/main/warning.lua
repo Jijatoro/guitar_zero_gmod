@@ -50,8 +50,10 @@ function PANEL:Init()
     self.string:SetText(self:GetText())
     self.string:SetFont(jlib.vgui.GetFont(data_font, "txt"))
     self.string:Dock(TOP)
-    self.string:DockMargin(5, 110, 5, 0)
+    self.string:DockMargin(15, 110, 15, 5)
     self.string:SetSize(400, 60)
+    self.string:SetWrap(true)
+    self.string:SetAutoStretchVertical(true)
     self.string:SetContentAlignment(5)
  
     self.btnclose = jlib.vgui.Create("button", self)
@@ -103,19 +105,7 @@ function PANEL:GetMat()
 	return self.mat
 end
 
-function PANEL:PerformLayout()
-    local text = self:GetText()
-    if (text != "") or (text != nil) then
-        surface.SetFont(self.string:GetFont())
-        local text_w, text_h = surface.GetTextSize(text)
-        local w, h = self:GetSize()
-        
-        if (w < (text_w + 15)) then
-            self:SetWide(text_w + 15)
-            self.string:SetWide(text_w)
-        end
-    end
-end
+
 
 vgui.Register("jlib.warning-main", PANEL, "Panel")
 

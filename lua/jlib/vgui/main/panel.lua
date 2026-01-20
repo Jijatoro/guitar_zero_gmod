@@ -23,6 +23,7 @@ function PANEL:Init()
     self.hasText, self.hasTitle, self.wrapped = false, false, false
     self.pnltype = "base"
     self.pnlname = nil
+    self.color_alpha = 200
 
     self.image = nil
     self.image_alpha = 255
@@ -93,16 +94,20 @@ function PANEL:GetColor()
     return self.image_clr
 end
 
+function PANEL:SetColorAlpha(arg)
+    self.color_alpha = arg
+end
+
 function PANEL:Paint(w, h)
-    local circ, alpha = 0, 255
+    local circ = 0
     local ad_pos, ad_size = 3, 6
     local img_p_x, img_p_y, img_w_y, img_h_y = 0, 0, 0, 0
 
     if (self:GetType() == "round") then circ = 32 end
-    if not (table.KeyFromValue(all_typs, self:GetType())) then alpha = 0 end
+    if not (table.KeyFromValue(all_typs, self:GetType())) then self.color_alpha = 0 end
 
-    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr()["line"], alpha))
-    draw.RoundedBox(circ, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(clr()["body"], alpha))
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr()["line"], self.color_alpha))
+    draw.RoundedBox(circ, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(clr()["body"], self.color_alpha))
 
     if (self:GetImage()) and (self:GetType() != "round") then
         surface.SetMaterial(Material(self:GetImage()))

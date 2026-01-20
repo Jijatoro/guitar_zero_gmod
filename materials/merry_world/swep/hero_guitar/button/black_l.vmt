@@ -1,0 +1,6 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "merry_world/swep/hero_guitar/button/black_l"
+    	"$model" "1"
+    	"$phong" "1"
+}

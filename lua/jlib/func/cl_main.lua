@@ -18,9 +18,9 @@ local function lan()
 end
 
 local file_data = {
-	["lib-setting"] = {
-		name = "lib-setting", folder = "jlib", path = "lib-setting.json", cfg = true
-	}
+    ["lib-setting"] = {
+        name = "lib-setting", folder = "jlib", path = "lib-setting.json", cfg = true
+    }
 }
 
 local image_form = {
@@ -42,53 +42,53 @@ local sound_types = {
 --------------------------------------------------------------------------------------------------------------|>
 --[*] Creating a vgui |~| Создание vgui
 function jlib.vgui.Create(name, parent)
-	if not (name) or (name == "") then return end
-	local check = false
-	if (jlib.all_vgui) then
-		for _, v in ipairs(jlib.all_vgui) do
-			if (v == name) then check = true break end 
-		end
-		if not (check) then
-			for _, v in ipairs(jlib.all_vgui) do
-				if (string.StartWith(v, name)) then check = true name = v break end 
-			end
-		end
-	else return end
+    if not (name) or (name == "") then return end
+    local check = false
+    if (jlib.all_vgui) then
+        for _, v in ipairs(jlib.all_vgui) do
+            if (v == name) then check = true break end 
+        end
+        if not (check) then
+            for _, v in ipairs(jlib.all_vgui) do
+                if (string.StartWith(v, name)) then check = true name = v break end 
+            end
+        end
+    else return end
 
-	if not (check) then return end
-	local new
-	local path = "-"
-	if (parent) then
-		new = vgui.Create("jlib." .. name .. path .. clr()["vgui"], parent)
-	else
-		new = vgui.Create("jlib." .. name .. path .. clr()["vgui"])
-	end
-	return new
+    if not (check) then return end
+    local new
+    local path = "-"
+    if (parent) then
+        new = vgui.Create("jlib." .. name .. path .. clr()["vgui"], parent)
+    else
+        new = vgui.Create("jlib." .. name .. path .. clr()["vgui"])
+    end
+    return new
 end
 
 --[*] SUI audio playback |~| Проигрывание UI звука
 function jlib.vgui.PlaySound(name, vol, ui)
-	if not (jlib.cfg.sound_ui) and (ui) then return end
-	local path = name
-	local volume = jlib.cfg.sound_ui_volume
-	local theme = jlib.cfg.themes[jlib.cfg.theme]["ui_sound"]
-	if (vol) then volume = vol end 
-	if (ui) then path = "jlib/ui/" .. theme .. "/" .. name .. ".mp3" end 
-	LocalPlayer():EmitSound(path, 75, 100, volume, CHAN_AUTO)
+    if not (jlib.cfg.sound_ui) and (ui) then return end
+    local path = name
+    local volume = jlib.cfg.sound_ui_volume
+    local theme = jlib.cfg.themes[jlib.cfg.theme]["ui_sound"]
+    if (vol) then volume = vol end 
+    if (ui) then path = "jlib/ui/" .. theme .. "/" .. name .. ".mp3" end 
+    LocalPlayer():EmitSound(path, 75, 100, volume, CHAN_AUTO)
 end
 
 --[*] Installing a font for a particular theme |~| Установка шрифта под ту или иную тему
 function jlib.vgui.GetFont(data, key)
-	local name = jlib.cfg.themes[jlib.cfg.theme]["font"]
+    local name = jlib.cfg.themes[jlib.cfg.theme]["font"]
     if not (table.KeyFromValue(jlib.cfg.fonts, name)) then name = "main" end
     return data[name][key]
 end
 
 --[*] Set tip |~| Установить подсказку
-function meta:SetTip(text, parent)
-	local tip = jlib.vgui.Create("tip", parent)
-	tip:SetObject(self)
-	tip:SetText(text)
+function meta:SetTip(text, pos_top)
+    local tip = jlib.vgui.Create("tip")
+    tip:SetText(text)
+    tip:SetObject(self, pos_top)
 end
 
 --[*] Triggering the warning |~| Запуск предупреждения
@@ -106,15 +106,15 @@ end
 
 --[*] Smooth appearance animation for elements |~| Анимация плавного появления для элементов
 function meta:Alpha()
-	local alpha = 0
-	self:SetAlpha(alpha)
-	local name = tostring(self)
-	timer.Create("jlib.Alpha." .. name, 0.01, 0, function()
-		if (alpha >= 255) then alpha = 255 timer.Remove("jlib.Alpha." .. name) return end
-		if not (IsValid(self)) then alpha = 255 timer.Remove("jlib.Alpha." .. name) return end
-		self:SetAlpha(alpha)
-		alpha = alpha + 5
-	end)	
+    local alpha = 0
+    self:SetAlpha(alpha)
+    local name = tostring(self)
+    timer.Create("jlib.Alpha." .. name, 0.01, 0, function()
+        if (alpha >= 255) then alpha = 255 timer.Remove("jlib.Alpha." .. name) return end
+        if not (IsValid(self)) then alpha = 255 timer.Remove("jlib.Alpha." .. name) return end
+        self:SetAlpha(alpha)
+        alpha = alpha + 5
+    end)    
 end
 
 --------------------------------------------------------------------------------------------------------------|>
@@ -122,27 +122,27 @@ end
 --------------------------------------------------------------------------------------------------------------|>
 --[*] Saving config |~| Сохранение конфига
 function jlib.UpdateConfig(data)
-	for k, v in pairs(data) do
-		jlib.cfg[k] = v
-	end
+    for k, v in pairs(data) do
+        jlib.cfg[k] = v
+    end
 end
 
 --[*] Getting saved data |~| Получение сохранённых данных
 function jlib.GetSaveData(name)
-	if (file.Read(file_data[name].folder .. "/" .. file_data[name].path, "DATA") == nil) then
-		return false
-	else 
-		local your_data = file.Read(file_data[name].folder .. "/" .. file_data[name].path, "DATA")
-		return util.JSONToTable(your_data)
-	end
+    if (file.Read(file_data[name].folder .. "/" .. file_data[name].path, "DATA") == nil) then
+        return false
+    else 
+        local your_data = file.Read(file_data[name].folder .. "/" .. file_data[name].path, "DATA")
+        return util.JSONToTable(your_data)
+    end
 end 
 
 --[*] Saving data |~| Сохранение данных
 function jlib.SaveData(name, data)
-	local new_data = util.TableToJSON(data, true) 
-	file.CreateDir(file_data[name].folder)
-	file.Write(file_data[name].folder .. "/" .. file_data[name].path, new_data)
-	if (file_data[name].cfg) then jlib.UpdateConfig(data) end
+    local new_data = util.TableToJSON(data, true) 
+    file.CreateDir(file_data[name].folder)
+    file.Write(file_data[name].folder .. "/" .. file_data[name].path, new_data)
+    if (file_data[name].cfg) then jlib.UpdateConfig(data) end
 end 
 
 --------------------------------------------------------------------------------------------------------------|>
@@ -155,12 +155,12 @@ function jlib.UrlImage(url, callback)
     end
 
     http.Fetch(url,
-    	--[*] Success
+        --[*] Success
         function(body, len, headers, code)
             if (code != 200) then return end
             if not (headers["content-type"]) then return end
             if not (string.StartWith(headers["content-type"], "image")) then return end
-        	local path = string.Split(headers["content-type"], "/")
+            local path = string.Split(headers["content-type"], "/")
             format = path[#path] if not (format) then return end
 
             file.CreateDir("jlib_cache")
@@ -231,22 +231,22 @@ end
 --------------------------------------------------------------------------------------------------------------|>
 --[*] Measuring the length of a Cyrillic string (.len) |~| Измерение длины строки с кириллицей (.len) 
 function jlib.len(str)
-  	local len = 0
-  	local i = 1
-  		while i <= #str do
-    		local byte = string.byte(str, i)
-    		if byte <= 127 then
-      			i = i + 1
-    		elseif byte <= 223 then
-      			i = i + 2
-    		elseif byte <= 239 then
-      			i = i + 3
-    		else
-      			i = i + 4
-    		end
-    			len = len + 1
-  		end
-  	return len
+    local len = 0
+    local i = 1
+        while i <= #str do
+            local byte = string.byte(str, i)
+            if byte <= 127 then
+                i = i + 1
+            elseif byte <= 223 then
+                i = i + 2
+            elseif byte <= 239 then
+                i = i + 3
+            else
+                i = i + 4
+            end
+                len = len + 1
+        end
+    return len
 end
 
 --[*] Processing a Cyrillic string (.sub) |~| Обработка строки с кириллицей (.sub) 
@@ -313,6 +313,6 @@ function jlib.blacksymbol(str)
     return true
 end
 
--->                      						 _M_                                      
+-->                                              _M_                                      
 -- [*] Who are you, Warrior? |~| Кто ты, Воин?  (0-0)                   
 -->                                              -w- 

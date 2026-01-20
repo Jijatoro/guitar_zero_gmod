@@ -78,7 +78,6 @@ function PANEL:Init()
 end
 
 local function UpdateCount(p)
-    print(p:GetValue())
     p.count:SetText(tostring(p:GetValue()) .. "/" .. tostring(p:GetMax()))
 end
 

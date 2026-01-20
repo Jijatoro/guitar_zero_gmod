@@ -2,6 +2,7 @@
 --[+] Variables |~| Переменные :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local all_typs = {"base", "round"}
 
 AccessorFunc( PANEL, "m_HideButtons", "HideButtons" )
 
@@ -25,10 +26,11 @@ function PANEL:Init()
     self.pnltype = "base"
     self.pnlvalue = nil
     self.pnlname = nil
+    self.color_alpha = 250
 
     self.sbar = self:GetVBar()
     self.sbar.Paint = function(self, w, h)
-        draw.RoundedBox(0, 0, 0, w, h, ColorAlpha(clr()["scroll_bg"], 250))
+        draw.RoundedBox(9, 0, 0, w, h, ColorAlpha(clr()["scroll_bg"], 250))
     end
     self.sbar.btnGrip.Paint = function(self, w, h)
         draw.RoundedBox(64, 0, 0, w, h, clr()["scroll_grip"])
@@ -53,19 +55,21 @@ function PANEL:GetName(arg)
     return self.pnlname
 end
 
+function PANEL:SetColorAlpha(arg)
+    self.color_alpha = arg
+end
+
 function PANEL:Paint(w, h)
-    if (self:GetType() == "base") then
-        draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
-    elseif (self:GetType() == "round") then
-        draw.RoundedBox(8, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(8, 3, 3, w-6, h-6, clr()["body"])
-    end 
+    local circ = 0
+
+    if (self:GetType() == "round") then circ = 8 end
+    if not (table.KeyFromValue(all_typs, self:GetType())) then self.color_alpha = 0 end
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr()["body"], self.color_alpha))
 end
 
 function PANEL:Adjust()
     self.sbar:SetSize(6, 6)
-    self.sbar:DockMargin(0, 0, 0, 0)
+    self.sbar:DockMargin(0, 3, 0, 3)
 
     self.sbar.PerformLayout = function()
         local Wide = self.sbar:GetWide()

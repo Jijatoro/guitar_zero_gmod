@@ -52,11 +52,7 @@ local function DownLoad(data)
 end
 
 --[*] To download the library (don't touch!) |~| Для загрузки библиотеки (не трогать!) |>
-hook.Add("Initialize", "jlib.DownLoad", function()
-	timer.Simple(0.2, function()
-		DownLoad("")
-	end)
-end)
+DownLoad("")
 
 -->                      						 _M_                                      
 -- [*] Who are you, Warrior? |~| Кто ты, Воин?  (0-0)                   

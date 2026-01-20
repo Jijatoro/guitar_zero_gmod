@@ -85,6 +85,14 @@ function PANEL:GetHide()
     return self.sethide
 end
 
+function PANEL:SetDraw(val)
+    self.sethide = val
+end
+
+function PANEL:SetType(val)
+    self.sethide = val
+end
+
 function PANEL:Paint( w, h )
     if (self:GetHide()) then
         draw.RoundedBox(0, 0, 0, w, h, clr()["btn_line_h"])
