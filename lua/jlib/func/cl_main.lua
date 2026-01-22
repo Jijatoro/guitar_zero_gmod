@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Variables |~| Переменные :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
 --------------------------------------------------------------------------------------------------------------|>
-jlib.vgui = {}
+if not (jlib.vgui) then jlib.vgui = {} end
 
 local meta = FindMetaTable("Panel")
 
@@ -89,6 +89,13 @@ function meta:SetTip(text, pos_top)
     local tip = jlib.vgui.Create("tip")
     tip:SetText(text)
     tip:SetObject(self, pos_top)
+end
+
+--[*] Install a draggable clone |~| Установить перетаскиваемого клона
+function meta:SetDrag(func)
+    local drag = jlib.vgui.Create("drag")
+    drag:SetData(self)
+    drag:SetFunc(func)
 end
 
 --[*] Triggering the warning |~| Запуск предупреждения

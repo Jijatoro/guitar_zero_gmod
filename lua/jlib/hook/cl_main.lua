@@ -1,6 +1,11 @@
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Variables |~| Переменные :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
 --------------------------------------------------------------------------------------------------------------|>
+if not (jlib.vgui) then jlib.vgui = {} end
+jlib.vgui.drag_ready = false
+jlib.vgui.drag_image = nil
+jlib.vgui.drag_size = {}
+
 local function icon()
     return jlib.cfg.icons[jlib.cfg.icon]  or {}
 end
@@ -74,6 +79,31 @@ hook.Add("InitPostEntity", "jlib.lib-setting", function(ply, bool)
 	end
 
 	MsgC(Color(100, 200, 255), "[jlib] ", Color(255, 255, 255), lan()["jlib-download"], "!\n")		
+end)
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Creating screenshots for drag |~| Создание скринов для drag :--:--:--:--:--:--:--:--:--:--:--:}>        |>
+--------------------------------------------------------------------------------------------------------------|>
+local path_drag = "jlib/drag/"
+
+hook.Add("PostRender", "jlib.drag", function()
+    if not (jlib.vgui.drag_ready) then return end
+    jlib.vgui.drag_ready = false
+    local data = jlib.vgui.drag_size
+    local size_x, size_y, pos_x, pos_y = data[1], data[2], data[3], data[4]
+
+    local photo  = render.Capture( {
+        format = "png",
+        x = pos_x,
+        y = pos_y,
+        w = size_x,
+        h = size_y,
+        alpha = false
+    }) 
+
+    file.CreateDir("jlib/drag")
+    file.Write(path_drag .. tostring(pos_x) .. tostring(pos_y) .. ".png", photo)
+    jlib.vgui.drag_image = path_drag .. tostring(pos_x) .. tostring(pos_y) .. ".png"
 end)
 
 -->                      						 _M_                                      

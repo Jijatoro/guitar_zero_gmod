@@ -6,14 +6,14 @@
 ## Creating Elements:
 >> jlib.vgui.Create("element_name", parent_or_nil)
 
-Note: You can use short names (first letters). The system will automatically detect the required element.
+Note: You can use abbreviated names (first letters). The system will automatically determine the required element.
 
 --------------------------------------------------------------------------------------------------------------|>
 📋 Elements List                                                                                              |>
 --------------------------------------------------------------------------------------------------------------|>
-[1.] accept - Action confirmation window
+[1.] accept - Confirmation dialog
 Functions:
-    • :SetFunc(func) - Function executed on confirmation
+    • :SetFunc(func) - Function to execute upon confirmation
     • :SetText(string) - Main message text
 
 [2.] avatar - Player avatar
@@ -25,7 +25,7 @@ Functions:
 Functions:
     • :SetText(string) - Button text
     • :SetImage(string) - Icon name from jlib
-    • :SetDraw(bool) - Display background (true) or text only (false)
+    • :SetDraw(bool) - Draw background (true) or text only (false)
     • :SetStatus(bool) - Visual state
     • :Enable() / :Disable() - Enable/disable button
 
@@ -38,7 +38,7 @@ Functions:
 
 [5.] checkbox - Checkbox
 Functions:
-    • :SetText(string) - Text label
+    • :SetText(string) - Text beside checkbox
     • :SetValue(bool) / :GetValue() - Set/get state
     • :SetType("base"|"round"|"none") - Style
     • :Enable() / :Disable() - Enable/disable
@@ -52,7 +52,7 @@ Functions:
 [7.] gallery - Gallery with image and text
 Functions:
     • :SetData(table) - Data to display
-    • :SetKey(number) - Index of element to display
+    • :SetKey(number) - Index of displayed item
     • :SetType("base"|"round"|"none") - Style
 
 [8.] hint - Tooltip
@@ -60,7 +60,7 @@ Functions:
     • :SetText(string) - Tooltip text
     • :SetMat(string) - Icon name from jlib
 
-[9.] key - Key binding
+[9.] key - Key selector
 Functions:
     • :SetValue(KEY_*) - Key code
     • :SetText(string) - Action description
@@ -75,9 +75,9 @@ Functions:
     • :SetName(string) / :GetName() - Unique name
     • :SetData(table, itemsPerPage) - Data for pagination
 
-[12.] progress - Progress indicator
+[12.] progress - Progress bar
 Functions:
-    • :SetText(string) - Text above indicator
+    • :SetText(string) - Text above bar
     • :SetMax(number) - Maximum value
     • :SetValue(number) / :GetValue() - Current value
 
@@ -88,31 +88,31 @@ Functions:
 [14.] search - Element search
 Functions:
     • :SetData(panel) - Panel with data to search
-    • :SetValue(string) - Pre-set search text
+    • :SetValue(string) - Preset search text
 
-[15.] selector - Dropdown selection
+[15.] selector - List selector
 Functions:
     • :SetData(table) - List of options
     • :SetName(string) - Unique name (for submit)
     • :SetValue(string) - Default value
     • :Enable() / :Disable() - Enable/disable
 
-[16.] slider - Number selection via slider
+[16.] slider - Number slider
 Functions:
-    • :SeText(string) - Text label
+    • :SetText(string) - Text beside slider
     • :SetMax(number) - Maximum number
     • :SetMin(number) - Minimum number
     • :SetValue(number) - Initial value
     • :SetType("base"|"round"|"none") - Style
 
-[17.] submit - Data validation button
+[17.] submit - Validation button
 Functions:
     • :SetData(element1, element2, ...) - Elements to validate
-    • :Check() - Data validation (returns true/false)
+    • :Check() - Check data (returns true/false)
 
 [18.] switch - Toggle switch
 Functions:
-    • :SetText(string) - Text label
+    • :SetText(string) - Text beside switch
     • :SetValue(bool) / :GetValue() - Set/get state
     • :Enable() / :Disable() - Enable/disable
 
@@ -134,37 +134,40 @@ Functions:
 Functions:
     • :SetText(string) - Warning text
     • :SetMat(string) - Icon name from jlib
+    • Also available: jlib.vgui.SetWarning(text, mat, parent)
 
-[22.] table - Table data panel
+[22.] table - Panel with table data
 Functions:
     • :SetData(table, number or nil) - Fill data container, where *table* - data, number - items per page.
     • Example data:
-local my_data = {
-    category = {"name", "surname", "age"},
-    size = {350, 150, 153},
-    data = {
-        [1] = {"Ivan", "Abobova", 52},
-        [2] = {"Arthur", "Gueev", 32},
+    local my_data = {
+        category = {"name", "surname", "age"},
+        size = {350, 150, 153},
+        data = {
+            [1] = {"Ivan", "Abobova", 52},
+            [2] = {"Arthur", "Gueev", 32},
+        }
     }
-}
 
 [23.] color - Color picker element
 Functions:
-    • :GetValue() - Get selected color
+    • :GetValue() - Get color selected by user
     • :SetText(string) - Main text
 
 [24.] model - Model rendering element
 Functions:
+    • For other operations use .dmodel.
     • :SetModel(string) - Set model by .mdl path
-    • :SetForm(string) - Use ready-made templates for model positioning and sizing. Available options: "pm-face", "pm-face-little", "pm-face-big", "pm", "pm-little", "pm-big", "model", "model-little", "model-very-little", "model-big". If options don't fit, use lower functions manually.
-    • :SetFOV(number) - Set model distance (50+- is standard value).
+    • :SetForm(string) - Use ready templates for model position/size. Available options: "pm-face", "pm-face-little", "pm-face-big", "pm", "pm-little", "pm-big", "model", "model-little", "model-very-little", "model-big". If options don't fit, use lower functions manually.
+    • :SetFOV(number) - Set model distance (50+- is standard).
     • :SetCamPos(vector) - Set camera position (x (usually 30-50), y (usually 0), point where model's eyes look).
     • :SetLookAt(vector) - Set model position (x (usually 0), y (usually 0), point where model's eyes look), z - (lower if needed higher).
-    • :SetText(string) - Set bottom caption text.
-    • :SetValue(number) - Set quantity. Will show in top-right corner how many objects player has.
-    • :SetColorBG(color, color) - Set the background color (normal state, hover state).
+    • :SetText(string) - Set bottom label text.
+    • :SetTextCustom(string, x, y) - Custom text in any block zone.
+    • :SetValue(number) - Set quantity.
+    • :SetColorBG(color, color) - Set background color (normal state, hover state).
 
-[25.] rating - Rating element from 1 to 5 stars
+[25.] rating - Rating element (1-5 stars)
 Functions:
     • :SetType("base"|"round"|"none") - Background display style.
     • :SetValue(number) - Set rating from 1 to 5.
@@ -175,12 +178,16 @@ Functions:
 Functions:
     • :SetType("base"|"round") - Background display style.
     • :SetDraw(bool) - Draw background for image?
-    • :Enable(bool) - Enable highlight on hover (this element supports .DoClick like button).
+    • :Enable(bool) - Enable hover highlight (this element supports .DoClick like button).
     • :SetColor(color) - Change main image color.
 
 [27.] tip - Text tooltip for specified elements.
 Functions:
-    • target:SetTip(string, main-parent).
+    • target:SetTip(string). 
+
+[28.] drag - Drag element
+Functions:
+    • target:SetDrag(func or nil) - Set target + optional function. Function will receive 2 values (x, y), checking position when LMB mouse cursor is released. More precise UI element position can still be obtained: element:LocalToScreen(0, 0).
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] [DE] :--:--:--:--:--:--:--:--:--:--:--:}>                                                               |>
@@ -188,41 +195,41 @@ Functions:
 # jlib Bibliothek - VGUI Elemente
 
 ## Elemente erstellen:
->> jlib.vgui.Create("element_name", parent_oder_nil)
+>> jlib.vgui.Create("element_name", parent_or_nil)
 
-Hinweis: Kurznamen (erste Buchstaben) können verwendet werden. Das System erkennt automatisch das benötigte Element.
+Hinweis: Sie können abgekürzte Namen (erste Buchstaben) verwenden. Das System erkennt automatisch das benötigte Element.
 
 --------------------------------------------------------------------------------------------------------------|>
-📋 Elemente Liste                                                                                             |>
+📋 Elementliste                                                                                            |>
 --------------------------------------------------------------------------------------------------------------|>
-[1.] accept - Aktionsbestätigungsfenster
+[1.] accept - Bestätigungsdialog
 Funktionen:
-    • :SetFunc(func) - Funktion, die bei Bestätigung ausgeführt wird
+    • :SetFunc(func) - Funktion bei Bestätigung ausführen
     • :SetText(string) - Hauptnachrichtentext
 
 [2.] avatar - Spieleravatar
 Funktionen:
-    • :SetAvatar(player) - Spieler, für den Avatar angezeigt werden soll
+    • :SetAvatar(player) - Spieler für Avatar-Anzeige
     • :SetColor(Color) - Rahmenfarbe
 
-[3.] button - Schaltfläche
+[3.] button - Button
 Funktionen:
-    • :SetText(string) - Schaltflächentext
-    • :SetImage(string) - Symbolname aus jlib
-    • :SetDraw(bool) - Hintergrund anzeigen (true) oder nur Text (false)
+    • :SetText(string) - Button-Text
+    • :SetImage(string) - Icon-Name aus jlib
+    • :SetDraw(bool) - Hintergrund zeichnen (true) oder nur Text (false)
     • :SetStatus(bool) - Visueller Status
-    • :Enable() / :Disable() - Schaltfläche aktivieren/deaktivieren
+    • :Enable() / :Disable() - Button aktivieren/deaktivieren
 
 [4.] chapter - Fenster/Tab-Umschalter
 Funktionen:
-    • :SetPosition("h"|"v") - Layout: "h" - horizontal, "v" - vertikal
-    • :SetForm("t"|"i") - Form: "t" - Text, "i" - Symbole
+    • :SetPosition("h"|"v") - Anordnung: "h" - horizontal, "v" - vertikal
+    • :SetForm("t"|"i") - Form: "t" - Text, "i" - Icons
     • :SetType("base"|"round"|"none") - Anzeigestil
     • :SetContent(panel1, panel2, ...) - Panels für Tabs
 
 [5.] checkbox - Checkbox
 Funktionen:
-    • :SetText(string) - Textbeschriftung
+    • :SetText(string) - Text neben Checkbox
     • :SetValue(bool) / :GetValue() - Status setzen/erhalten
     • :SetType("base"|"round"|"none") - Stil
     • :Enable() / :Disable() - Aktivieren/deaktivieren
@@ -230,28 +237,28 @@ Funktionen:
 [6.] frame - Hauptfenster
 Funktionen:
     • :SetText(string) - Fenstertitel
-    • :ShowCloseButton(bool) - Schließen-Schaltfläche anzeigen
+    • :ShowCloseButton(bool) - Schließen-Button anzeigen
     • :SetHide(bool) - Fensterkörper ausblenden
 
 [7.] gallery - Galerie mit Bild und Text
 Funktionen:
     • :SetData(table) - Anzuzeigende Daten
-    • :SetKey(number) - Index des anzuzeigenden Elements
+    • :SetKey(number) - Index des angezeigten Elements
     • :SetType("base"|"round"|"none") - Stil
 
 [8.] hint - Tooltip
 Funktionen:
     • :SetText(string) - Tooltip-Text
-    • :SetMat(string) - Symbolname aus jlib
+    • :SetMat(string) - Icon-Name aus jlib
 
-[9.] key - Tastenbelegung
+[9.] key - Tastenauswahl
 Funktionen:
     • :SetValue(KEY_*) - Tastencode
     • :SetText(string) - Aktionsbeschreibung
     • :SetType("base"|"round"|"none") - Stil
 
 [10.] label - Textelement
-    • Vollständiges DLabel-Analogon mit jlib-Einstellungen
+    • Vollständiges DLabel-Analog mit jlib-Einstellungen
 
 [11.] panel - Basis-Panel
 Funktionen:
@@ -259,9 +266,9 @@ Funktionen:
     • :SetName(string) / :GetName() - Eindeutiger Name
     • :SetData(table, itemsPerPage) - Daten für Paginierung
 
-[12.] progress - Fortschrittsanzeige
+[12.] progress - Fortschrittsbalken
 Funktionen:
-    • :SetText(string) - Text über der Anzeige
+    • :SetText(string) - Text über Balken
     • :SetMax(number) - Maximalwert
     • :SetValue(number) / :GetValue() - Aktueller Wert
 
@@ -274,29 +281,29 @@ Funktionen:
     • :SetData(panel) - Panel mit zu durchsuchenden Daten
     • :SetValue(string) - Voreingestellter Suchtext
 
-[15.] selector - Dropdown-Auswahl
+[15.] selector - Listenauswahl
 Funktionen:
     • :SetData(table) - Liste der Optionen
     • :SetName(string) - Eindeutiger Name (für submit)
     • :SetValue(string) - Standardwert
     • :Enable() / :Disable() - Aktivieren/deaktivieren
 
-[16.] slider - Zahlenauswahl via Schieberegler
+[16.] slider - Zahlen-Schieberegler
 Funktionen:
-    • :SeText(string) - Textbeschriftung
+    • :SetText(string) - Text neben Regler
     • :SetMax(number) - Maximale Zahl
     • :SetMin(number) - Minimale Zahl
     • :SetValue(number) - Anfangswert
     • :SetType("base"|"round"|"none") - Stil
 
-[17.] submit - Datenvalidierungsschaltfläche
+[17.] submit - Validierungsbutton
 Funktionen:
     • :SetData(element1, element2, ...) - Zu validierende Elemente
-    • :Check() - Datenvalidierung (gibt true/false zurück)
+    • :Check() - Daten prüfen (gibt true/false zurück)
 
 [18.] switch - Umschalter
 Funktionen:
-    • :SetText(string) - Textbeschriftung
+    • :SetText(string) - Text neben Umschalter
     • :SetValue(bool) / :GetValue() - Status setzen/erhalten
     • :Enable() / :Disable() - Aktivieren/deaktivieren
 
@@ -317,54 +324,61 @@ Funktionen:
 [21.] warning - Popup-Warnung
 Funktionen:
     • :SetText(string) - Warnungstext
-    • :SetMat(string) - Symbolname aus jlib
+    • :SetMat(string) - Icon-Name aus jlib
+    • Auch verfügbar: jlib.vgui.SetWarning(text, mat, parent)
 
-[22.] table - Tabellendaten-Panel
+[22.] table - Panel mit Tabellendaten
 Funktionen:
-    • :SetData(table, number or nil) - Datencontainer füllen, wobei *table* - Daten, number - Elemente pro Seite.
-    • Beispieldaten:
-local my_data = {
-    category = {"Name", "Nachname", "Alter"},
-    size = {350, 150, 153},
-    data = {
-        [1] = {"Ivan", "Abobova", 52},
-        [2] = {"Arthur", "Gueev", 32},
+    • :SetData(table, number or nil) - Datencontainer füllen, wo *table* - Daten, number - Elemente pro Seite.
+    • Beispiel-Daten:
+    local my_data = {
+        category = {"name", "surname", "alter"},
+        size = {350, 150, 153},
+        data = {
+            [1] = {"Ivan", "Abobova", 52},
+            [2] = {"Arthur", "Gueev", 32},
+        }
     }
-}
 
 [23.] color - Farbauswahlelement
 Funktionen:
-    • :GetValue() - Ausgewählte Farbe erhalten
+    • :GetValue() - Vom Benutzer gewählte Farbe erhalten
     • :SetText(string) - Haupttext
 
-[24.] model - Modell-Rendering-Element
+[24.] model - Modelldarstellungselement
 Funktionen:
+    • Für andere Operationen .dmodel verwenden.
     • :SetModel(string) - Modell nach .mdl-Pfad setzen
-    • :SetForm(string) - Fertige Vorlagen für Modellpositionierung und -größe verwenden. Verfügbare Optionen: "pm-face", "pm-face-little", "pm-face-big", "pm", "pm-little", "pm-big", "model", "model-little", "model-very-little", "model-big". Wenn Optionen nicht passen, untere Funktionen manuell verwenden.
-    • :SetFOV(number) - Modellentfernung setzen (50+- ist Standardwert).
+    • :SetForm(string) - Fertige Vorlagen für Modellposition/-größe verwenden. Verfügbare Optionen: "pm-face", "pm-face-little", "pm-face-big", "pm", "pm-little", "pm-big", "model", "model-little", "model-very-little", "model-big". Wenn Optionen nicht passen, untere Funktionen manuell verwenden.
+    • :SetFOV(number) - Modellabstand setzen (50+- ist Standard).
     • :SetCamPos(vector) - Kameraposition setzen (x (normalerweise 30-50), y (normalerweise 0), Punkt, wohin Modelaugen schauen).
     • :SetLookAt(vector) - Modellposition setzen (x (normalerweise 0), y (normalerweise 0), Punkt, wohin Modelaugen schauen), z - (niedriger wenn höher benötigt).
-    • :SetText(string) - Untere Beschriftungstext setzen.
-    • :SetValue(number) - Menge setzen. Zeigt in der oberen rechten Ecke, wie viele Objekte der Spieler hat.
-    • :SetColorBG(color, color) - Legt die Hintergrundfarbe fest (normaler Status, Richtungsstatus).
+    • :SetText(string) - Unteren Beschriftungstext setzen.
+    • :SetTextCustom(string, x, y) - Benutzerdefinierter Text in beliebiger Blockzone.
+    • :SetValue(number) - Menge setzen.
+    • :SetColorBG(color, color) - Hintergrundfarbe setzen (Normalzustand, Hover-Zustand).
 
-[25.] rating - Bewertungselement von 1 bis 5 Sternen
+[25.] rating - Bewertungselement (1-5 Sterne)
 Funktionen:
-    • :SetType("base"|"round"|"none") - Hintergrund-Anzeigestil.
+    • :SetType("base"|"round"|"none") - Hintergrundanzeigestil.
     • :SetValue(number) - Bewertung von 1 bis 5 setzen.
     • :GetValue() - Gesetzte Bewertung erhalten.
     • :SetText(string) - Haupttext setzen.
 
 [26.] image - Bildzeichnung
 Funktionen:
-    • :SetType("base"|"round") - Hintergrund-Anzeigestil.
+    • :SetType("base"|"round") - Hintergrundanzeigestil.
     • :SetDraw(bool) - Hintergrund für Bild zeichnen?
-    • :Enable(bool) - Hervorhebung bei Hover aktivieren (dieses Element unterstützt .DoClick wie Schaltfläche).
+    • :Enable(bool) - Hover-Hervorhebung aktivieren (dieses Element unterstützt .DoClick wie Button).
     • :SetColor(color) - Hauptbildfarbe ändern.
 
 [27.] tip - Text-Tooltip für bestimmte Elemente.
 Funktionen:
-    • target:SetTip(string, main-parent).
+    • target:SetTip(string). 
+
+[28.] drag - Drag-Element
+Funktionen:
+    • target:SetDrag(func or nil) - Zielobjekt setzen + optional Funktion. Funktion erhält 2 Werte (x, y), prüft Position bei Loslassen der LMB-Mauszeigers. Präzisere UI-Elementposition kann weiterhin erhalten werden: element:LocalToScreen(0, 0).
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] [RU] :--:--:--:--:--:--:--:--:--:--:--:}>                                                               |>
@@ -502,6 +516,7 @@ Funktionen:
 Функции:
 	• :SetText(string) - Текст предупреждения
 	• :SetMat(string) - Имя иконки из jlib
+    • Можно и так: jlib.vgui.SetWarning(text, mat, parent)
 
 [22.] table - Панель с табличными данными
 Функции:
@@ -523,13 +538,15 @@ Funktionen:
 
 [24.] model - Элемент с отрисовкой модели
 Функции:
+    • Для иного обращения используйте .dmodel.
 	• :SetModel(string) - Установка модели по пути .mdl
 	• :SetForm(string) - Использование готовых шаблонов поднастройки положения и размера модели. Имеющиеся варианты: "pm-face", "pm-face-little", "pm-face-big", "pm", "pm-little", "pm-big", "model", "model-little", "model-very-little", "model-big". Если варианты не подходят, придётся вручную использовать нижние функции.
 	• :SetFOV(number) - Установка расстояния модели (50+- является стандартным значением).
 	• :SetCamPos(vector) - Установка позиции камеры (x (обычно 30-50), y (обычно 0), точка куда смотрят глаза модели).
 	• :SetLookAt(vector) - Установка позиция модели (x (обычно 0), y (обычно 0), точка куда смотрят глаза модели), z - (ниже, если надо выше).
 	• SetText(string) - Установка текста именования снизу.
-	• SetValue(number) - Установка количества. Будет в правом верхнем углу писать сколько данных объектов у игрока.
+    • SetTextCustom(string, x, y) - Кастомный текст в любой зоне блока.
+	• SetValue(number) - Установка количества.
     • :SetColorBG(color, color) - Установить цвет фона (обычное состояние, состояние при наводке).
 
 [25.] rating - Элемент оценивания от 1 до 5 звёзд
@@ -548,4 +565,8 @@ Funktionen:
 
 [27.] tip - Текстовая подсказка к указанным элементам.
 Функции:
-	• target:SetTip(string, main-parent). 
+	• target:SetTip(string). 
+
+[28.] drug - Текстовая подсказка к указанным элементам.
+Функции:
+    • target:SetDrag(func or nil) - Указание объекта + при желании функция. Функция получит 2 значения (x, y), проверяя положения в момент отжатия ЛКМ курсора мыши. Более точное положение того или иного ui элемента всё также можно получить так: element:LocalToScreen(0, 0).

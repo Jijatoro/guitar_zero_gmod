@@ -169,7 +169,7 @@ local function BindsContent(pnl_binds, my_setting, text)
 		key:SetText(text["Клавиша"] .. " " .. tostring(i))
 		key:SetValue(data[i])
 		key:Dock(TOP)
-		key:DockMargin(150, 15, 150, 0)
+		key:DockMargin(160, 15, 0, 0)
 		data_keys[i] = key
 	end
 

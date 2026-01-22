@@ -49,6 +49,7 @@ function PANEL:Init()
     self.text = ""
     self.font = jlib.vgui.GetFont(data_font, "txt")
     self.object = nil
+    self.old_remove = nil
     self.status = false
     self.toppos = false
 end
@@ -64,8 +65,15 @@ end
 function PANEL:SetObject(arg, pos_top)
     if not (arg) or not (IsValid(arg)) then return end
     if (pos_top) then self.toppos = true end
+    local panel = self
     self.object = arg
     self.status = true
+
+    self.old_remove = self.object.OnRemove
+    arg.OnRemove = function()
+        if (panel.old_remove) then self.old_remove(arg) end
+        panel:Remove()
+    end    
 end
 
 function PANEL:SetText(arg)
