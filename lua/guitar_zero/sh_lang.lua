@@ -114,39 +114,6 @@ l["de"] = {
 	["Такое название плейлиста недопусимо!"] = "Ungültiger Playlist-Name.",
 	["Вы точно хотите удалить этот плейлист?"] = "Sind Sie sicher, dass Sie diese Playlist löschen möchten?"
 }
-l["fr"] = { -- Французский
-    ["Создать"] = "Créer",
-    ["Готово"] = "Terminé",
-    ["Да"] = "Oui",
-    ["Нет"] = "Non",
-    ["Хочу"] = "Vouloir",
-    ["Настройки"] = "[Réglages]",
-    ["Папка недоступна"] = " Tant que votre dossier DATA est fermé à l'accès, enregistrer les paramètres ",
-    ["невозможно"] = "impossible",
-    ["Язык"] = "Langue",
-    ["Тема"] = "Thème",
-    ["Изменить"] = "Modifier",
-    ["Добро пожаловать"] = "Bienvenue",
-    ["Играть"] = "Jouer",
-    ["Начать"] = "Commencer",
-    ["Подтверждение"] = "Confirmation",
-    ["секунд"] = "sec",
-    ["Громкость звуков"] = "Volume des sons",
-    ["Загрузка музыки"] = "Téléchargement de musique",
-    ["Мод"] = "Mod",
-    ["Клавиша"] = "Touche",
-    ["Белый список"] = "[Liste blanche] ",
-    ["Чёрный список"] = "[Liste noire] ",
-    ["Нужно: "] = "Besoin: ",
-    ["Неизвестно"] = "Inconnu.",
-    ["Создать новый"] = "Créer nouveau",
-    ["Выбранный плейлист"] = "Playlist sélectionnée",
-    ["Название плейлиста..."] = "Nom de playlist...",
-    ["Вы не выбрали даже одной музыки"] = "Aucune musique sélectionnée.",
-    ["Такое название плейлиста уже есть!"] = "Ce nom de playlist est déjà pris!",
-    ["Такое название плейлиста недопусимо!"] = "Nom de playlist invalide.",
-    ["Вы точно хотите удалить этот плейлист?"] = "Êtes-vous sûr de vouloir supprimer cette playlist?"
-}
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Polish :--:--:--:--:--:--:--:--:--:--:--:}>                                                             |>
