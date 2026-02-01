@@ -4,6 +4,7 @@
 if not (jlib) then jlib = {} end
 if not (jlib.all_vgui) then jlib.all_vgui = {} end
 local name = "jlib"
+if (SERVER) then resource.AddWorkshop("3657128530") end --[*] jlib-content
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>

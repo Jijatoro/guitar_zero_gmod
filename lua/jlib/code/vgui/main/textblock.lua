@@ -4,7 +4,7 @@
 local PANEL = {}
 local data_font = {
     ["main"] = {
-        txt = "s1-24"
+        txt = "s5-24"
     },
     ["anime"] = {
         txt = "a3-24"
