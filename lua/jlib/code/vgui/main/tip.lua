@@ -2,9 +2,10 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
-        txt = "s1-18",
+        txt = "s1-20",
     },
     ["anime"] = {
         txt = "a3-18",
@@ -22,18 +23,6 @@ local data_font = {
         txt = "t3-18",
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -56,9 +45,12 @@ end
 
 function PANEL:Paint(w, h)
     if (self.object) and (self.object.Hovered) then
-        draw.RoundedBox(32, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["body"])
-        draw.SimpleText(self.text, self.font, w*0.5, h*0.5, clr()["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+        local c = clr()
+        surface.SetFont(self.font)
+        local wide, tall = surface.GetTextSize(self.text)
+        draw.RoundedBox(32, 0, 0, w, h, c["line"])
+        draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
+        draw.SimpleText(self.text, self.font, w*0.5, h*0.5-(tall*0.1), c["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
     end
 end
 

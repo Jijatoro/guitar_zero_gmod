@@ -1,35 +1,14 @@
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Variables |~| Переменные :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
 --------------------------------------------------------------------------------------------------------------|>
-jlib.vgui = {}
-
 local meta = FindMetaTable("Player")
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
-
-local file_data = {
-	["lib-setting"] = {
-		name = "lib-setting", folder = "jlib", path = "lib-setting.json", cfg = true
-	}
-}
-
 local image_form = {
     ["png"] = true, ["jpg"] = true, ["jpeg"] = true, ["tga"] = true, ["vtf"] = true, ["bmp"] = true,
     ["gif"] = true, ["dds"] = true, ["vmt"] = true
 }
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] HTTP Requests                                                                                           |>
+--[+] Gets an image by url                                                                                    |>
 --------------------------------------------------------------------------------------------------------------|>
 function jlib.UrlImage(url, callback)
     local fileName = "jlib_cache/" .. util.SHA256(url)
@@ -59,29 +38,30 @@ function jlib.UrlImage(url, callback)
 end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Technical                                                                                               |>
+--[+] Measuring the length of a Cyrillic string (.len) :--:--:--:--:--:--:--:--:--:--:--:}>                   |>
 --------------------------------------------------------------------------------------------------------------|>
---[*] Measuring the length of a Cyrillic string (.len) |~| Измерение длины строки с кириллицей (.len) 
 function jlib.len(str)
-  	local len = 0
-  	local i = 1
-  		while i <= #str do
-    		local byte = string.byte(str, i)
-    		if byte <= 127 then
-      			i = i + 1
-    		elseif byte <= 223 then
-      			i = i + 2
-    		elseif byte <= 239 then
-      			i = i + 3
-    		else
-      			i = i + 4
-    		end
-    			len = len + 1
-  		end
-  	return len
+    local len = 0
+    local i = 1
+        while i <= #str do
+            local byte = string.byte(str, i)
+            if byte <= 127 then
+                i = i + 1
+            elseif byte <= 223 then
+                i = i + 2
+            elseif byte <= 239 then
+                i = i + 3
+            else
+                i = i + 4
+            end
+                len = len + 1
+        end
+    return len
 end
 
---[*] Processing a Cyrillic string (.sub)
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Processing a Cyrillic string (.sub) :--:--:--:--:--:--:--:--:--:--:--:}>                                |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.sub(str, start_char, end_char)
     local data_word = {} local len = 1 local i = 1
     while i <= #str do
@@ -105,7 +85,9 @@ function jlib.sub(str, start_char, end_char)
     local new_data = table.concat(data_word, "") return new_data
 end
 
---[*] Checking for bad characters
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Checking for bad characters :--:--:--:--:--:--:--:--:--:--:--:}>                                        |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.blacksymbol(str)
     if not str or str == "" then return true end
     local i = 1

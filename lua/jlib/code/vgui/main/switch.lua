@@ -2,10 +2,12 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local all_typs = {"base", "round"}
 local data_font = {
     ["main"] = {
-        txt = "s1-18"
+        txt = "s1-20"
     },
     ["anime"] = {
         txt = "a3-18"
@@ -20,21 +22,9 @@ local data_font = {
         txt = "h4-18"
     },
     ["terminal"] = {
-        txt = "t3-18"
+        txt = "s1-18"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -67,17 +57,18 @@ function PANEL:Init()
     self.button:SetKeyboardInputEnabled(true)
     self.button:SetIsToggle(true)
     self.button.Paint = function(self, w, h)
+        local c = clr()
         local parent = self:GetParent()
         if (self.Hovered) then 
-            draw.RoundedBox(32, 0, 0, w, h, clr()["btn_line_h"])
+            draw.RoundedBox(32, 0, 0, w, h, c["btn_line_h"])
             draw.RoundedBox(32, 3, 3, w-6, h-6, parent:GetColor())
         else
-            draw.RoundedBox(32, 0, 0, w, h, clr()["btn_line"])
+            draw.RoundedBox(32, 0, 0, w, h, c["btn_line"])
             draw.RoundedBox(32, 3, 3, w-6, h-6, parent:GetColor())     
         end
-        draw.RoundedBox(128, parent.point, 7, 25, 25, clr()["btn"])
+        draw.RoundedBox(128, parent.point, 7, 25, 25, c["btn"])
         surface.SetMaterial(parent:GetImage())
-        surface.SetDrawColor(clr()["btn_line"])
+        surface.SetDrawColor(c["btn_line"])
         surface.DrawTexturedRect(parent.num1, parent.num2, parent.num3, parent.num4)
     end
     self.button.DoClick = function()
@@ -131,19 +122,20 @@ function PANEL:GetType()
 end
 
 function PANEL:SetStatus(val)
+    local ic, c = icon(), clr()
     self.status = val
     if (self.status) then 
-        self.color = clr()["green"]
+        self.color = c["green"]
         self.num1 = 35 self.num2 = 3
         self.num3, self.num4  = 34, 34
         self.point = 10
-        self.image = icon()["accept"]
+        self.image = ic["accept"]
     else 
-        self.color = clr()["red"]
+        self.color = c["red"]
         self.num1 = 10 self.num2 = 9
         self.num3, self.num4  = 23, 23
         self.point = 39
-        self.image = icon()["close"]
+        self.image = ic["close"]
     end
 end
 
@@ -165,12 +157,13 @@ function PANEL:PerformLayout()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     local circ, alpha = 0, 255
     if (self:GetType() == "round") then circ = 32 end
     if not (table.KeyFromValue(all_typs, self:GetType())) then alpha = 0 end
 
-    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr()["line"], alpha))
-    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(clr()["body"], alpha))
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(c["line"], alpha))
+    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(c["body"], alpha))
 end
 
 vgui.Register("jlib.switch-main", PANEL, "PANEL")

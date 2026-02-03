@@ -10,7 +10,7 @@ local function clr()
 end
 
 local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
+    return Guitar_Hero.Languages[jlib.cfg.lan]
 end
 
 local function SaveSound()
@@ -139,7 +139,7 @@ local function SettingContent(pnl_setting, my_setting, text)
 	local btn_ready = jlib.vgui.Create("button", pnl_setting)
 	btn_ready:Dock(TOP)
 	btn_ready:DockMargin(240, 50, 240, 0)
-	btn_ready:SetText(lan()["change"])	
+	btn_ready:SetText(lan()["Выбрать"])	
 	btn_ready.DoClick = function()
 		Guitar_Hero.MySetting["setting"]["language"] = language_sel:GetValue()
 		Guitar_Hero.MySetting["setting"]["mode"] = mode_sel:GetValue()
@@ -150,7 +150,7 @@ local function SettingContent(pnl_setting, my_setting, text)
 		jlib_data["lan"] = language_sel:GetValue()
 		jlib_data["sound_ui_volume"] = sound_ui:GetValue()
 		jlib_data["theme"] = theme_sel:GetValue()
-		jlib.SaveData("lib-setting", jlib_data)
+		jlib.SaveData(jlib_data)
 
 		Debug() SaveSound()
 	end
@@ -177,7 +177,7 @@ local function BindsContent(pnl_binds, my_setting, text)
 	local btn_ready = jlib.vgui.Create("button", pnl_binds)
 	btn_ready:Dock(TOP)
 	btn_ready:DockMargin(240, 50, 240, 0)
-	btn_ready:SetText(lan()["change"])	
+	btn_ready:SetText(lan()["Выбрать"])	
 	btn_ready.DoClick = function()
 		local new_button = {}
 		for id, key in ipairs(data_keys) do
@@ -196,6 +196,7 @@ local function UI_CreatePlaylist(my_setting, text, playlist, type, old_name)
 	--[*] Само меню
 	local frame = jlib.vgui.Create("frame")
 	frame:SetText("")
+	frame:SetColorAlpha(255)
 	frame:SetSize(700, 730)
 	frame:Center()
 	frame:MakePopup()
@@ -313,7 +314,7 @@ local function PlaylistContent(pnl_playlist, my_setting, text)
 	local btn_ready = jlib.vgui.Create("button", pnl_playlist)
 	btn_ready:Dock(TOP)
 	btn_ready:DockMargin(240, 5, 240, 0)
-	btn_ready:SetText(lan()["ready"])
+	btn_ready:SetText(lan()["Готово"])
 	btn_ready.DoClick = function()
 		Guitar_Hero.MySetting["setting"]["playlist_current"] = playlist_sel:GetValue()
 		Guitar_Hero.SaveSetting("setting", Guitar_Hero.MySetting["setting"])
@@ -655,7 +656,7 @@ end
 ----------------------------------------------------------------------------------------------|>
 function Guitar_Hero.UI_Start()
 	local my_setting = Guitar_Hero.MySetting["setting"]
-	local text = Guitar_Hero.Languages[my_setting["language"]]
+	local text = Guitar_Hero.Languages[jlib.cfg.lan]
 
 	if (my_setting["first"]) then
 		UI_Welcome(my_setting, text)

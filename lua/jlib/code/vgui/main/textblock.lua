@@ -2,6 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
         txt = "s5-24"
@@ -19,21 +20,9 @@ local data_font = {
         txt = "h4-24"
     },
     ["terminal"] = {
-        txt = "t3-24"
+        txt = "t3-32"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -94,16 +83,17 @@ function PANEL:SetType(val)
 end
 
 function PANEL:Paint( w, h )
+    local c = clr()
     if (self:GetHide()) then
-        draw.RoundedBox(0, 0, 0, w, h, clr()["btn_line_h"])
-        draw.RoundedBox(0, 1, 1, w-2, h-2, clr()["btn_h"])
+        draw.RoundedBox(0, 0, 0, w, h, c["btn_line_h"])
+        draw.RoundedBox(0, 1, 1, w-2, h-2, c["btn_h"])
     end
 
     surface.SetDrawColor(255, 255, 255, 0)
     surface.DrawRect(0, 0, w, h)
-    self:SetTextColor(clr()["t_btn_h"])
-    self:SetHighlightColor(clr()["t_mark"])
-    self:SetCursorColor(clr()["t_btn_h"])
+    self:SetTextColor(c["t_btn_h"])
+    self:SetHighlightColor(c["t_mark"])
+    self:SetCursorColor(c["t_btn_h"])
     self:DrawTextEntryText(self:GetTextColor(), self:GetHighlightColor(), self:GetCursorColor())
 end
 

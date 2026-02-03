@@ -2,18 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -36,10 +25,11 @@ function PANEL:Init()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     local circ, alpha = 0, 255
-    local clr_line = clr()["line"]
+    local clr_line = c["line"]
     local ad_pos, ad_size = 6, 12
-    if (self.Hovered) and not (self.IsDisable) then clr_line = clr()["btn_line_h"] end
+    if (self.Hovered) and not (self.IsDisable) then clr_line = c["btn_line_h"] end
     if not (self:GetDraw()) then alpha = 0 end
     if (self:GetType() == "round") then circ = 32 ad_pos, ad_size = 18, 36 end
 

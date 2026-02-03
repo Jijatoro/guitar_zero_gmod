@@ -2,6 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
         txt = "s1-24"
@@ -19,21 +20,9 @@ local data_font = {
         txt = "h4-24"
     },
     ["terminal"] = {
-        txt = "t3-24"
+        txt = "s1-24"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -60,13 +49,14 @@ function PANEL:Init()
     self.range:Dock(TOP)
     self.range:DockMargin(10, 6, 10, 0)
     self.range.Paint = function(self, w, h)
+        local c = clr()
         local parent = self:GetParent():GetParent()
         local p_w, p_h = parent:GetSize()
         local p_w = p_w - 20
         local w_pr = math.Round((p_w*parent:GetProgress())/100)
-        draw.RoundedBox(32, 0, 0, p_w, h, clr()["btn_line_h"])
-        draw.RoundedBox(32, 3, 3, p_w-6, h-6, clr()["checkbox"])
-        draw.RoundedBox(32, 3, 3, w_pr-6, h-6, clr()["progress"])
+        draw.RoundedBox(32, 0, 0, p_w, h, c["btn_line_h"])
+        draw.RoundedBox(32, 3, 3, p_w-6, h-6, c["checkbox"])
+        draw.RoundedBox(32, 3, 3, w_pr-6, h-6, c["progress"])
     end
 
     self.count = jlib.vgui.Create("label", self.range)

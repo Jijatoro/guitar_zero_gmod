@@ -2,6 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
         txt = "s1-24"
@@ -19,21 +20,9 @@ local data_font = {
         txt = "h4-24"
     },
     ["terminal"] = {
-        txt = "t3-24"
+        txt = "s1-24"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -138,21 +127,22 @@ function PANEL:GetKey()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
 	if (self:GetType() == "base") then
-		draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-		draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
+		draw.RoundedBox(0, 0, 0, w, h, c["line"])
+		draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
 	elseif (self:GetType() == "round") then
-		draw.RoundedBoxEx(32, 0, 0, w, h, clr()["line"], false, false, true, true)
-		draw.RoundedBoxEx(32, 3, 3, w-6, h-6, clr()["body"], false, false, true, true)
+		draw.RoundedBoxEx(32, 0, 0, w, h, c["line"], false, false, true, true)
+		draw.RoundedBoxEx(32, 3, 3, w-6, h-6, c["body"], false, false, true, true)
 	end
 
-	draw.RoundedBox(0, 0, 2, w, h-54, clr()["line"])
+	draw.RoundedBox(0, 0, 2, w, h-54, c["line"])
 
     surface.SetMaterial(Material(self:GetValue()[self:GetKey()].mat))
     surface.SetDrawColor(Color(255, 255, 255))
     surface.DrawTexturedRect(3, 5, w-6, h-60)		
 
-	draw.RoundedBox(0, 3, 215, w-6, h-270, ColorAlpha(clr()["t_bgclr"], 200))	
+	draw.RoundedBox(0, 3, 215, w-6, h-270, ColorAlpha(c["t_bgclr"], 200))	
 end
 
 function PANEL:PerformLayout()

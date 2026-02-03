@@ -2,6 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
         txt = "s1-24"
@@ -19,21 +20,9 @@ local data_font = {
         txt = "h4-24"
     },
     ["terminal"] = {
-        txt = "t1-32"
+        txt = "s1-24"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>

@@ -2,9 +2,10 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
-        txt = "s1-18"
+        txt = "s1-20"
     },
     ["anime"] = {
         txt = "a3-18"
@@ -22,20 +23,7 @@ local data_font = {
         txt = "s1-18"
     } 
 }
-
-AccessorFunc( PANEL, "m_fDefaultValue", "DefaultValue" )
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
+AccessorFunc(PANEL, "m_fDefaultValue", "DefaultValue")
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -65,14 +53,16 @@ function PANEL:Init()
         self:ResetToDefaultValue()
     end
     self.Slider.Paint = function(self, w, h)
-        draw.RoundedBox(0, 0, h*0.48, w, 2, clr()["line"])
+        local c = clr()
+        draw.RoundedBox(0, 0, h*0.48, w, 2, c["line"])
     end
      self.Slider.Knob:SetSize(8, 25)
     self.Slider.Knob.Paint = function(self, w, h)
+        local c = clr()
         if (self.Hovered) then
-            draw.RoundedBox(8, 0, 0, w, h, clr()["btn_line_h"])
+            draw.RoundedBox(8, 0, 0, w, h, c["btn_line_h"])
         else
-            draw.RoundedBox(8, 0, 0, w, h, clr()["btn_line"])
+            draw.RoundedBox(8, 0, 0, w, h, c["btn_line"])
         end
     end
 
@@ -118,12 +108,13 @@ function PANEL:GetName(arg)
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     if (self:GetType() == "base") then
-        draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
+        draw.RoundedBox(0, 0, 0, w, h, c["line"])
+        draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
     elseif (self:GetType() == "round") then
-        draw.RoundedBox(32, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["body"])
+        draw.RoundedBox(32, 0, 0, w, h, c["line"])
+        draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
     end 
 end
 

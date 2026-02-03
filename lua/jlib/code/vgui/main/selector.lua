@@ -2,10 +2,12 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 local all_typs = {"base", "round"}
 local data_font = {
     ["main"] = {
-        txt = "s1-18",
+        txt = "s1-20",
         btn = "s5-14"
     },
     ["anime"] = {
@@ -30,30 +32,19 @@ local data_font = {
     } 
 }
 
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
-
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local l = lan()
     self:SetTall(22)
     self:SetMouseInputEnabled(true)
     self:SetKeyboardInputEnabled(true)
     self.pnltype = "round"
 
-    self.pnlname = lan()["oops"] or "?"
+    self.pnlname = l["oops"] or "?"
     self.status = false
-    self.value = lan()["not-selected"]
+    self.value = l["not-selected"]
     self.data = {}
     self.key = 0
     self:SetSize(250, 90)
@@ -69,7 +60,7 @@ function PANEL:Init()
     self.string:SetContentAlignment(5)
 
     self.selector = jlib.vgui.Create("button", self)
-    self.selector:SetText(lan()["not-selected"])
+    self.selector:SetText(l["not-selected"])
     self.selector:Dock(TOP)
     self.selector:DockMargin(25, 1, 25, 0)
     self.selector.DoClick = function()
@@ -190,12 +181,13 @@ function PANEL:OnRemove()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     local circ, alpha = 0, 255
     if (self:GetType() == "round") then circ = 32 end
     if not (table.KeyFromValue(all_typs, self:GetType())) then alpha = 0 end
 
-    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr()["line"], alpha))
-    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(clr()["body"], alpha))
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(c["line"], alpha))
+    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(c["body"], alpha))
 end
 
 vgui.Register("jlib.selector-main", PANEL, "PANEL")

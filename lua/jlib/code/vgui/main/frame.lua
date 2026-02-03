@@ -2,9 +2,11 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 local data_font = {
     ["main"] = {
-        txt = "s3-32"
+        txt = "s3-24"
     },
     ["anime"] = {
         txt = "a5-32"
@@ -22,18 +24,6 @@ local data_font = {
         txt = "t2-24"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -69,22 +59,22 @@ function PANEL:Init()
 	self.head:SetType("nodraw")
 	local size_x, size_y = self.head:GetSize()
 
-	self.btn = jlib.vgui.Create("button", self.head)
-	self.btn:SetSize(45, 45)
-	self.btn:SetImage("close")
-	self.btn:Dock(RIGHT)
-	self.btn:DockMargin(0, 0, 5, 0)
-	self.btn:SetSound("close")
-	self.btn.DoClick = function()
-		self:Close()
-	end
-
 	self.text = jlib.vgui.Create("label", self.head)
 	self.text:SetText(self:GetText())
 	self.text:SetFont(jlib.vgui.GetFont(data_font, "txt"))
 	self.text:Dock(FILL)
-	self.text:DockMargin(0, 0, -60, 0)
+	self.text:DockMargin(0, 0, 0, 0)
 	self.text:SetContentAlignment(5)
+
+	self.btn = jlib.vgui.Create("button", self.head)
+	self.btn:SetSize(45, 45)
+	self.btn:SetImage("close")
+	self.btn:Dock(NODOCK)
+	self.btn:SetPos(0, 0)
+	self.btn:SetSound("close")
+	self.btn.DoClick = function()
+		self:Close()
+	end	
 
 	self:Alpha()
 end
@@ -153,6 +143,7 @@ function PANEL:SetColorAlpha(arg)
 end
 
 function PANEL:Paint(w, h)
+	local c = clr()
 	local size_head = 60
 	local ad_pos, ad_size = 3, 6
 	local img_p_x, img_p_y, img_w_y, img_h_y = 0, 0, 0, 0
@@ -161,8 +152,8 @@ function PANEL:Paint(w, h)
 	if not (self:GetHide()) then self.color_alpha = 0 end
 
 	--[*] Body (BG)
-	draw.RoundedBoxEx(32, 0, 0, w, h, ColorAlpha(clr()["line"], self.color_alpha), true, true, false, false)
-	draw.RoundedBoxEx(32, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(clr()["bg"], self.color_alpha), true, true, false, false)
+	draw.RoundedBoxEx(32, 0, 0, w, h, ColorAlpha(c["line"], self.color_alpha), true, true, false, false)
+	draw.RoundedBoxEx(32, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(c["bg"], self.color_alpha), true, true, false, false)
 
 	--[*] BG Image
     if (self:GetImage()) then
@@ -172,11 +163,15 @@ function PANEL:Paint(w, h)
     end	
 
     --[*] Head
-    draw.RoundedBox(32, 0+1, 0+1, (w-2), size_head, ColorAlpha(clr()["line"]), alpha)
-	draw.RoundedBox(32, ad_pos+1, ad_pos+1, (w-2)-ad_size, size_head-ad_size, ColorAlpha(clr()["head"]), alpha)
+    draw.RoundedBox(32, 0+1, 0+1, (w-2), size_head, ColorAlpha(c["line"]), alpha)
+	draw.RoundedBox(32, ad_pos+1, ad_pos+1, (w-2)-ad_size, size_head-ad_size, ColorAlpha(c["head"]), alpha)
 end
 
 function PANEL:PerformLayout()
+	if (self.btn) and (IsValid(self.btn)) then
+		local wide = self:GetWide()
+		self.btn:SetPos(wide-60, 7)
+	end
 	return false
 end
 

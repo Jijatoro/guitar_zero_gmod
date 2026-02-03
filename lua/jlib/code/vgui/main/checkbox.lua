@@ -2,6 +2,8 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local all_typs = {"base", "round"}
 local data_font = {
     ["main"] = {
@@ -20,21 +22,9 @@ local data_font = {
         txt = "h4-24"
     },
     ["terminal"] = {
-        txt = "t3-24"
+        txt = "s1-24"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -141,27 +131,29 @@ function PANEL:Enable()
 end
 
 function PANEL:SetStatus(val)
+	local ic, c = icon(), clr()
     self.status = val
     if (self.status) then 
         self.num1, self.num2 = 2, 2
         self.num3, self.num4 = 29, 29
-        self.image = icon()["accept"]
-        self.color = clr()["green"]
+        self.image = ic["accept"]
+        self.color = c["green"]
     else 
         self.num1, self.num2 = 5, 5
         self.num3, self.num4 = 25, 25
-        self.image = icon()["close"]
-        self.color = clr()["red"]
+        self.image = ic["close"]
+        self.color = c["red"]
     end
 end
 
 function PANEL:Paint(w, h)
+	local c = clr()
     local circ, alpha = 0, 255
     if (self:GetType() == "round") then circ = 32 end
     if not (table.KeyFromValue(all_typs, self:GetType())) then alpha = 0 end
 
-    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr()["line"], alpha))
-    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(clr()["body"], alpha))
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(c["line"], alpha))
+    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(c["body"], alpha))
 end
 
 vgui.Register("jlib.checkbox-main", PANEL, "Panel")

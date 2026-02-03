@@ -2,18 +2,8 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -113,8 +103,9 @@ function PANEL:Find()
 end
 
 function PANEL:Paint(w, h)
-	draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-	draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
+	local c = clr()
+	draw.RoundedBox(0, 0, 0, w, h, c["line"])
+	draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
 end
 
 vgui.Register("jlib.search-main", PANEL, "Panel")

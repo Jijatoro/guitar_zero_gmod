@@ -2,6 +2,8 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 local data_font = {
     ["main"] = {
         txt = "s1-24",
@@ -24,22 +26,10 @@ local data_font = {
         bind = "s5-16"
     },
     ["terminal"] = {
-        txt = "t3-24",
+        txt = "s1-24",
         bind = "s5-16"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -73,14 +63,15 @@ function PANEL:Init()
     self.key:Dock(LEFT)
     self.key:DockMargin(0, 5, 0, 5)  
     self.key.Paint = function(self, w, h)
+        local c = clr()
         if (self.Hovered) then 
-            self:SetTextColor(clr()["t_btn_h"])
-            draw.RoundedBox(32, 0, 0, w, h, clr()["btn_line_h"])
-            draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["btn_h"])
+            self:SetTextColor(c["t_btn_h"])
+            draw.RoundedBox(32, 0, 0, w, h, c["btn_line_h"])
+            draw.RoundedBox(32, 3, 3, w-6, h-6, c["btn_h"])
         else
-            self:SetTextColor(clr()["t_btn_h"])
-            draw.RoundedBox(32, 0, 0, w, h, clr()["btn_line"])
-            draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["btn"])
+            self:SetTextColor(c["t_btn_h"])
+            draw.RoundedBox(32, 0, 0, w, h, c["btn_line"])
+            draw.RoundedBox(32, 3, 3, w-6, h-6, c["btn"])
         end
     end
 
@@ -115,12 +106,13 @@ function PANEL:GetValue()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     if (self:GetType() == "base") then
-        draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
+        draw.RoundedBox(0, 0, 0, w, h, c["line"])
+        draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
     elseif (self:GetType() == "round") then
-        draw.RoundedBox(32, 0, 0, w, h, clr()["line"])
-        draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["body"])
+        draw.RoundedBox(32, 0, 0, w, h, c["line"])
+        draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
     else end     
 end
 

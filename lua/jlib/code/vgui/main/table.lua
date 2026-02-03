@@ -9,7 +9,7 @@ local data_font = {
     },
     ["anime"] = {
         txt = "a3-16",
-        btn = "a1-14"
+        btn = "s5-14"
     },
     ["fantasy"] = {
         txt = "f1-16",
@@ -24,22 +24,10 @@ local data_font = {
         btn = "h4-14"
     },
     ["terminal"] = {
-        txt = "t5-16",
+        txt = "s1-16",
         btn = "t3-14"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>

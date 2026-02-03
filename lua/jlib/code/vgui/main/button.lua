@@ -2,12 +2,14 @@
 --[+] Variables |~| :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
         btn = "s5-24"
     },
     ["anime"] = {
-        btn = "a1-24"
+        btn = "s5-24"
     },
     ["fantasy"] = {
         btn = "f3-24"
@@ -22,18 +24,6 @@ local data_font = {
         btn = "t1-24"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -57,17 +47,18 @@ function PANEL:Init()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     local size_x, size_y = self:GetSize()
     local alpha = 255
-    local clr_text = clr()["t_btn"]
-    local clr_icon = clr()["icon"]
-    local clr_btn, clr_line = clr()["btn"], clr()["line"]
+    local clr_text = c["t_btn"]
+    local clr_icon = c["icon"]
+    local clr_btn, clr_line = c["btn"], c["line"]
 
     if not (self.draw) then alpha = 0 end
     if (self.Hovered) or (self:GetStatus()) then 
-        clr_text = clr()["t_btn_h"]
-        clr_icon = clr()["icon_a"]
-        clr_btn, clr_line = clr()["btn_h"], clr()["btn_line_h"]
+        clr_text = c["t_btn_h"]
+        clr_icon = c["icon_a"]
+        clr_btn, clr_line = c["btn_h"], c["btn_line_h"]
     end
 
     draw.RoundedBox(32, 0, 0, w, h, ColorAlpha(clr_line, alpha))

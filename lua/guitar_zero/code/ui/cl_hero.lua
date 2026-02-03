@@ -9,10 +9,6 @@ local function clr()
     return jlib.cfg.themes[jlib.cfg.theme]  or {}
 end
 
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
-
 local alpha = 0
 local long = 700
 local width = 400

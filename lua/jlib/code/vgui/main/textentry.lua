@@ -2,6 +2,8 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 local data_font = {
     ["main"] = {
         txt = "s5-24"
@@ -19,26 +21,15 @@ local data_font = {
         txt = "h4-24"
     },
     ["terminal"] = {
-        txt = "t1-24"
+        txt = "t1-32"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local l = lan()
     self:SetSize(240, 40)
     self:SetHistoryEnabled(false)
     self.History = {}
@@ -55,8 +46,8 @@ function PANEL:Init()
     self:SetCursor("beam")
     self:SetFont(jlib.vgui.GetFont(data_font, "txt"))
     self.type = "base"
-    self.m_txtPlaceholder = lan()["text"] .. "..."
-    self.pnlname = lan()["oops"] or "?"
+    self.m_txtPlaceholder = l["text"] .. "..."
+    self.pnlname = l["oops"] or "?"
     self.minmax = nil
 end
 
@@ -101,19 +92,23 @@ function PANEL:GetMinMax(arg)
 end
 
 function PANEL:Paint( w, h )
+    local c = clr()
     if (self.type == "base") then
-        draw.RoundedBox(0, 0, 0, w, h, clr()["btn_line_h"])
-        draw.RoundedBox(0, 1, 1, w-2, h-2, clr()["btn_h"])
+        draw.RoundedBox(0, 0, 0, w, h, c["btn_line_h"])
+        draw.RoundedBox(0, 1, 1, w-2, h-2, c["btn_h"])
     end
 
     if (self:GetValue() == "") or (self:GetValue() == nil) and (self.type == "base") then
-        draw.DrawText(self.m_txtPlaceholder, jlib.vgui.GetFont(data_font, "txt"), 8, 8, clr()["t_p1"], TEXT_ALIGN_LEFT)
+        local text = self.m_txtPlaceholder
+        surface.SetFont(jlib.vgui.GetFont(data_font, "txt"))
+        local text_w, text_h = surface.GetTextSize(text)
+        draw.DrawText(text, jlib.vgui.GetFont(data_font, "txt"), 3, h*0.5-(text_h*0.5), c["t_p1"], TEXT_ALIGN_LEFT)
     else
         surface.SetDrawColor(255, 255, 255, 0)
         surface.DrawRect(0, 0, w, h)
-        self:SetTextColor(clr()["t_btn_h"])
-        self:SetHighlightColor(clr()["t_mark"])
-        self:SetCursorColor(clr()["t_btn_h"])
+        self:SetTextColor(c["t_btn_h"])
+        self:SetHighlightColor(c["t_mark"])
+        self:SetCursorColor(c["t_btn_h"])
         self:DrawTextEntryText(self:GetTextColor(), self:GetHighlightColor(), self:GetCursorColor())
     end
 end

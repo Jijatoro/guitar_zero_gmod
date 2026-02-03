@@ -2,18 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -53,12 +42,13 @@ function PANEL:GetForm()
 end
 
 function PANEL:Paint(w, h)
+	local c = clr()
 	if (self:GetType() == "base") then
-		draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-		draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
+		draw.RoundedBox(0, 0, 0, w, h, c["line"])
+		draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
 	elseif (self:GetType() == "round") then
-		draw.RoundedBox(32, 0, 0, w, h, clr()["line"])
-		draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["body"])
+		draw.RoundedBox(32, 0, 0, w, h, c["line"])
+		draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
 	else end 
 end
 

@@ -2,38 +2,18 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 if not (jlib.vgui) then jlib.vgui = {} end
-
 local meta = FindMetaTable("Panel")
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
-
-local file_data = {
-    ["lib-setting"] = {
-        name = "lib-setting", folder = "jlib", path = "lib-setting.json", cfg = true
-    }
-}
-
+local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local image_form = {
     ["png"] = true, ["jpg"] = true, ["jpeg"] = true, ["tga"] = true, ["vtf"] = true, ["bmp"] = true,
     ["gif"] = true, ["dds"] = true, ["vmt"] = true
 }
-
 jlib.vgui.CurrentMusic = nil
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Basic :--:--:--:--:--:--:--:--:--:--:--:}>                                                              |>
+--[+] Creating a vgui :--:--:--:--:--:--:--:--:--:--:--:}>                                                    |>
 --------------------------------------------------------------------------------------------------------------|>
---[*] Creating a vgui
 function jlib.vgui.Create(name, parent)
     if not (name) or (name == "") then return end
     local check = false
@@ -59,7 +39,9 @@ function jlib.vgui.Create(name, parent)
     return new
 end
 
---[*] SUI audio playback
+--------------------------------------------------------------------------------------------------------------|>
+--[+] SUI audio playback :--:--:--:--:--:--:--:--:--:--:--:}>                                                 |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.vgui.PlaySound(name, vol, ui)
     if not (jlib.cfg.sound_ui) and (ui) then return end
     local path = name
@@ -82,21 +64,27 @@ function jlib.vgui.PlaySound(name, vol, ui)
     end)
 end
 
---[*] Installing a font for a particular theme
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Installing a font for a particular theme :--:--:--:--:--:--:--:--:--:--:--:}>                           |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.vgui.GetFont(data, key)
     local name = jlib.cfg.themes[jlib.cfg.theme]["font"]
     if not (table.KeyFromValue(jlib.cfg.fonts, name)) then name = "main" end
     return data[name][key]
 end
 
---[*] Set tip
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Set tip :--:--:--:--:--:--:--:--:--:--:--:}>                                                            |>
+--------------------------------------------------------------------------------------------------------------|>
 function meta:SetTip(text, pos_top)
     local tip = jlib.vgui.Create("tip")
     tip:SetText(text)
     tip:SetObject(self, pos_top)
 end
 
---[*] Panel opening animation
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Panel opening animation :--:--:--:--:--:--:--:--:--:--:--:}>                                            |>
+--------------------------------------------------------------------------------------------------------------|>
 function meta:SlideOpen()
     local size = self:GetTall()
     local name = self:GetName()
@@ -110,14 +98,18 @@ function meta:SlideOpen()
     end) 
 end
 
---[*] Install a draggable clone
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Install a draggable clone :--:--:--:--:--:--:--:--:--:--:--:}>                                          |>
+--------------------------------------------------------------------------------------------------------------|>
 function meta:SetDrag(func)
     local drag = jlib.vgui.Create("drag")
     drag:SetData(self)
     drag:SetFunc(func)
 end
 
---[*] Triggering the warning
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Triggering the warning :--:--:--:--:--:--:--:--:--:--:--:}>                                             |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.vgui.SetWarning(text, mat, parent)
     local warning
     if (parent) then
@@ -130,7 +122,9 @@ function jlib.vgui.SetWarning(text, mat, parent)
     warning:Center()
 end
 
---[*] Smooth appearance animation for elements
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Smooth appearance animation for elements :--:--:--:--:--:--:--:--:--:--:--:}>                           |>
+--------------------------------------------------------------------------------------------------------------|>
 function meta:Alpha()
     local alpha = 0
     self:SetAlpha(alpha)
@@ -144,35 +138,36 @@ function meta:Alpha()
 end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Saving data :--:--:--:--:--:--:--:--:--:--:--:}>                                                        |>
+--[+] Saving config :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
 --------------------------------------------------------------------------------------------------------------|>
---[*] Saving config
 function jlib.UpdateConfig(data)
     for k, v in pairs(data) do
         jlib.cfg[k] = v
     end
+    hook.Run("jLib.UpdateSetting", data)
 end
 
---[*] Getting saved data
-function jlib.GetSaveData(name)
-    if (file.Read(file_data[name].folder .. "/" .. file_data[name].path, "DATA") == nil) then
-        return false
-    else 
-        local your_data = file.Read(file_data[name].folder .. "/" .. file_data[name].path, "DATA")
-        return util.JSONToTable(your_data)
-    end
-end 
-
---[*] Saving data
-function jlib.SaveData(name, data)
-    local new_data = util.TableToJSON(data, true) 
-    file.CreateDir(file_data[name].folder)
-    file.Write(file_data[name].folder .. "/" .. file_data[name].path, new_data)
-    if (file_data[name].cfg) then jlib.UpdateConfig(data) end
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Getting saved data :--:--:--:--:--:--:--:--:--:--:--:}>                                                 |>
+--------------------------------------------------------------------------------------------------------------|>
+function jlib.GetSaveData()
+    local path = "jlib/lib-setting.json"
+    local my_file = file.Read("jlib/lib-setting.json", "DATA")
+    if (my_file) then return util.JSONToTable(my_file) end
 end 
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] HTTP Requests :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
+--[+] Saving data :--:--:--:--:--:--:--:--:--:--:--:}>                                                        |>
+--------------------------------------------------------------------------------------------------------------|>
+function jlib.SaveData(data)
+    local new_data = util.TableToJSON(data, true) 
+    file.CreateDir("jlib")
+    file.Write("jlib/lib-setting.json", new_data)
+    jlib.UpdateConfig(data)
+end 
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] We are trying to make material from the image url :--:--:--:--:--:--:--:--:--:--:--:}>                  |>
 --------------------------------------------------------------------------------------------------------------|>
 function jlib.UrlImage(url, callback)
     local fileName = "jlib_cache/" .. util.SHA256(url)
@@ -201,6 +196,9 @@ function jlib.UrlImage(url, callback)
     )
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] We are trying to use sound through the url :--:--:--:--:--:--:--:--:--:--:--:}>                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.UrlSound(url, vol, callback)
     sound.PlayURL(url, "noplay", function(station, errCode, errStr)
         if (IsValid(station)) then
@@ -213,6 +211,7 @@ function jlib.UrlSound(url, vol, callback)
         else timer.Simple(0.3, function() jlib.vgui.PlaySound("errror", nil, true) end) end
     end)
 end
+
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Mask Stencil :--:--:--:--:--:--:--:--:--:--:--:}>                                                       |>
 --------------------------------------------------------------------------------------------------------------|>
@@ -238,9 +237,8 @@ function jlib.SetMask(parent, w, h, mask, image)
 end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Technical :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
+--[+] Measuring the length of a Cyrillic string (.len) :--:--:--:--:--:--:--:--:--:--:--:}>                   |>
 --------------------------------------------------------------------------------------------------------------|>
---[*] Measuring the length of a Cyrillic string (.len)
 function jlib.len(str)
     local len = 0
     local i = 1
@@ -260,7 +258,9 @@ function jlib.len(str)
     return len
 end
 
---[*] Processing a Cyrillic string (.sub)
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Processing a Cyrillic string (.sub) :--:--:--:--:--:--:--:--:--:--:--:}>                                |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.sub(str, start_char, end_char)
     local data_word = {} local len = 1 local i = 1
     while i <= #str do
@@ -284,7 +284,9 @@ function jlib.sub(str, start_char, end_char)
     local new_data = table.concat(data_word, "") return new_data
 end
 
---[*] Checking for bad characters
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Checking for bad characters :--:--:--:--:--:--:--:--:--:--:--:}>                                        |>
+--------------------------------------------------------------------------------------------------------------|>
 function jlib.blacksymbol(str)
     if not str or str == "" then return true end
     local i = 1

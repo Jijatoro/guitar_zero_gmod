@@ -2,12 +2,14 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 local data_font = {
     ["main"] = {
         btn = "s5-24"
     },
     ["anime"] = {
-        btn = "a1-24"
+        btn = "s5-24"
     },
     ["fantasy"] = {
         btn = "f3-24"
@@ -22,19 +24,6 @@ local data_font = {
         btn = "t3-24"
     } 
 }
-
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -82,11 +71,12 @@ function PANEL:GetData()
 end
 
 function PANEL:Check()
+    local l = lan()
     local reply = true
     for _, v in pairs(self:GetData()) do
         if (string.find(tostring(v), "selector")) then
-            if (v:GetValue() == lan()["not-selected"]) then
-                self:SetError(lan()["oops-dont-selected"])
+            if (v:GetValue() == l["not-selected"]) then
+                self:SetError(l["oops-dont-selected"])
                 reply = false
             end
         end
@@ -95,19 +85,19 @@ function PANEL:Check()
             local limit = v:GetMinMax()
 
             if (v:GetValue() == "") then
-                self:SetError(lan()["oops"] .. ", " .. lan()["in"] .. " '" .. v:GetName() .. "' " .. lan()["oops-nothing-specified"] .. "!")
+                self:SetError(l["oops"] .. ", " .. l["in"] .. " '" .. v:GetName() .. "' " .. l["oops-nothing-specified"] .. "!")
                 reply = false
             elseif (not jlib.blacksymbol(v:GetValue())) then
-                self:SetError(lan()["oops"] .. ", " .. lan()["in"] .. " '" .. v:GetName() .. "' " .. lan()["oops-forbidden-symbol"] .. "!")
+                self:SetError(l["oops"] .. ", " .. l["in"] .. " '" .. v:GetName() .. "' " .. l["oops-forbidden-symbol"] .. "!")
                 reply = false
             end
 
             if (limit) then
                 if (jlib.len(v:GetValue())<limit.min) then
-                    self:SetError(lan()["oops"] .. ", " .. lan()["in"] .. " '" .. v:GetName() .. "' " .. lan()["oops-should-be-minimum"] .. " " .. limit.min .. " " .. lan()["oops-symbol"] .. "!")
+                    self:SetError(l["oops"] .. ", " .. l["in"] .. " '" .. v:GetName() .. "' " .. l["oops-should-be-minimum"] .. " " .. limit.min .. " " .. l["oops-symbol"] .. "!")
                     reply = false
                 elseif (jlib.len(v:GetValue())>limit.max) then
-                    self:SetError(lan()["oops"] .. ", " .. lan()["in"] .. " '" .. v:GetName() .. "' " .. lan()["oops-shouldnt-be-more"] .. " " .. limit.max .. " " .. lan()["oops-symbols"] .. "!")
+                    self:SetError(l["oops"] .. ", " .. l["in"] .. " '" .. v:GetName() .. "' " .. l["oops-shouldnt-be-more"] .. " " .. limit.max .. " " .. l["oops-symbols"] .. "!")
                     reply = false
                 end
             end

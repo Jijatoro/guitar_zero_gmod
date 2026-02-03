@@ -21,7 +21,7 @@ local function DrawLoad()
 	local w, h = ScrW(), ScrH()
 	local ply = LocalPlayer()
 	local my_setting = Guitar_Hero.MySetting["setting"]
-	local text = Guitar_Hero.Languages[my_setting["language"]]
+	local text = Guitar_Hero.Languages[jlib.cfg.lan]
 
 	local b1_w, b2_w = w*0.4, w*0.4+3
 	local b1_h, b2_h = h-95, h-95+3

@@ -100,14 +100,11 @@ No assets redistributed outside of this library package.
 --[*] Language
 jlib.cfg.lan = "en"
 
---[*] Languages
-jlib.cfg.lan_all = {"en", "de", "pl", "uk", "tr", "fr", "es", "ru"}
-
 --[*] Turn on the sound for UI elements?
 jlib.cfg.sound_ui = true
 
 --[*] The standard volume for UI sounds
-jlib.cfg.sound_ui_volume = 0.2
+jlib.cfg.sound_ui_volume = 0.3
 
 --[*] Standard music volume
 jlib.cfg.music_volume = 0.4

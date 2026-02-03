@@ -2,18 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
@@ -53,8 +42,9 @@ function PANEL:PerformLayout()
 end
 
 function PANEL:Paint(w, h)
+	local c = clr()
 	draw.RoundedBox(0, 0, 0, w, h, self:GetColor())
-	draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["line"])
+	draw.RoundedBox(0, 3, 3, w-6, h-6, c["line"])
 end
 
 vgui.Register("jlib.avatar-main", PANEL, "Panel")

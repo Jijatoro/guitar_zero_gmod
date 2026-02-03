@@ -2,6 +2,7 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
 local data_font = {
     ["main"] = {
         txt = "s1-18",
@@ -24,22 +25,10 @@ local data_font = {
         value = "h4-12"
     },
     ["terminal"] = {
-        txt = "t3-18",
+        txt = "s1-18",
         value = "s3-12"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 local function isMouse(key, panel)
     if (key == MOUSE_LEFT) then
@@ -73,6 +62,7 @@ local all_form = {
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local c = clr()
     self.hasText, self.hasTitle, self.wrapped = false, false, false
     self.pnltype = "round"
     self.pnlname = nil
@@ -93,7 +83,7 @@ function PANEL:Init()
     self.color = nil
     self.animated = nil
     self.animspeed = nil 
-    self.colorBG, self.colorBG_H = clr()["body"], clr()["btn_h"]
+    self.colorBG, self.colorBG_H = c["body"], c["btn_h"]
 
     self.dmodel = vgui.Create("DModelPanel", self)
     self.dmodel:Dock(FILL)
@@ -130,6 +120,7 @@ function PANEL:GetForm()
 end
 
 function PANEL:SetText(arg)
+    local c = clr()
     self.text = arg
     self.footer = jlib.vgui.Create("panel", self)
     self.footer:Dock(BOTTOM)
@@ -140,19 +131,19 @@ function PANEL:SetText(arg)
         local parent = self:GetParent()
         if (parent:GetType() == "base") then
             if (parent.dmodel.Hovered) or (parent:GetStatus()) then
-                draw.RoundedBox(0, 0, 0, w, h, clr()["btn_line_h"])
-                draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["btn_h"])
+                draw.RoundedBox(0, 0, 0, w, h, c["btn_line_h"])
+                draw.RoundedBox(0, 3, 3, w-6, h-6, c["btn_h"])
             else
-                draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
-                draw.RoundedBox(0, 3, 3, w-6, h-6, clr()["body"])
+                draw.RoundedBox(0, 0, 0, w, h, c["line"])
+                draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
             end
         elseif (parent:GetType() == "round") then
             if (parent.dmodel.Hovered) or (parent:GetStatus()) then
-                draw.RoundedBoxEx(16, 0, 0, w, h, clr()["btn_line_h"], false, false, true, true)
-                draw.RoundedBoxEx(16, 3, 3, w-6, h-6, clr()["btn_h"], false, false, true, true)
+                draw.RoundedBoxEx(16, 0, 0, w, h, c["btn_line_h"], false, false, true, true)
+                draw.RoundedBoxEx(16, 3, 3, w-6, h-6, c["btn_h"], false, false, true, true)
             else
-                draw.RoundedBoxEx(16, 0, 0, w, h, clr()["line"], false, false, true, true)
-                draw.RoundedBoxEx(16, 3, 3, w-6, h-6, clr()["body"], false, false, true, true)
+                draw.RoundedBoxEx(16, 0, 0, w, h, c["line"], false, false, true, true)
+                draw.RoundedBoxEx(16, 3, 3, w-6, h-6, c["body"], false, false, true, true)
             end
         end
     end
@@ -194,12 +185,13 @@ function PANEL:SetCustomText(arg, x, y)
         self.pnl_csttext:SetType("round")
         self.pnl_csttext.Paint = function(self, w, h)
             local parent = self:GetParent()
+            local c = clr()
             if (parent.dmodel.Hovered) or (parent:GetStatus()) then
-                draw.RoundedBox(16, 0, 0, w, h, clr()["btn_line_h"])
-                draw.RoundedBox(16, 1, 1, w-2, h-2, clr()["btn"])
+                draw.RoundedBox(16, 0, 0, w, h, c["btn_line_h"])
+                draw.RoundedBox(16, 1, 1, w-2, h-2, c["btn"])
             else
-                draw.RoundedBox(16, 0, 0, w, h, clr()["line"])
-                draw.RoundedBox(16, 1, 1, w-2, h-2, clr()["body"])
+                draw.RoundedBox(16, 0, 0, w, h, c["line"])
+                draw.RoundedBox(16, 1, 1, w-2, h-2, c["body"])
             end
         end
 
@@ -331,20 +323,21 @@ function PANEL:GetStatus()
 end
 
 function PANEL:Paint(w, h)
+    local c = clr()
     if (self:GetType() == "base") then
         if (self.dmodel.Hovered) or (self:GetStatus()) then
-            draw.RoundedBox(0, 0, 0, w, h, clr()["btn_line_h"])
+            draw.RoundedBox(0, 0, 0, w, h, c["btn_line_h"])
             draw.RoundedBox(0, 3, 3, w-6, h-6, self.colorBG_H)
         else
-            draw.RoundedBox(0, 0, 0, w, h, clr()["line"])
+            draw.RoundedBox(0, 0, 0, w, h, c["line"])
             draw.RoundedBox(0, 3, 3, w-6, h-6, cself.colorBG)
         end
     elseif (self:GetType() == "round") then
         if (self.dmodel.Hovered) or (self:GetStatus()) then
-            draw.RoundedBox(16, 0, 0, w, h, clr()["btn_line_h"])
+            draw.RoundedBox(16, 0, 0, w, h, c["btn_line_h"])
             draw.RoundedBox(16, 3, 3, w-6, h-6, self.colorBG_H)
         else
-            draw.RoundedBox(16, 0, 0, w, h, clr()["line"])
+            draw.RoundedBox(16, 0, 0, w, h, c["line"])
             draw.RoundedBox(16, 3, 3, w-6, h-6, self.colorBG)
         end
     end

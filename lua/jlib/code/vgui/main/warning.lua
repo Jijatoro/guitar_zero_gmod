@@ -2,6 +2,9 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
+local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
+local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
 local data_font = {
     ["main"] = {
         txt = "s1-18"
@@ -19,28 +22,15 @@ local data_font = {
         txt = "h4-18"
     },
     ["terminal"] = {
-        txt = "t3-18"
+        txt = "s1-18"
     } 
 }
-
-local function icon()
-    return jlib.cfg.icons[jlib.cfg.icon]  or {}
-end
-
-local function clr()
-    return jlib.cfg.themes[jlib.cfg.theme]  or {}
-end
-
-local function lan()
-    return jlib.cfg.lans[jlib.cfg.lan] or {}
-end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     self.hasText, self.hasTitle, self.wrapped = false, false, false
-
     self.text = ""
     self.textbtn = lan()["ok"]
     self.mat = "exclamation"
@@ -72,11 +62,12 @@ function PANEL:Init()
 end
 
 function PANEL:Paint(w, h)
-	draw.RoundedBox(32, 0, 0, w, h, clr()["line"])
-	draw.RoundedBox(32, 3, 3, w-6, h-6, clr()["body"])
+    local c, ic = clr(), icon()
+	draw.RoundedBox(32, 0, 0, w, h, c["line"])
+	draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
 
-    surface.SetMaterial(icon()[self:GetMat()])
-    surface.SetDrawColor(clr()["icon_a"])
+    surface.SetMaterial(ic[self:GetMat()])
+    surface.SetDrawColor(c["icon_a"])
     surface.DrawTexturedRect(w*0.35, 5, 120, 120)
 end
 
