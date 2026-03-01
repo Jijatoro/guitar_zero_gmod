@@ -2,41 +2,25 @@
 --[+] Variables |~| :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
-local data_font = {
-    ["main"] = {
-        btn = "s5-24"
-    },
-    ["anime"] = {
-        btn = "s5-24"
-    },
-    ["fantasy"] = {
-        btn = "f3-24"
-    },
-    ["cyber"] = {
-        btn = "c4-24"
-    },    
-    ["horror"] = {
-        btn = "h5-24"
-    },
-    ["terminal"] = {
-        btn = "t1-24"
-    } 
-}
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local jv = jv()
+    self.truename = "button"
     self:SetSize(45, 45)  
     self:SetText("")
-    self:SetFont(jlib.vgui.GetFont(data_font, "btn"))
+    jv.SetFont(self, "btn1", true)
     self:SetTextColor(clr()["t_btn"])
     self.status = false
     self.draw = true
-    self.image = nil
-    self:SetTall(22)
     self:SetMouseInputEnabled(true)
     self:SetKeyboardInputEnabled(true)
     self:SetIsToggle(true)
@@ -46,29 +30,55 @@ function PANEL:Init()
     self.hover_s = false
 end
 
+function PANEL:SetName(arg)
+    self.truename = arg
+end
+
+function PANEL:GetName()
+    return self.truename
+end
+
+function PANEL:Scale(...)
+    local jv = jv()
+    local data = {...}
+    jv.Scale(self, data)
+end
+
+function PANEL:Margin(...)
+    local jv = jv()
+    local data = {...}
+    jv["Margin"](self, data)
+end
+
+function PANEL:PerformLayout()
+    if not (self.dockmargin) then return end
+    self:Margin()
+end
+
 function PANEL:Paint(w, h)
-    local c = clr()
-    local size_x, size_y = self:GetSize()
+    local jv, clr = jv(), clr()
     local alpha = 255
-    local clr_text = c["t_btn"]
-    local clr_icon = c["icon"]
-    local clr_btn, clr_line = c["btn"], c["line"]
+    local clr_text = clr["t_btn"]
+    local clr_icon = clr["icon"]
+    local clr_btn, clr_line = clr["btn"], clr["line"]
+    local border = jv.GetBorder("btn")
+    local round = jv.GetRound("base")
 
     if not (self.draw) then alpha = 0 end
     if (self.Hovered) or (self:GetStatus()) then 
-        clr_text = c["t_btn_h"]
-        clr_icon = c["icon_a"]
-        clr_btn, clr_line = c["btn_h"], c["btn_line_h"]
+        clr_text = clr["t_btn_h"]
+        clr_icon = clr["icon_a"]
+        clr_btn, clr_line = clr["btn_h"], clr["btn_line_h"]
     end
 
-    draw.RoundedBox(32, 0, 0, w, h, ColorAlpha(clr_line, alpha))
-    draw.RoundedBox(32, 3, 3, w-6, h-6, ColorAlpha(clr_btn, alpha))    
+    draw.RoundedBox(round, 0, 0, w, h, ColorAlpha(clr_line, alpha))
+    draw.RoundedBox(round, border/2, border/2, w-border, h-border, ColorAlpha(clr_btn, alpha))    
     self:SetTextColor(clr_text)
 
     if (self:GetImage()) then
         surface.SetMaterial(icon()[self:GetImage()])
         surface.SetDrawColor(clr_icon)
-        surface.DrawTexturedRect(w*0.13, h*0.13, size_x-10, size_y-10)  
+        surface.DrawTexturedRect(w*0.065, h*0.055, w-(w*0.1), h-(h*0.1))  
     end      
 end
 
@@ -127,26 +137,10 @@ function PANEL:SetDelay(arg)
     end)
 end
 
-function PANEL:PerformLayout()
-    local text = self:GetText()
-    if (text != "") or (text != nil) then
-        surface.SetFont(self:GetFont())
-        local text_w, text_h = surface.GetTextSize(text)
-        local w, h = self:GetSize()
-        
-        if (w < (text_w + 15)) then
-            self:SetWide(text_w + 15)
-        end
-
-        if (h < (text_h + 15)) then
-            self:SetHeight(text_h + 15)
-        end
-    end
-end
-
 function PANEL:Think()
+    local jv = jv()
     if (self.Hovered) and not (self.hover_s) then
-        self.hover_s = true jlib.vgui.PlaySound(self.sound_h, nil, true) return 
+        self.hover_s = true jv.PlaySound(self.sound_h, nil, true) return 
     elseif not (self.Hovered) then self.hover_s = false end
 end
 

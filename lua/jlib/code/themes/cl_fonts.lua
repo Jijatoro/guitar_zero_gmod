@@ -2,7 +2,7 @@
 --[+] Variables |~| :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
 --------------------------------------------------------------------------------------------------------------|>
 local defalt = {extended = true, weight = 500, blursize = 0, scanlines = 0, antialias = true, underline = false, italic = false, strikeout = false, symbol = false, rotary = false, additive = false, outline = false, shadow = false}
-local size_list = {10, 12, 14, 16, 18, 20, 24, 32, 48, 54, 64}
+local size_list = {5, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 32, 48, 54, 64}
 local fonts_list = {
 	["simple"] = {
 		"Poiret One", "Playfair Display SC", "Rubik Mono One", "Amatic SC", "TikTok Sans 36pt Light"
@@ -38,7 +38,7 @@ local function FontLoad(arg)
 			local data = table.Copy(defalt) 
 			data.font = name 
 			data.size = size_list[i]
-			surface.CreateFont(string.sub(arg, 1, 1) .. tostring(num) .. "-" .. tostring(size_list[i]), data)
+			surface.CreateFont("jlib." .. string.sub(arg, 1, 1) .. tostring(num) .. "-" .. tostring(size_list[i]), data)
 			local text = string.sub(arg, 1, 1) .. tostring(num) .. "-" .. tostring(size_list[i])
 		end
 		num = num + 1

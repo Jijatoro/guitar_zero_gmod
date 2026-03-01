@@ -401,7 +401,6 @@ function Guitar_Hero.UI_Play(name, reward, my_tick)
 	--[*] Счётчик
 	counter_text = jlib.vgui.Create("label", Guitar_Hero.Panel_Play)
 	counter_text:SetText(tostring(counter))
-	counter_text:SetFont("s1-24")
 	counter_text:SetSize(400, 90)
 	counter_text:SetContentAlignment(5)
 	counter_text:SetPos(0, long-80)

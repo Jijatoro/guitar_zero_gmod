@@ -54,7 +54,7 @@ end
 
 --[*] To download the library (don't touch!) |>
 DownLoad("")
-MsgC(Color(59, 163, 212), "[jLib] ", Color(228, 240, 240), "Files loaded.\n")
+MsgC(Color(17, 128, 106), "[jLib] ", Color(228, 240, 240), "Files loaded.\n")
 
 -->                      						 _M_                                      
 -- [*] Who are you, Warrior? |~| Кто ты, Воин?  (0-0)                   

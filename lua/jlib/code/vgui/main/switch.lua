@@ -2,38 +2,64 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function icon() return jlib.cfg.icons[jlib.cfg.icon]  or {} end
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
-local all_typs = {"base", "round"}
-local data_font = {
-    ["main"] = {
-        txt = "s1-20"
-    },
-    ["anime"] = {
-        txt = "a3-18"
-    },
-    ["fantasy"] = {
-        txt = "f1-18"
-    },
-    ["cyber"] = {
-        txt = "c2-18"
-    },    
-    ["horror"] = {
-        txt = "h4-18"
-    },
-    ["terminal"] = {
-        txt = "s1-18"
-    } 
-}
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
+local bool_typs = {["base"] = true, ["round"] = true}
+local circle = Material("jlib/img/circle.png", "noclamp smooth")
+
+local function CreateButton(pnl, mar, x, y, adjust)
+    local jv, clr = jv(), clr()
+    pnl.button = jlib.vgui.Create("button", pnl)
+    pnl.button:SetText("")
+    if (adjust) then pnl.button:Scale(x, y, adjust) else pnl.button:Scale(x, y) end
+    pnl.button:Dock(TOP) 
+    pnl.button:Margin(mar[1], mar[2], mar[3], mar[4])
+    pnl.button:SetMouseInputEnabled(true)
+    pnl.button:SetKeyboardInputEnabled(true)
+    pnl.button:SetIsToggle(true)
+    pnl.button.Paint = function(self, w, h)
+        local border = jv.GetBorder("btn")
+        local round = jv.GetRound("base")
+        local parent = self:GetParent()
+        if (self.Hovered) then 
+            draw.RoundedBox(round, 0, 0, w, h, clr["btn_line_h"])
+            draw.RoundedBox(round, border/2, border/2, w-border, h-border, parent:GetColor())
+        else
+            draw.RoundedBox(round, 0, 0, w, h, clr["btn_line"])
+            draw.RoundedBox(round, border/2, border/2, w-border, h-border, parent:GetColor())     
+        end
+        --[*] Circle
+        surface.SetMaterial(circle)
+        surface.SetDrawColor(clr["btn"])
+        surface.DrawTexturedRect(w*parent.point, h*0.21, w*0.33, h*0.6)        
+        --[*] Sign
+        surface.SetMaterial(parent:GetImage())
+        surface.SetDrawColor(clr["btn_line"])
+        surface.DrawTexturedRect(w*parent.num1, h*parent.num2, w*parent.num3, h*parent.num4)
+    end
+    pnl.button.DoClick = function()
+        if (pnl:GetStatus()) then
+            pnl:SetStatus(false)
+        else
+            pnl:SetStatus(true)
+        end
+    end
+end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local jv, clr, icon = jv(), clr(), icon()
+    self.truename = "switch"
     self:SetSize(270, 75)
-    self.image = icon()["question"]
+    self.image = icon["question"]
     self.status = false
-    self.color = clr()["red"]
+    self.color = clr["red"]
     self.num1 = 3 self.num2 = 10
     self.num3, self.num4 = 30
     self.point = 10
@@ -44,40 +70,38 @@ function PANEL:Init()
 
     self.string = jlib.vgui.Create("label", self)
     self.string:SetText(self:GetText())
-    self.string:SetFont(jlib.vgui.GetFont(data_font, "txt"))
-    self.string:SetSize(265, 28)
+    jv.SetFont(self.string, "p2", true)
+    self.string:Scale(0.8, 0.3)
     self.string:Dock(TOP)
-    self.string:DockMargin(0, 1, 0, 0)
-    self.string:SetContentAlignment(5)    
+    self.string:Margin(0, 0.1, 0, 0)
+    self.string:SetContentAlignment(5)
 
-    self.button = jlib.vgui.Create("button", self)
-    self.button:SetText("")
-    self.button:SetSize(75, 40) 
-    self.button:SetMouseInputEnabled(true)
-    self.button:SetKeyboardInputEnabled(true)
-    self.button:SetIsToggle(true)
-    self.button.Paint = function(self, w, h)
-        local c = clr()
-        local parent = self:GetParent()
-        if (self.Hovered) then 
-            draw.RoundedBox(32, 0, 0, w, h, c["btn_line_h"])
-            draw.RoundedBox(32, 3, 3, w-6, h-6, parent:GetColor())
-        else
-            draw.RoundedBox(32, 0, 0, w, h, c["btn_line"])
-            draw.RoundedBox(32, 3, 3, w-6, h-6, parent:GetColor())     
-        end
-        draw.RoundedBox(128, parent.point, 7, 25, 25, c["btn"])
-        surface.SetMaterial(parent:GetImage())
-        surface.SetDrawColor(c["btn_line"])
-        surface.DrawTexturedRect(parent.num1, parent.num2, parent.num3, parent.num4)
-    end
-    self.button.DoClick = function()
-        if (self:GetStatus()) then
-            self:SetStatus(false)
-        else
-            self:SetStatus(true)
-        end
-    end
+    CreateButton(self, {0.33, 0.05, 0, 0}, 0.33, 0.5)    
+end
+
+function PANEL:SetName(arg)
+    self.truename = arg
+end
+
+function PANEL:GetName()
+    return self.truename
+end
+
+function PANEL:Scale(...)
+    local jv = jv()
+    local data = {...}
+    jv["Scale"](self, data)
+end
+
+function PANEL:Margin(...)
+    local jv = jv()
+    local data = {...}
+    jv["Margin"](self, data)
+end
+
+function PANEL:PerformLayout()
+    if not (self.dockmargin) then return end
+    self:Margin()
 end
 
 function PANEL:GetImage()
@@ -104,6 +128,8 @@ function PANEL:SetText(val)
     self.text = val
     if not (val) or (val == "") then
         self.string:Remove()
+        if (IsValid(self.button)) then self.button:Remove() end
+        CreateButton(self, {0, 0, 0, 0}, 0, 1, 1)
     else
         self.string:SetText(val)
     end
@@ -122,20 +148,20 @@ function PANEL:GetType()
 end
 
 function PANEL:SetStatus(val)
-    local ic, c = icon(), clr()
+    local icon, clr = icon(), clr()
     self.status = val
     if (self.status) then 
-        self.color = c["green"]
-        self.num1 = 35 self.num2 = 3
-        self.num3, self.num4  = 34, 34
-        self.point = 10
-        self.image = ic["accept"]
+        self.color = clr["green"]
+        self.num1 = 0.48 self.num2 = 0.2
+        self.num3, self.num4 = 0.4, 0.6
+        self.point = 0.13
+        self.image = icon["accept"]
     else 
-        self.color = c["red"]
-        self.num1 = 10 self.num2 = 9
-        self.num3, self.num4  = 23, 23
-        self.point = 39
-        self.image = ic["close"]
+        self.color = clr["red"]
+        self.num1 = 0.13 self.num2 = 0.2
+        self.num3, self.num4 = 0.34, 0.6
+        self.point = 0.56
+        self.image = icon["close"]
     end
 end
 
@@ -151,19 +177,16 @@ function PANEL:Enable()
     self.button:SetAlpha(255)
 end
 
-function PANEL:PerformLayout()
-    self.button:CenterHorizontal(0.5)
-    self.button:CenterVertical(0.65)
-end
-
 function PANEL:Paint(w, h)
-    local c = clr()
+    local jv, clr = jv(), clr()
+    local border = jv.GetBorder("pnl")
+    local round = jv.GetRound("base")
     local circ, alpha = 0, 255
-    if (self:GetType() == "round") then circ = 32 end
-    if not (table.KeyFromValue(all_typs, self:GetType())) then alpha = 0 end
+    if (self:GetType() == "round") then circ = round end
+    if not (bool_typs[self:GetType()]) then alpha = 0 end
 
-    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(c["line"], alpha))
-    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(c["body"], alpha))
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr["line"], alpha))
+    draw.RoundedBox(circ, border/2, border/2, w-border, h-border, ColorAlpha(clr["body"], alpha))
 end
 
 vgui.Register("jlib.switch-main", PANEL, "PANEL")

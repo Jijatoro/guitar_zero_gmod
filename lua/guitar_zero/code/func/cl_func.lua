@@ -30,8 +30,8 @@ local function DrawLoad()
 
 	draw.RoundedBox(32, b1_w, b1_h, 350, 90, clr()["line"])
 	draw.RoundedBox(32, b2_w, b2_h, 350-6, 90-6, clr()["head"])
-	draw.SimpleTextOutlined(text["Загрузка музыки"], "s1-32", t1_w, t1_h, clr()["t_head"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
-	draw.SimpleTextOutlined(tostring(current_progress) .. "/" .. tostring(end_progress), "s1-24", t2_w, t2_h, clr()["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
+	draw.SimpleTextOutlined(text["Загрузка музыки"], "jlib.s1-32", t1_w, t1_h, clr()["t_head"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
+	draw.SimpleTextOutlined(tostring(current_progress) .. "/" .. tostring(end_progress), "jlib.s1-24", t2_w, t2_h, clr()["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 0, Color(54, 54, 54))
 end
 
 function Guitar_Hero.LoadJson()

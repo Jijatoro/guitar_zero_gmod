@@ -2,70 +2,74 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
-local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
-local all_typs = {"base", "round"}
-local data_font = {
-    ["main"] = {
-        txt = "s1-20",
-        btn = "s5-14"
-    },
-    ["anime"] = {
-        txt = "a3-18",
-        btn = "s5-14"
-    },
-    ["fantasy"] = {
-        txt = "f1-18",
-        btn = "s5-14"
-    },
-    ["cyber"] = {
-        txt = "c2-18",
-        btn = "s5-14"
-    },    
-    ["horror"] = {
-        txt = "h4-18",
-        btn = "s5-14"
-    },
-    ["terminal"] = {
-        txt = "s1-18",
-        btn = "s5-14"
-    } 
-}
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
+local bool_typs = {["base"] = true, ["round"] = true}
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
-    local l = lan()
+    local lan, jv, clr = lan(), jv(), clr()
     self:SetTall(22)
     self:SetMouseInputEnabled(true)
     self:SetKeyboardInputEnabled(true)
     self.pnltype = "round"
 
-    self.pnlname = l["oops"] or "?"
+    self.truename = "selector"
     self.status = false
-    self.value = l["not-selected"]
+    self.value = lan["not-selected"]
     self.data = {}
     self.key = 0
     self:SetSize(250, 90)
 
     self.string = jlib.vgui.Create("label", self)
     self.string:SetText("")
-    self.string:SetFont(jlib.vgui.GetFont(data_font, "txt"))
-    self.string:SetTextColor(clr()["t_btn"])
-    self.string:SetSize(180, 35)
+    jv.SetFont(self.string, "p2", true)
+    self.string:SetTextColor(clr["t_btn"])
+    self.string:Scale(1, 0.3)
     self.string:SetIsToggle(true)
     self.string:Dock(TOP)
-    self.string:DockMargin(3, 3, 3, 0)
+    self.string:Margin(0, 0.05, 0, 0)
     self.string:SetContentAlignment(5)
 
     self.selector = jlib.vgui.Create("button", self)
-    self.selector:SetText(l["not-selected"])
+    self.selector:SetText(lan["not-selected"])
     self.selector:Dock(TOP)
-    self.selector:DockMargin(25, 1, 25, 0)
+    self.selector:Margin(0.1, 0.05, 0.1, 0)
+    self.selector:Scale(0.8, 0.5)
     self.selector.DoClick = function()
         self:Spawn()
     end
+end
+
+function PANEL:SetName(arg)
+    self.truename = arg
+end
+
+function PANEL:GetName()
+    return self.truename
+end
+
+function PANEL:Scale(...)
+    local jv = jv()
+    local data = {...}
+    jv["Scale"](self, data)
+end
+
+function PANEL:Margin(...)
+    local jv = jv()
+    local data = {...}
+    jv["Margin"](self, data)
+end
+
+function PANEL:PerformLayout()
+    if not (self.dockmargin) then return end
+    self:Margin()
 end
 
 function PANEL:SetValue(val)
@@ -117,11 +121,32 @@ function PANEL:GetType()
     return self.pnltype
 end
 
+local function spawnIt(self, scroll)
+    if not (IsValid(self)) or not (IsValid(scroll)) then return end
+    local abs_x, abs_y = self:LocalToScreen(0, 0)
+    local parent = self:GetParent()
+    local parent_x, parent_y = parent:ScreenToLocal(abs_x, abs_y)
+    local width = self:GetWide()
+    local s_height = self:GetTall()*1.74
+    local scroll_x = parent_x
+    local scroll_y = parent_y + self:GetTall() + 1  
+
+    scroll:SetPos(scroll_x, scroll_y)
+    scroll:SetSize(width, s_height)      
+end
+
 function PANEL:Spawn()
+    local jv = jv()
     if (self:GetStatus()) then
         self:SetStatus(false)
-        self.Scroll:Remove()
+        jv["selector"]:Remove()
     else
+        if (IsValid(jv["selector"])) then 
+            local par = jv["selector"].trueparent
+            if (IsValid(par)) then par:SetStatus(false) end
+            jv["selector"]:Remove() 
+        end
+
         self:SetStatus(true)
         local abs_x, abs_y = self:LocalToScreen(0, 0)
         local parent = self:GetParent()
@@ -131,25 +156,36 @@ function PANEL:Spawn()
         local scroll_x = parent_x
         local scroll_y = parent_y + self:GetTall() + 1        
 
-        self.Scroll = jlib.vgui.Create("scroll", self:GetParent())
-            self.Scroll:SetPos(scroll_x, scroll_y)
-            self.Scroll:SetSize(width, s_height)
-            self.Scroll:SetZPos(999)
-            self.Scroll:SetType("round")
+        jv["selector"] = jlib.vgui.Create("scroll", self:GetParent())
+        local scroll = jv["selector"]
+        scroll.trueparent = self
+        scroll:SetZPos(999)
+        scroll:SetType("round")
+        spawnIt(self, scroll)
+        local layout = scroll.PerformLayout
+        scroll.PerformLayout = function(body, w, h)
+            spawnIt(self, scroll)
+            layout(body, w, h)
+        end        
 
-        for i= 1, #self:GetData() do
-            local btnkey = jlib.vgui.Create("button", self.Scroll)
-                btnkey:Dock(TOP)
-                btnkey:DockMargin(6, 0, 6, 1)
-                btnkey:SetSize(0, 25)
-                btnkey:SetText(jlib.sub(self:GetData()[i], 1, 18))
-                btnkey:SetFont(jlib.vgui.GetFont(data_font, "btn"))
-                btnkey.DoClick = function()
-                    self:SetStatus(false)
-                    self.Scroll:Remove()
-                    self:SetKey(i)
-                    self:SetValue(self:GetData()[i])
-                end
+        for i = 1, #self:GetData() do
+            local pnl_btn = jlib.vgui.Create("panel", scroll)
+            pnl_btn:SetType("none")
+            pnl_btn:Dock(TOP)
+            pnl_btn:Margin(0, 0.02, 0, 0)
+            pnl_btn:Scale(0, 0.25)
+                      
+            local btnkey = jlib.vgui.Create("button", pnl_btn)
+            btnkey:Dock(FILL)
+            btnkey:Margin(0.044, 0, 0.044, 0)
+            btnkey:SetText(jlib.sub(self:GetData()[i], 1, 18))
+            jv.SetFont(btnkey, "btn2", true)
+            btnkey.DoClick = function()
+                self:SetStatus(false)
+                scroll:Remove()
+                self:SetKey(i)
+                self:SetValue(self:GetData()[i])
+            end
         end
     end
 end
@@ -166,28 +202,23 @@ function PANEL:Enable()
     self.selector:SetAlpha(255)
 end
 
-function PANEL:SetName(arg)
-    self.pnlname = arg
-end
-
-function PANEL:GetName(arg)
-    return self.pnlname
-end
-
 function PANEL:OnRemove()
-    if (self.Scroll) and (IsValid(self.Scroll)) then
-        self.Scroll:Remove()
+    local jv = jv()
+    if (IsValid(jv["selector"])) then
+        jv["selector"]:Remove()
     end
 end
 
 function PANEL:Paint(w, h)
-    local c = clr()
+    local jv, clr = jv(), clr()
+    local border = jv.GetBorder("pnl")
+    local round = jv.GetRound("base")
     local circ, alpha = 0, 255
-    if (self:GetType() == "round") then circ = 32 end
-    if not (table.KeyFromValue(all_typs, self:GetType())) then alpha = 0 end
+    if (self:GetType() == "round") then circ = round end
+    if not (bool_typs[self:GetType()]) then alpha = 0 end
 
-    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(c["line"], alpha))
-    draw.RoundedBox(circ, 3, 3, w-6, h-6, ColorAlpha(c["body"], alpha))
+    draw.RoundedBox(circ, 0, 0, w, h, ColorAlpha(clr["line"], alpha))
+    draw.RoundedBox(circ, border/2, border/2, w-border, h-border, ColorAlpha(clr["body"], alpha))
 end
 
 vgui.Register("jlib.selector-main", PANEL, "PANEL")

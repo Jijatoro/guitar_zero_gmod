@@ -13,32 +13,10 @@ local function lan() return c()["lans"][c()["lan"]] or {} end
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
-    local jv, clr = jv(), clr()
-    self.truename = "key"
+    self.truename = "dbinder"
     self:SetTall(22)
     self:SetMouseInputEnabled(true)
-    self:SetKeyboardInputEnabled(true)
-    self.value = 0
-    self.text = ""
-    self.pnltype = "none"    
-
-    self.string = jlib.vgui.Create("label", self)
-    self.string:SetText(self:GetText())
-    jv.SetFont(self.string, "p1", true)
-    self.string:Scale(0.5, 0.5)
-    self.string:Dock(LEFT)
-    self.string:Margin(0.005, 0, 0.005, 0)
-    self.string:SetContentAlignment(4)  
-
-    self.key = jlib.vgui.Create("dbinder", self)
-    self.key:SetValue(self:GetValue())
-    self.key:Scale(0.5, 0.9)
-    jv.SetFont(self.key, "btn2", true)
-    self.key:SetTooltip(nil)
-    self.key:Dock(RIGHT)
-    self.key:Margin(0, 0.1, 0, 0.1)  
-
-    jv.SetTip(self.key, lan()["tip-for-bind"], true)
+    self:SetKeyboardInputEnabled(true)  
 end
 
 function PANEL:SetName(arg)
@@ -66,47 +44,22 @@ function PANEL:PerformLayout()
     self:Margin()
 end
 
-function PANEL:SetType(type)
-    self.pnltype = type
-end
-
-function PANEL:GetType()
-    return self.pnltype
-end
-
-function PANEL:SetText(val)
-    self.text = val
-    if (val == "") then self.string:Remove() self.key:Dock(FILL) self.key:Size(1, 1) return end 
-    self.string:SetText(val)
-end
-
-function PANEL:GetText()
-    return self.text
-end
-
-function PANEL:SetValue(val)
-    self.value = val
-    self.key:SetValue(val)
-end
-
-function PANEL:GetValue()
-    return self.key:GetValue()
-end
-
 function PANEL:Paint(w, h)
     local jv, clr = jv(), clr()
-    local border = jv.GetBorder("pnl")
+    local border = jv.GetBorder("btn")
     local round = jv.GetRound("base")
-    if (self:GetType() == "base") then
-        draw.RoundedBox(0, 0, 0, w, h, clr["line"])
-        draw.RoundedBox(0, border/2, border/2, w-border, h-border, clr["body"])
-    elseif (self:GetType() == "round") then
-        draw.RoundedBox(round, 0, 0, w, h, clr["line"])
-        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["body"])
-    else end     
+    if (self.Hovered) then 
+        self:SetTextColor(clr["t_btn_h"])
+        draw.RoundedBox(round, 0, 0, w, h, clr["btn_line_h"])
+        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["btn_h"])
+    else
+        self:SetTextColor(clr["t_btn_h"])
+        draw.RoundedBox(round, 0, 0, w, h, clr["btn_line"])
+        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["btn"])
+    end    
 end
 
-vgui.Register("jlib.key-main", PANEL, "DPanel")
+vgui.Register("jlib.dbinder-main", PANEL, "DBinder")
 
 -->                                              _M_                                      
 -- [*] Who are you, Warrior? |~| Кто ты, Воин?  (0-0)                   

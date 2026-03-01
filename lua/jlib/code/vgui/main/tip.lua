@@ -2,32 +2,19 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
-local data_font = {
-    ["main"] = {
-        txt = "s1-20",
-    },
-    ["anime"] = {
-        txt = "a3-18",
-    },
-    ["fantasy"] = {
-        txt = "f1-18",
-    },
-    ["cyber"] = {
-        txt = "c2-18",
-    },    
-    ["horror"] = {
-        txt = "h4-24",
-    },
-    ["terminal"] = {
-        txt = "t3-18",
-    } 
-}
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local jv = jv()
+    self.truename = "tip"
     self.hasText, self.hasTitle, self.wrapped = false, false, false
 
     self:SetSize(0, 0)
@@ -36,21 +23,40 @@ function PANEL:Init()
     self:SetDrawOnTop(true)
 
     self.text = ""
-    self.font = jlib.vgui.GetFont(data_font, "txt")
+    self.font = false
     self.object = nil
     self.old_remove = nil
     self.status = false
     self.toppos = false
+    jv.SetFont(self, "p2", true)
+end
+
+function PANEL:SetName(arg)
+    self.truename = arg
+end
+
+function PANEL:GetName()
+    return self.truename
+end
+
+function PANEL:SetFont(arg)
+    self.font = arg
+end
+
+function PANEL:GetFont()
+    return self.font
 end
 
 function PANEL:Paint(w, h)
     if (self.object) and (self.object.Hovered) then
-        local c = clr()
+        local jv, clr = jv(), clr()
+        local border = jv.GetBorder("pnl")
+        local round = jv.GetRound("base")
         surface.SetFont(self.font)
         local wide, tall = surface.GetTextSize(self.text)
-        draw.RoundedBox(32, 0, 0, w, h, c["line"])
-        draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
-        draw.SimpleText(self.text, self.font, w*0.5, h*0.5-(tall*0.1), c["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+        draw.RoundedBox(round, 0, 0, w, h, clr["line"])
+        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["body"])
+        draw.SimpleText(self.text, self.font, w*0.5, h*0.5-(tall*0.1), clr["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
     end
 end
 

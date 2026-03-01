@@ -2,19 +2,49 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+	self.truename = "chapter"
 	self.hasText, self.hasTitle, self.wrapped = false, false, false
-	self:SetSize(300, 55)
-    self.pnltype = "base"
+    self.pnltype = "none"
     self.panels = {}
     self.objects = {}
     self.position = "h" --[*] h/v (horizontal / vertical)
     self.form = "t" --[*] t/i (text / icon)
+end
+
+function PANEL:SetName(arg)
+	self.truename = arg
+end
+
+function PANEL:GetName()
+	return self.truename
+end
+
+function PANEL:Scale(...)
+    local jv = jv()
+    local data = {...}
+    jv["Scale"](self, data)
+end
+
+function PANEL:Margin(...)
+    local jv = jv()
+    local data = {...}
+    jv["Margin"](self, data)
+end
+
+function PANEL:PerformLayout()
+    if not (self.dockmargin) then return end
+    self:Margin()
 end
 
 function PANEL:SetType(arg)
@@ -42,13 +72,15 @@ function PANEL:GetForm()
 end
 
 function PANEL:Paint(w, h)
-	local c = clr()
+	local jv, clr = jv(), clr()
+	local border = jv.GetBorder("pnl")
+	local round = jv.GetRound("base")
 	if (self:GetType() == "base") then
-		draw.RoundedBox(0, 0, 0, w, h, c["line"])
-		draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
+		draw.RoundedBox(0, 0, 0, w, h, clr["line"])
+		draw.RoundedBox(0, border/2, border/2, w-border, h-border, clr["body"])
 	elseif (self:GetType() == "round") then
-		draw.RoundedBox(32, 0, 0, w, h, c["line"])
-		draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
+		draw.RoundedBox(round, 0, 0, w, h, clr["line"])
+		draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["body"])
 	else end 
 end
 
@@ -71,16 +103,24 @@ end
 
 local function Generate(self)
     local dock local marg = {}
-    if (self.position == "h") then dock = LEFT marg = {6, 7, 0, 6} else dock = TOP marg = {6, 5, 6, 0} AdjustSize(self) end
+    local max = #self.panels
+    local amount = 1/max
+    if (self.position == "h") then dock = LEFT marg = {0.001, 0, 0.001, 0} else dock = TOP marg = {0.001, 0, 0.001, 0} AdjustSize(self) end
 	for k, v in ipairs(self.panels) do
-		local btn = jlib.vgui.Create("button", self)
-		if (self.form == "t") then btn:SetText(v:GetName() or "?") else btn:SetText("") btn:SetImage(v:GetName() or "question") end
-		btn:Dock(dock)
-		btn:DockMargin(unpack(marg))
+		local pnl_btn = jlib.vgui.Create("panel", self)
+		pnl_btn:SetType("none")
+		pnl_btn:Scale(amount, 1)
+		pnl_btn:Dock(dock)
+		pnl_btn:Margin(unpack(marg))
+
+		local btn = jlib.vgui.Create("button", pnl_btn)
+		if (self.form == "t") then btn:SetText(v.chname or "?") else btn:SetText("") btn:SetImage(v.chname or "question") end
+		btn:Dock(FILL)
+		btn:Margin(0.09, 0.09, 0.09, 0.09)
 		btn.DoClick = function() Done(self, k) end
 		if (k == 1) then btn:SetStatus(true) end
 		self.objects[k] = btn
-	end	 
+	end 
 end
 
 function PANEL:SetData(...)

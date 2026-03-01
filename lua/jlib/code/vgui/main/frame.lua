@@ -2,41 +2,26 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
-local function lan() return jlib.cfg.lans[jlib.cfg.lan] or {} end
-local data_font = {
-    ["main"] = {
-        txt = "s3-24"
-    },
-    ["anime"] = {
-        txt = "a5-32"
-    },
-    ["fantasy"] = {
-        txt = "b3-32"
-    },
-    ["cyber"] = {
-        txt = "c1-32"
-    },    
-    ["horror"] = {
-        txt = "h1-48"
-    },
-    ["terminal"] = {
-        txt = "t2-24"
-    } 
-}
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
-	self.head_text = lan()["main-menu"]
-	self.text_x = 0
+	local jv = jv()
+	self.truename = "frame"
+	self.text = lan()["main-menu"]
 	self.s_hide = true
 	self:SetDraggable(true)
 	self:SetSizable(false)
 	self:SetScreenLock(true)
-	self:SetMinWidth( 50 )
-	self:SetMinHeight( 50 )
+	self:SetMinWidth(50)
+	self:SetMinHeight(50)
 	self:SetPaintBackgroundEnabled(false)
 	self:SetPaintBorderEnabled(false)
 	self.m_fCreateTime = SysTime()
@@ -46,54 +31,72 @@ function PANEL:Init()
     self.image_alpha = 255
     self.image_clr = Color(255, 255, 255)	
 
-	self.btnClose:Remove()
-	self.btnMaxim:Remove()
-	self.btnMinim:Remove()
-	self.lblTitle:Remove()
+    for _, v in pairs(self:GetChildren()) do v:Remove() end
+    self:DockPadding(0, 0, 0, 0)
 
 	self.head = jlib.vgui.Create("panel", self)
-	self.head:SetSize(0, 60)
+	self.head:Scale(0, 0.1)
 	self.head:Dock(TOP)
-	self.head:DockMargin(0, -28, 0, 0)
-	self.head:DockPadding(0, 7, 0, 7)
-	self.head:SetType("nodraw")
-	local size_x, size_y = self.head:GetSize()
+	self.head:SetType("round")
+	self.head:Margin(0, 0, 0, 0)
+	self.head:SetColorAlpha(255)
 
-	self.text = jlib.vgui.Create("label", self.head)
-	self.text:SetText(self:GetText())
-	self.text:SetFont(jlib.vgui.GetFont(data_font, "txt"))
-	self.text:Dock(FILL)
-	self.text:DockMargin(0, 0, 0, 0)
-	self.text:SetContentAlignment(5)
+	self.head_text = jlib.vgui.Create("label", self.head)
+	self.head_text:SetText(self.text)
+	self.head_text:Dock(FILL)
+	self.head_text:Margin(0.1, 0, 0, 0)
+	self.head_text:SetContentAlignment(5)
+	jv.SetFont(self.head_text, "h1", true)
 
 	self.btn = jlib.vgui.Create("button", self.head)
-	self.btn:SetSize(45, 45)
+	self.btn:Scale(0.09, 0.7, 2)
 	self.btn:SetImage("close")
-	self.btn:Dock(NODOCK)
-	self.btn:SetPos(0, 0)
+	self.btn:Dock(RIGHT)
+	self.btn:Margin(0, 0.15, 0.02, 0)
 	self.btn:SetSound("close")
 	self.btn.DoClick = function()
 		self:Close()
 	end	
 
-	self:Alpha()
+	jv.Alpha(self)
+end
+
+function PANEL:SetName(arg)
+	self.truename = arg
+end
+
+function PANEL:GetName()
+	return self.truename
+end
+
+function PANEL:Scale(...)
+    local arg = {...}
+    local w, h = ScrW(), ScrH()
+    local size_x, size_y = arg[1]*w, arg[2]*h
+    self.cust_size = {arg[1], arg[2]}
+    self:SetSize(size_x, size_y)
+end
+
+function PANEL:OnRemove()
+	hook.Run("jLib.CloseUI")
+end
+
+function PANEL:ScaleHead(w, h)
+	if not (IsValid(self.head)) then return end
+	self.head:Scale(w, h)
 end
 
 function PANEL:ShowCloseButton(bool)
 	self.btn:SetVisible(bool)
-
-	if not (bool) then
-		self.text:DockMargin(0, 0, -25, 0)
-	end
 end
 
 function PANEL:GetText()
-	return self.head_text
+	return self.text
 end
 
 function PANEL:SetText(str)
-	self.head_text = str
-	self.text:SetText(str)
+	self.text = str
+	self.head_text:SetText(str)
 end
 
 function PANEL:GetHide()
@@ -105,14 +108,14 @@ function PANEL:SetHide(bool)
 
 	if not (self:GetHide()) then
 		self.head:SetVisible(false)
-		self.text:SetVisible(false)
 	end
 end
 
 function PANEL:SetImage(arg)
+	local jv = jv()
     if not (isstring(arg)) then return end
     if (string.StartWith(arg, "https")) then
-        jlib.UrlImage(arg, function(mat)
+        jv.UrlImage(arg, function(mat)
             if (mat) then
                 self.image = mat
                 return
@@ -143,40 +146,43 @@ function PANEL:SetColorAlpha(arg)
 end
 
 function PANEL:Paint(w, h)
-	local c = clr()
+	local jv, clr = jv(), clr()
 	local size_head = 60
-	local ad_pos, ad_size = 3, 6
+	local border = jv.GetBorder("pnl")
+	local round = jv.GetRound("base")
 	local img_p_x, img_p_y, img_w_y, img_h_y = 0, 0, 0, 0
 	img_h_y = math.ceil(size_head/2)
 	img_p_y = img_h_y
 	if not (self:GetHide()) then self.color_alpha = 0 end
 
 	--[*] Body (BG)
-	draw.RoundedBoxEx(32, 0, 0, w, h, ColorAlpha(c["line"], self.color_alpha), true, true, false, false)
-	draw.RoundedBoxEx(32, ad_pos, ad_pos, w-ad_size, h-ad_size, ColorAlpha(c["bg"], self.color_alpha), true, true, false, false)
+	draw.RoundedBoxEx(round, 0, 0, w, h, ColorAlpha(clr["line"], self.color_alpha), true, true, false, false)
+	draw.RoundedBoxEx(round, border/2, border/2, w-border, h-border, ColorAlpha(clr["bg"], self.color_alpha), true, true, false, false)
 
 	--[*] BG Image
     if (self:GetImage()) then
         surface.SetMaterial(Material(self:GetImage()))
         surface.SetDrawColor(ColorAlpha(self:GetColor(), self.image_alpha))
-        surface.DrawTexturedRect(img_p_x+ad_pos, img_p_y+ad_pos, w-img_w_y-ad_size, h-img_h_y-ad_size) 
+        surface.DrawTexturedRect(img_p_x+(border/2), img_p_y+(border/2), w-img_w_y-border, h-img_h_y-border) 
     end	
-
-    --[*] Head
-    draw.RoundedBox(32, 0+1, 0+1, (w-2), size_head, ColorAlpha(c["line"]), alpha)
-	draw.RoundedBox(32, ad_pos+1, ad_pos+1, (w-2)-ad_size, size_head-ad_size, ColorAlpha(c["head"]), alpha)
 end
 
 function PANEL:PerformLayout()
-	if (self.btn) and (IsValid(self.btn)) then
-		local wide = self:GetWide()
-		self.btn:SetPos(wide-60, 7)
-	end
 	return false
 end
 
 function PANEL:SetIcon()
 	return false
+end
+
+function PANEL:OnScreenSizeChanged(old_w, old_h, new_w, new_h)
+	local arg = self.cust_size
+	if not (arg) then return end
+	self:SetSize(new_w*arg[1], new_h*arg[2])
+
+	local pos_x, pos_y = self:GetPos()
+	local new_x, new_y = new_w*(pos_x/old_w), new_h*(pos_y/old_h)
+	self:SetPos(new_x, new_y)
 end
 
 vgui.Register("jlib.frame-main", PANEL, "DFrame")

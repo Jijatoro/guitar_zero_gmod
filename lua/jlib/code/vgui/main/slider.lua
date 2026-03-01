@@ -2,43 +2,29 @@
 --[+] Variables :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
 local PANEL = {}
-local function clr() return jlib.cfg.themes[jlib.cfg.theme]  or {} end
-local data_font = {
-    ["main"] = {
-        txt = "s1-20"
-    },
-    ["anime"] = {
-        txt = "a3-18"
-    },
-    ["fantasy"] = {
-        txt = "f1-18"
-    },
-    ["cyber"] = {
-        txt = "c2-18"
-    },    
-    ["horror"] = {
-        txt = "h4-18"
-    },
-    ["terminal"] = {
-        txt = "s1-18"
-    } 
-}
+local function j() return jlib end
+local function c() return j()["cfg"] end
+local function jv() return j()["vgui"] end
+local function clr() return c()["themes"][c()["theme"]]  or {} end
+local function icon() return c()["icons"][c()["icon"]] end
+local function lan() return c()["lans"][c()["lan"]] or {} end
 AccessorFunc(PANEL, "m_fDefaultValue", "DefaultValue")
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
+    local jv, clr = jv(), clr()
     self.hasText, self.hasTitle, self.wrapped = false, false, false
     self.pnltype = "round"
-    self.pnlname = nil
+    self.truename = "slider"
 
     self.TextArea:Remove()
     self.TextArea = jlib.vgui.Create("textentry", self)
     self.TextArea:Dock(RIGHT)
-    self.TextArea:DockMargin(4, 4, 4, 4)
+    self.TextArea:Margin(0.01, 0.06, 0, 0.06)
     self.TextArea:SetType("none")
-    self.TextArea:SetWide(60)
+    self.TextArea:Scale(0.13, 0.8)
     self.TextArea:SetNumeric(true)
     self.TextArea.OnChange = function(textarea, val) self:SetValue( self.TextArea:GetText() ) end
 
@@ -46,32 +32,62 @@ function PANEL:Init()
     self.Slider = vgui.Create("DSlider", self)
     self.Slider:SetLockY(0.5)
     self.Slider.TranslateValues = function(slider, x, y) return self:TranslateSliderValues( x, y ) end
-    self.Slider:SetTrapInside( true )
+    self.Slider:SetTrapInside(true)
     self.Slider:Dock(FILL)
-    self.Slider:SetHeight(16)
+    jv.Scale(self.Slider, {0.5, 0.8})
+    local perf = self.Slider.PerformLayout
+    self.Slider.PerformLayout = function(body, w, h)
+        perf(body, w, h)
+        if (body.dockmargin) then
+            jv.Margin(body, {0.1, 0.06, 0.1, 0.06})
+        end        
+    end    
     self.Slider.ResetToDefaultValue = function(s)
         self:ResetToDefaultValue()
     end
+
     self.Slider.Paint = function(self, w, h)
-        local c = clr()
-        draw.RoundedBox(0, 0, h*0.48, w, 2, c["line"])
+        draw.RoundedBox(0, 0, h*0.48, w, 2, clr["line"])
     end
-     self.Slider.Knob:SetSize(8, 25)
+
+    --[*] the slider we use to drag the mouse
+    function self.Slider.Knob:Scale(...) 
+        local data = {...}
+        jv["Scale"](self, data)
+    end
+
+    function self.Slider.Knob:Margin(...)
+        local data = {...}
+        jv["Margin"](self, data)
+    end
+
+    local knob_playout = self.Slider.Knob.PerformLayout
+    function self.Slider.Knob:PerformLayout()
+        local s_x, s_y = self:GetSize()
+        knob_playout(self, s_x, s_y)
+        if not (self) then return end
+        self:Margin()
+    end    
+
+    self.Slider.Knob:Scale(0.05, 0.5)
+    self.Slider.Knob:Margin(0, 0, 0, 0)
+    self.Slider.Knob:SetSize(8, 25)
     self.Slider.Knob.Paint = function(self, w, h)
-        local c = clr()
+        local round = jv.GetRound("weak")
         if (self.Hovered) then
-            draw.RoundedBox(8, 0, 0, w, h, c["btn_line_h"])
+            draw.RoundedBox(round, 0, 0, w, h, clr["btn_line_h"])
         else
-            draw.RoundedBox(8, 0, 0, w, h, c["btn_line"])
+            draw.RoundedBox(round, 0, 0, w, h, clr["btn_line"])
         end
     end
 
     self.Label:Remove()
     self.Label = jlib.vgui.Create("label", self)
     self.Label:Dock(LEFT)
-    self.Label:DockMargin(10, 0, 0, 3)
+    self.Label:Margin(0.05, 0.06, 0, 0.06)
+    self.Label:Scale(0.35, 0.8)
     self.Label:SetMouseInputEnabled(true)
-    self.Label:SetFont(jlib.vgui.GetFont(data_font, "txt"))
+    jv.SetFont(self.Label, "p2", true)
 
     self.Scratch:Remove()
     self.Scratch = self.Label:Add("DNumberScratch")
@@ -91,6 +107,31 @@ function PANEL:Init()
     self.Wang = self.Scratch
 end
 
+function PANEL:SetName(arg)
+    self.truename = arg
+end
+
+function PANEL:GetName()
+    return self.truename
+end
+
+function PANEL:Scale(...)
+    local jv = jv()
+    local data = {...}
+    jv.Scale(self, data)
+end
+
+function PANEL:Margin(...)
+    local jv = jv()
+    local data = {...}
+    jv.Margin(self, data)
+end
+
+function PANEL:PerformLayout()
+    if not (self.dockmargin) then return end
+    self:Margin()
+end
+
 function PANEL:SetType(type)
 	self.pnltype = type
 end
@@ -99,22 +140,16 @@ function PANEL:GetType()
 	return self.pnltype
 end
 
-function PANEL:SetName(arg)
-    self.pnlname = arg
-end
-
-function PANEL:GetName(arg)
-    return self.pnlname
-end
-
 function PANEL:Paint(w, h)
-    local c = clr()
+    local jv, clr = jv(), clr()
+    local border = jv.GetBorder("pnl")
+    local round = jv.GetRound("base")
     if (self:GetType() == "base") then
-        draw.RoundedBox(0, 0, 0, w, h, c["line"])
-        draw.RoundedBox(0, 3, 3, w-6, h-6, c["body"])
+        draw.RoundedBox(0, 0, 0, w, h, clr["line"])
+        draw.RoundedBox(0, border/2, border/2, w-border, h-border, clr["body"])
     elseif (self:GetType() == "round") then
-        draw.RoundedBox(32, 0, 0, w, h, c["line"])
-        draw.RoundedBox(32, 3, 3, w-6, h-6, c["body"])
+        draw.RoundedBox(round, 0, 0, w, h, clr["line"])
+        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["body"])
     end 
 end
 

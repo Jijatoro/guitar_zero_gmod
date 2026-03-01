@@ -98,7 +98,7 @@ No assets redistributed outside of this library package.
 --[+] Configuration :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
 --------------------------------------------------------------------------------------------------------------|>
 --[*] Language
-jlib.cfg.lan = "en"
+jlib.cfg.lan = "en" -- "en", "de", "pl", "uk", "tr", "fr", "es", "ru"
 
 --[*] Turn on the sound for UI elements?
 jlib.cfg.sound_ui = true
@@ -113,7 +113,7 @@ jlib.cfg.music_volume = 0.4
 jlib.cfg.icon = "main"
 
 --[*] Theme |> "dark", "light", "blue", "anime", "fantasy", "cyber", "horror", "terminal"
-jlib.cfg.theme = "blue"
+jlib.cfg.theme = "terminal"
 
 --[*] Allowed themes
 jlib.cfg.theme_ChangeList = {"dark", "light", "blue", "anime", "fantasy", "cyber", "horror", "terminal"} 
