@@ -19,36 +19,46 @@ function PANEL:Init()
     self.pnltype = "round"
     self.truename = "slider"
 
+    self.pnl_textarea = jlib.vgui.Create("panel", self)
+    self.pnl_textarea:Dock(RIGHT)
+    self.pnl_textarea:Margin(0.01, 0, 0.01, 0)
+    self.pnl_textarea:SetType("none")
+    self.pnl_textarea:Scale(0.11, 0.8)
+
     self.TextArea:Remove()
-    self.TextArea = jlib.vgui.Create("textentry", self)
-    self.TextArea:Dock(RIGHT)
-    self.TextArea:Margin(0.01, 0.06, 0, 0.06)
+    self.TextArea = jlib.vgui.Create("textentry", self.pnl_textarea)
+    self.TextArea:Dock(FILL)
+    self.TextArea:Margin(0, 0.25, 0, 0)
     self.TextArea:SetType("none")
-    self.TextArea:Scale(0.13, 0.8)
     self.TextArea:SetNumeric(true)
-    self.TextArea.OnChange = function(textarea, val) self:SetValue( self.TextArea:GetText() ) end
+    self.TextArea.OnChange = function(textarea, val) self:SetValue(self.TextArea:GetText()) end
 
     self.Slider:Remove()
     self.Slider = vgui.Create("DSlider", self)
+    --[*] the slider itself
+    function self.Slider:Scale(...) 
+        local data = {...}
+        jv["Scale"](self, data)
+    end
+
+    function self.Slider:Margin(...)
+        local data = {...}
+        jv["Margin"](self, data)
+    end
+
     self.Slider:SetLockY(0.5)
-    self.Slider.TranslateValues = function(slider, x, y) return self:TranslateSliderValues( x, y ) end
+    self.Slider.TranslateValues = function(slider, x, y) return self:TranslateSliderValues(x, y) end
     self.Slider:SetTrapInside(true)
     self.Slider:Dock(FILL)
-    jv.Scale(self.Slider, {0.5, 0.8})
+    self.Slider:Margin(0.01, 0, 0.01, 0)
     local perf = self.Slider.PerformLayout
     self.Slider.PerformLayout = function(body, w, h)
         perf(body, w, h)
-        if (body.dockmargin) then
-            jv.Margin(body, {0.1, 0.06, 0.1, 0.06})
-        end        
+        if not (body.dockmargin) then return end
+        body:Margin()              
     end    
-    self.Slider.ResetToDefaultValue = function(s)
-        self:ResetToDefaultValue()
-    end
-
-    self.Slider.Paint = function(self, w, h)
-        draw.RoundedBox(0, 0, h*0.48, w, 2, clr["line"])
-    end
+    self.Slider.ResetToDefaultValue = function(s) self:ResetToDefaultValue() end
+    self.Slider.Paint = function(self, w, h) draw.RoundedBox(0, 0, h*0.48, w, 2, clr["line"]) end
 
     --[*] the slider we use to drag the mouse
     function self.Slider.Knob:Scale(...) 
@@ -84,8 +94,8 @@ function PANEL:Init()
     self.Label:Remove()
     self.Label = jlib.vgui.Create("label", self)
     self.Label:Dock(LEFT)
-    self.Label:Margin(0.05, 0.06, 0, 0.06)
-    self.Label:Scale(0.35, 0.8)
+    self.Label:Margin(0.02, 0.06, 0, 0.06)
+    self.Label:Scale(0.45, 0.8)
     self.Label:SetMouseInputEnabled(true)
     jv.SetFont(self.Label, "p2", true)
 

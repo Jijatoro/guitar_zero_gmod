@@ -50,15 +50,14 @@ local menu_data = {}
 menu_data[1] = {key = "lan", func = function(par) local sel = jlib.vgui.Create("selector", par) sel:Scale(0.4, 0.13) sel:Dock(TOP) sel:Margin(0.3, 0.02, 0.3, 0) sel:SetText(lan()["language"]) local all_lan = {} for k, _ in pairs(jlib.cfg.lans) do table.insert(all_lan, k) end sel:SetData(all_lan) return sel end}
 menu_data[2] = {key = "theme", func = function(par) local sel = jlib.vgui.Create("selector", par) sel:Scale(0.4, 0.13) sel:Dock(TOP) sel:Margin(0.3, 0.02, 0.3, 0) sel:SetText(lan()["theme"]) sel:SetData(jlib.cfg.theme_ChangeList) return sel end}
 menu_data[3] = {key = "sound_ui", func = function(par) local sw = jlib.vgui.Create("switch", par) sw:Scale(0.5, 0.13) sw:Dock(TOP) sw:Margin(0.25, 0.02, 0.25, 0) sw:SetText(lan()["sound_ui"]) return sw end}
-menu_data[4] = {key = "sound_ui_volume", func = function(par) local sl = jlib.vgui.Create("slider", par) sl:Scale(0.83, 0.09) sl:Dock(TOP) sl:Margin(0.09, 0.02, 0.09, 0) sl:SetText(lan()["sound_ui_volume"]) sl:SetDecimals(1) sl:SetMax(1) sl.OnValueChanged = function(self, val) self:SetValue(math.Round(val, 2)) jlib.vgui.PlaySound("cursor", val, true) jlib.cfg.sound_ui_volume = math.Round(val, 2) end sl:SetType("round") return sl end}
-menu_data[5] = {key = "music_volume", func = function(par) local sl = jlib.vgui.Create("slider", par) sl:Scale(0.83, 0.09) sl:Dock(TOP) sl:Margin(0.09, 0.02, 0.09, 0) sl:SetText(lan()["music_volume"]) sl:SetDecimals(1) sl:SetMax(5) sl.OnValueChanged = function(self, val) self:SetValue(math.Round(val, 2)) ZmusicEdit(val) end sl:SetType("round") return sl end}
+menu_data[4] = {key = "sound_ui_volume", func = function(par) local sl = jlib.vgui.Create("slider", par) sl:Scale(0.83, 0.09) sl:Dock(TOP) sl:Margin(0.09, 0.02, 0.09, 0) sl:SetText(lan()["sound_ui_volume"]) sl:SetDecimals(2) sl:SetMax(1) sl.OnValueChanged = function(self, val) self:SetValue(math.Round(val, 2)) jlib.vgui.PlaySound("cursor", val, true) jlib.cfg.sound_ui_volume = math.Round(val, 2) end sl:SetType("round") return sl end}
+menu_data[5] = {key = "music_volume", func = function(par) local sl = jlib.vgui.Create("slider", par) sl:Scale(0.83, 0.09) sl:Dock(TOP) sl:Margin(0.09, 0.02, 0.09, 0) sl:SetText(lan()["music_volume"]) sl:SetDecimals(2) sl:SetMax(5) sl.OnValueChanged = function(self, val) self:SetValue(math.Round(val, 2)) ZmusicEdit(val) end sl:SetType("round") return sl end}
 
 function jlib.SettingsMenu()
 	local jv = jv()
-	if not (jv["current_fkey"]) then return end
 	
 	local frame = jlib.vgui.Create("frame")
-	frame:Scale(0.3, 0.54)
+	frame:Scale(0.33, 0.54)
 	frame:MakePopup()
 	frame:SetText(jlib.cfg.lans[jlib.cfg.lan]["settings"])
 	frame:Center()
@@ -75,7 +74,7 @@ function jlib.SettingsMenu()
 	end
 
 	local all = {}
-	for k, v in ipairs(menu_data) do
+	for k, v in pairs(menu_data) do
 		all[v.key] = v.func(frame)
 		all[v.key]:SetValue(jlib.cfg[v.key])
 	end

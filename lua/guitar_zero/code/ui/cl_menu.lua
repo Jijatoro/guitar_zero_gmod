@@ -709,8 +709,6 @@ end
 --[+] Запуск UI :--:--:--:--:--:--:--:--:--:--:--:}>                                          |>
 ----------------------------------------------------------------------------------------------|>
 function Guitar_Hero.UI_Start()
-	local jv = jv()
-	if not (jv["current_fkey"]) then return end
 	local my_setting = Guitar_Hero.MySetting["setting"]
 	local text = Guitar_Hero.Languages[jlib.cfg.lan]
 

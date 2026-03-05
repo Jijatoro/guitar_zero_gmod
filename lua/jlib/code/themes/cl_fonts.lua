@@ -1,58 +1,53 @@
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Variables |~| :--:--:--:--:--:--:--:--:--:--:--:}>                                                      |>
 --------------------------------------------------------------------------------------------------------------|>
-local defalt = {extended = true, weight = 500, blursize = 0, scanlines = 0, antialias = true, underline = false, italic = false, strikeout = false, symbol = false, rotary = false, additive = false, outline = false, shadow = false}
-local size_list = {5, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 32, 48, 54, 64}
+if not (jlib) then jlib = {} end
+if not (jlib.vgui) then jlib.vgui = {} end
+local function j() return jlib end
+local function jv() return j()["vgui"] end
+local fonts_defalt = {extended = true, antialias = true, weight = 500}
 local fonts_list = {
-	["simple"] = {
-		"Poiret One", "Playfair Display SC", "Rubik Mono One", "Amatic SC", "TikTok Sans 36pt Light"
-	},	
-	["base"] = {
-		"Great Vibes", "Lobster", "Caveat", "Bad Script" 
-	},
-	["anime"] = {
-		"Stick", "LXGW WenKai TC", "LXGW WenKai TC Light", "Hachi Maru Pop", "Reggae One"
-	},	
-	["fantasy"] = {
-		"Cormorant Unicase", "Marck Script", "Comic Relief"
-	},
-	["horror"] = {
-		"Rubik Wet Paint", "Ruslan Display", "Underdog", "Rubik Distressed", "Rubik Burned", "Kablammo Zoink"
-	},
-	["terminal"] = {
-		"Tiny5", "Press Start 2P", "DotGothic16", "Handjet"
-	},
-	["cyber"] = {
-		"Stalinist One", "Tektur", "Rubik Broken Fax", "Rubik Glitch", "Train One"
-	}
+    --[*] simple
+    ["s"] = {
+        "Poiret One", "Playfair Display SC", "Rubik Mono One", "Amatic SC", "TikTok Sans 36pt Light"
+    },
+    --[*] base  
+    ["b"] = {
+        "Great Vibes", "Lobster", "Caveat", "Bad Script" 
+    },
+    --[*] anime
+    ["a"] = {
+        "Stick", "LXGW WenKai TC", "LXGW WenKai TC Light", "Hachi Maru Pop", "Reggae One"
+    },
+    --[*] fantasy  
+    ["f"] = {
+        "Cormorant Unicase", "Marck Script", "Comic Relief"
+    },
+    --[*] horror
+    ["h"] = {
+        "Rubik Wet Paint", "Ruslan Display", "Underdog", "Rubik Distressed", "Rubik Burned", "Kablammo Zoink"
+    },
+    --[*] terminal
+    ["t"] = {
+        "Tiny5", "Press Start 2P", "DotGothic16", "Handjet"
+    },
+    --[*] cyber
+    ["c"] = {
+        "Stalinist One", "Tektur", "Rubik Broken Fax", "Rubik Glitch", "Train One"
+    }
 }
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] Functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                          |>
 --------------------------------------------------------------------------------------------------------------|>
-local function FontLoad(arg)
-	if not (fonts_list[arg]) then return end
-	local num = 1
-	for _, name in ipairs(fonts_list[arg]) do
-		for i = 1, #size_list do
-			local data = table.Copy(defalt) 
-			data.font = name 
-			data.size = size_list[i]
-			surface.CreateFont("jlib." .. string.sub(arg, 1, 1) .. tostring(num) .. "-" .. tostring(size_list[i]), data)
-			local text = string.sub(arg, 1, 1) .. tostring(num) .. "-" .. tostring(size_list[i])
-		end
-		num = num + 1
-	end
+function jlib.vgui.NewFont(name, cat, id, size)
+	local jv = jv()
+	local data = fonts_defalt
+	data["font"] = fonts_list[cat][id]
+	data["size"] = size
+	surface.CreateFont("jlib." .. name, data)
+	jv["all_font"][name] = true
 end
-
-local function LoadFonts(data)
-	for _, t in pairs(data) do
-		FontLoad(t)
-	end
-end
-
---[*] Font Loading
-LoadFonts(jlib.cfg.fonts)
 
 -->                      						 _M_                                      
 -- [*] Who are you, Warrior? |~| Кто ты, Воин?  (0-0)                   

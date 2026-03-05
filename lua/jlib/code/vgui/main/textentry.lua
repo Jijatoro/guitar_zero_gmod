@@ -29,7 +29,7 @@ function PANEL:Init()
     self:SetAllowNonAsciiCharacters(true)
     self.m_bLoseFocusOnClickAway = false
     self:SetCursor("beam")
-    jv.SetFont(self, "btn1", true)
+    jv.SetFont(self, "textentry", true)
     self.type = "base"
     self.m_txtPlaceholder = lan["text"] .. "..."
     self.minmax = nil
@@ -100,7 +100,8 @@ function PANEL:Paint( w, h )
         draw.RoundedBox(0, border/2, border/2, w-border, h-border, clr["btn_h"])
     end
 
-    if (self:GetValue() == "") or (self:GetValue() == nil) and (self.type == "base") then
+    if (self:GetValue() == "") or (self:GetValue() == nil) then
+        if (self.type != "base") then return end
         local text = self.m_txtPlaceholder
         surface.SetFont(self:GetFont())
         local text_w, text_h = surface.GetTextSize(text)

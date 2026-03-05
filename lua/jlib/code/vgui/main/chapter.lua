@@ -131,7 +131,7 @@ function PANEL:SetData(...)
 
     if not (table.IsEmpty(self.panels)) then
 	    if not (table.IsEmpty(self.objects)) then
-	    	for _, v in pairs(self.objects) do
+	    	for _, v in ipairs(self.objects) do
 	    		v:Remove()
 	    	end
 	    end    	

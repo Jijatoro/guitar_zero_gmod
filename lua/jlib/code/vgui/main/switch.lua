@@ -76,7 +76,7 @@ function PANEL:Init()
     self.string:Margin(0, 0.1, 0, 0)
     self.string:SetContentAlignment(5)
 
-    CreateButton(self, {0.33, 0.05, 0, 0}, 0.33, 0.5)    
+    CreateButton(self, {0.4, 0.05, 0, 0}, 0.2, 0.45)    
 end
 
 function PANEL:SetName(arg)

@@ -11,10 +11,10 @@ local check_save = {
 		if not (arg) then return false end
 		if not (isstring(arg)) then return false end
 		local all_lan = {} 
-		for k, _ in pairs(jlib.cfg.lans) do 
+		for k, _ in ipairs(jlib.cfg.lans) do 
 			table.insert(all_lan, k) 
 		end
-		for _, v in pairs(all_lan) do
+		for _, v in ipairs(all_lan) do
 			if (v == arg) then result = true break end
 		end
 		return result
@@ -23,7 +23,7 @@ local check_save = {
 		local result = false
 		if not (arg) then return false end
 		if not (isstring(arg)) then return false end
-		for _, v in pairs(jlib.cfg.theme_ChangeList) do
+		for _, v in ipairs(jlib.cfg.theme_ChangeList) do
 			if (v == arg) then result = true break end
 		end
 		return result
@@ -55,30 +55,21 @@ end
 
 hook.Add("InitPostEntity", "jlib.lib-setting", function(ply, bool)
 	local jv = jv()
+	jv["AdjustFont"](ScrW(), ScrH())
 	--[*] we check for the presence of saved data
 	local setting = jlib.GetSaveData()
 	if not (setting) then
 		failload() return
 	else
-		for k, v in pairs(check_save) do
+		for k, v in ipairs(check_save) do
 			if not (setting[k]) or not (v(setting[k])) then
 				failload() return
 			end
 		end
 		jlib.UpdateConfig(setting)
 	end
-
-	--[*] we select fonts for the current screen extension
-	jv.AdjustFont(ScrW(), ScrH())
 end)
 
---[*] just in case
-timer.Create("jlib.ModCheck", 5, 1, function()
-	local jv = jv()
-	if not (jv["current_fkey"]) then 
-		jv.AdjustFont(ScrW(), ScrH())
-	end
-end)
 
 --------------------------------------------------------------------------------------------------------------|>
 --[+] The client changed the screen extension :--:--:--:--:--:--:--:--:--:--:--:}>                            |>
@@ -93,18 +84,16 @@ end)
 --------------------------------------------------------------------------------------------------------------|>
 hook.Add("jLib.CloseUI", "jlib.cleardata", function()
 	local jv = jv()
-	
 	--[*] clearing deleted font items
-	local max_element = #jv["current_felements"]
+	local max_element = #jv["elements_font"]
 	if (max_element > 0) then
 		for i = max_element, 1, -1 do
-			local pnl = jv["current_felements"][i]["element"]
+			local pnl = jv["elements_font"][i]
 			if not (IsValid(pnl)) then
-				table.remove(jv["current_felements"], i)
+				table.remove(jv["elements_font"], i)
 			end
 		end
 	end
-
 
 	--[*] clearing deleted scrolls
 	local max_scrolls = #jv["current_scrolls"]

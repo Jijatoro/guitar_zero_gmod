@@ -29,7 +29,7 @@ function PANEL:Init()
     self:SetTall( 20 )
     self.m_bLoseFocusOnClickAway = false
     self:SetCursor("beam")
-    jv.SetFont(self, "btn1", true)
+    jv.SetFont(self, "textentry", true)
     self:SetEnabled(false)
     self:SetMultiline(true)
     self:SetVerticalScrollbarEnabled(true)

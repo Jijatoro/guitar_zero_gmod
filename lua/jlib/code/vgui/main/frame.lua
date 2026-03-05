@@ -31,7 +31,7 @@ function PANEL:Init()
     self.image_alpha = 255
     self.image_clr = Color(255, 255, 255)	
 
-    for _, v in pairs(self:GetChildren()) do v:Remove() end
+    for _, v in ipairs(self:GetChildren()) do v:Remove() end
     self:DockPadding(0, 0, 0, 0)
 
 	self.head = jlib.vgui.Create("panel", self)
@@ -44,7 +44,7 @@ function PANEL:Init()
 	self.head_text = jlib.vgui.Create("label", self.head)
 	self.head_text:SetText(self.text)
 	self.head_text:Dock(FILL)
-	self.head_text:Margin(0.1, 0, 0, 0)
+	self.head_text:Margin(0.085, 0, 0, 0)
 	self.head_text:SetContentAlignment(5)
 	jv.SetFont(self.head_text, "h1", true)
 

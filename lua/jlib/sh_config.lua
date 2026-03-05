@@ -118,9 +118,6 @@ jlib.cfg.theme = "terminal"
 --[*] Allowed themes
 jlib.cfg.theme_ChangeList = {"dark", "light", "blue", "anime", "fantasy", "cyber", "horror", "terminal"} 
 
---[*] Fonts (do not remove "simple"!)
-jlib.cfg.fonts = {"simple", "base", "anime", "fantasy", "horror", "cyber", "terminal"}
-
 --[*] A white sheet of symbols (nicknames, names, and so on)
 jlib.cfg.whitelist_symbols = {
     --[+] en
