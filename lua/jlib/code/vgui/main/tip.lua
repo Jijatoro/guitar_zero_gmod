@@ -10,7 +10,7 @@ local function icon() return c()["icons"][c()["icon"]] end
 local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     local jv = jv()
@@ -24,13 +24,16 @@ function PANEL:Init()
 
     self.text = ""
     self.font = false
-    self.object = nil
-    self.old_remove = nil
+    self.object = false
+    self.old_remove = false
     self.status = false
     self.toppos = false
     jv.SetFont(self, "p2", true)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
     self.truename = arg
 end
@@ -39,6 +42,9 @@ function PANEL:GetName()
     return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing text font :--:--:--:--:--:--:--:--:--:--:--:}>                                                 |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetFont(arg)
     self.font = arg
 end
@@ -47,19 +53,9 @@ function PANEL:GetFont()
     return self.font
 end
 
-function PANEL:Paint(w, h)
-    if (self.object) and (self.object.Hovered) then
-        local jv, clr = jv(), clr()
-        local border = jv.GetBorder("pnl")
-        local round = jv.GetRound("base")
-        surface.SetFont(self.font)
-        local wide, tall = surface.GetTextSize(self.text)
-        draw.RoundedBox(round, 0, 0, w, h, clr["line"])
-        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["body"])
-        draw.SimpleText(self.text, self.font, w*0.5, h*0.5-(tall*0.1), clr["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-    end
-end
-
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Assigning an object to which to attach a tip :--:--:--:--:--:--:--:--:--:--:--:}>                       |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetObject(arg, pos_top)
     if not (arg) or not (IsValid(arg)) then return end
     if (pos_top) then self.toppos = true end
@@ -74,6 +70,9 @@ function PANEL:SetObject(arg, pos_top)
     end    
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Setting the tooltip text :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetText(arg)
     self.text = arg
     if (self.text != "") or (self.text != nil) then
@@ -91,9 +90,12 @@ function PANEL:SetText(arg)
     end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Every tick is executed :--:--:--:--:--:--:--:--:--:--:--:}>                                             |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Think()
     if not (self.object) then return end
-
+    --[*] control pose prompt
     if (self.object.Hovered) and not (self.status) then
         self.status = true
         local mouse_x, mouse_y = self.object:LocalToScreen(0, 0)
@@ -113,19 +115,25 @@ function PANEL:Think()
     end   
 end
 
--- function PANEL:PerformLayout()
---     local text = self.text
---     if (text != "") or (text != nil) then
---         surface.SetFont(self.font)
---         local text_w, text_h = surface.GetTextSize(text)
---         local w, h = self:GetSize()
-        
---         if (w < (text_w + 15)) then
---             self:SetSize(text_w + 15, text_h + 15)
---         end
---     end
--- end
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:Paint(w, h)
+    if (self.object) and (self.object.Hovered) then
+        local jv, clr = jv(), clr()
+        local border = jv.GetBorder("pnl")
+        local round = jv.GetRound("base")
+        surface.SetFont(self.font)
+        local wide, tall = surface.GetTextSize(self.text)
+        draw.RoundedBox(round, 0, 0, w, h, clr["line"])
+        draw.RoundedBox(round, border/2, border/2, w-border, h-border, clr["body"])
+        draw.SimpleText(self.text, self.font, w*0.5, h*0.5-(tall*0.1), clr["t_p1"], TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    end
+end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.tip-main", PANEL, "Panel")
 
 -->                                              _M_                                      

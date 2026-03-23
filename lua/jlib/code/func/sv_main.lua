@@ -22,7 +22,7 @@ function jlib.UrlImage(url, callback)
             if not (headers["content-type"]) then return end
             if not (string.StartWith(headers["content-type"], "image")) then return end
         	local path = string.Split(headers["content-type"], "/")
-            format = path[#path] if not (format) then return end
+            local format = path[#path] if not (format) then return end
 
             file.CreateDir("jlib_cache")
             file.Write(fileName .. "." .. format, body)

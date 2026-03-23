@@ -10,7 +10,7 @@ local function icon() return c()["icons"][c()["icon"]] end
 local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
 	local jv = jv()
@@ -27,7 +27,7 @@ function PANEL:Init()
 	self.m_fCreateTime = SysTime()
 	self.color_alpha = 200
 
-    self.image = nil
+    self.image = false
     self.image_alpha = 255
     self.image_clr = Color(255, 255, 255)	
 
@@ -61,6 +61,9 @@ function PANEL:Init()
 	jv.Alpha(self)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
 	self.truename = arg
 end
@@ -69,6 +72,9 @@ function PANEL:GetName()
 	return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Scaling in percentages (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Scale(...)
     local arg = {...}
     local w, h = ScrW(), ScrH()
@@ -77,32 +83,51 @@ function PANEL:Scale(...)
     self:SetSize(size_x, size_y)
 end
 
-function PANEL:OnRemove()
-	hook.Run("jLib.CloseUI")
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Fires on every resize :--:--:--:--:--:--:--:--:--:--:--:}>                                              |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:PerformLayout()
+	--[*] we do nothing
+	return false
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Event before the element is completely removed :--:--:--:--:--:--:--:--:--:--:--:}>                     |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:OnRemove()
+	hook.Run("jlib.CloseUI")
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] clearing the elements of adaptation :--:--:--:--:--:--:--:--:--:--:--:}>                                |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:ScaleHead(w, h)
 	if not (IsValid(self.head)) then return end
 	self.head:Scale(w, h)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing the visibility of the close button :--:--:--:--:--:--:--:--:--:--:--:}>                        |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:ShowCloseButton(bool)
 	self.btn:SetVisible(bool)
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Text control (heading) :--:--:--:--:--:--:--:--:--:--:--:}>                                             |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:SetText(str)
+	self.text = str
+	self.head_text:SetText(str)
 end
 
 function PANEL:GetText()
 	return self.text
 end
 
-function PANEL:SetText(str)
-	self.text = str
-	self.head_text:SetText(str)
-end
-
-function PANEL:GetHide()
-	return self.s_hide
-end
-
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing head visibility :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetHide(bool)
 	self.s_hide = bool
 
@@ -111,6 +136,13 @@ function PANEL:SetHide(bool)
 	end
 end
 
+function PANEL:GetHide()
+	return self.s_hide
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Setting a background image :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetImage(arg)
 	local jv = jv()
     if not (isstring(arg)) then return end
@@ -132,6 +164,17 @@ function PANEL:GetImage()
     return self.image
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing the close button icon :--:--:--:--:--:--:--:--:--:--:--:}>                                     |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:SetIcon()
+	--[*] we do nothing
+	return false
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing the color of a background image :--:--:--:--:--:--:--:--:--:--:--:}>                           |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetColor(arg1, arg2)
     self.image_clr = arg1
     if (arg2) then self.image_alpha = arg2 end
@@ -141,10 +184,16 @@ function PANEL:GetColor()
     return self.image_clr
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Controlling the transparency of the background image and body :--:--:--:--:--:--:--:--:--:--:--:}>      |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetColorAlpha(arg)
     self.color_alpha = arg
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
 	local jv, clr = jv(), clr()
 	local size_head = 60
@@ -167,15 +216,11 @@ function PANEL:Paint(w, h)
     end	
 end
 
-function PANEL:PerformLayout()
-	return false
-end
-
-function PANEL:SetIcon()
-	return false
-end
-
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Executed when the screen resolution changes :--:--:--:--:--:--:--:--:--:--:--:}>                        |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:OnScreenSizeChanged(old_w, old_h, new_w, new_h)
+	--[*] adapting the element size to screen resolutions
 	local arg = self.cust_size
 	if not (arg) then return end
 	self:SetSize(new_w*arg[1], new_h*arg[2])
@@ -185,6 +230,9 @@ function PANEL:OnScreenSizeChanged(old_w, old_h, new_w, new_h)
 	self:SetPos(new_x, new_y)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.frame-main", PANEL, "DFrame")
 
 -->                      						 _M_                                      

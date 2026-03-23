@@ -12,7 +12,7 @@ local bool_typs = {["base"] = true, ["round"] = true}
 AccessorFunc( PANEL, "m_HideButtons", "HideButtons" )
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     self.truename = "scroll"
@@ -23,6 +23,9 @@ function PANEL:Init()
     self:DockPadding(0, 3, 0, 3)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Removing and restoring internal scroll elements :--:--:--:--:--:--:--:--:--:--:--:}>                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Restart()
     self.body_scroll:Remove()
     self.body_scroll = jlib.vgui.Create("dscroll", self)
@@ -31,6 +34,9 @@ function PANEL:Restart()
     self:DockPadding(0, 3, 0, 3)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
     local jv, clr = jv(), clr()
     local border = jv.GetBorder("pnl")
@@ -45,7 +51,9 @@ function PANEL:Paint(w, h)
     draw.RoundedBox(circ, border/2, border/2, w-border, h-border, ColorAlpha(clr["body"], self.color_alpha))
 end
 
-
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.scroll-main", PANEL, "jlib.panel-main")
 
 -->                                              _M_                                      

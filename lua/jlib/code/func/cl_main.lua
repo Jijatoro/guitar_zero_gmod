@@ -118,9 +118,9 @@ function jlib.vgui.Margin(pnl, data)
     local w, h = parent:GetSize()
 
     --[*] margin adaptation
-    local left, top, right, bottom = arg[1]*w, arg[2]*h, arg[3]*w, arg[4]*h
+    local left, top, right, bottom = (arg[1] or 0)*w, (arg[2] or 0)*h or 0, (arg[3] or 0)*w or 0, (arg[4] or 0)*h or 0
     pnl:Dock(pnl:GetDock())
-    pnl:DockMargin(left, top, right, bottom)
+    pnl:DockMargin(math.floor(left), math.floor(top), math.floor(right), math.floor(bottom))
 
     --[*] size adjustment
     local cur_x, cur_y = pnl:GetSize()
@@ -129,7 +129,7 @@ function jlib.vgui.Margin(pnl, data)
     local ready_x, ready_y = percent_x*w, percent_y*h 
     local eve = pnl.evenly  
     if (eve) then if (eve == 1) then ready_y = ready_x else ready_x = ready_y end end
-    pnl:SetSize(ready_x, ready_y)    
+    pnl:SetSize(math.floor(ready_x), math.floor(ready_y))    
 end
 
 --------------------------------------------------------------------------------------------------------------|>
@@ -278,9 +278,9 @@ function jlib.vgui.Alpha(element, speed)
     if not (tick) then tick = 0.01 end
     element:SetAlpha(alpha)
     local name = tostring(element)
-    timer.Create("jLib.Alpha." .. name, 0.01, 0, function()
-        if (alpha >= 255) then alpha = 255 timer.Remove("jLib.Alpha." .. name) return end
-        if not (IsValid(element)) then alpha = 255 timer.Remove("jLib.Alpha." .. name) return end
+    timer.Create("jlib.Alpha." .. name, 0.01, 0, function()
+        if (alpha >= 255) then alpha = 255 timer.Remove("jlib.Alpha." .. name) return end
+        if not (IsValid(element)) then alpha = 255 timer.Remove("jlib.Alpha." .. name) return end
         element:SetAlpha(alpha)
         alpha = alpha + 5
     end)    
@@ -347,7 +347,7 @@ function jlib.UpdateConfig(data)
     for k, v in pairs(data) do
         jlib.cfg[k] = v
     end
-    hook.Run("jLib.UpdateSetting", data)
+    hook.Run("jlib.UpdateSetting", data)
 end
 
 --------------------------------------------------------------------------------------------------------------|>

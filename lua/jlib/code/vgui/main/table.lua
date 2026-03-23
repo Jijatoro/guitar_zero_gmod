@@ -10,7 +10,7 @@ local function icon() return c()["icons"][c()["icon"]] end
 local function lan() return c()["lans"][c()["lan"]] or {} end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     local clr = clr()
@@ -46,12 +46,14 @@ function PANEL:Init()
     --     }
     -- }
 
+    --[*] head bar
     self.head = jlib.vgui.Create("panel", self)
     self.head:SetType("base")
     self.head:Scale(1, 0.08)
     self.head:Dock(TOP)
     self.head:Margin(0, 0, 0.01, 0)
 
+    --[*] the body itself with elements
     self.body = jlib.vgui.Create("scroll", self)
     self.body:SetType("none")
     self.body:Scale(1, 0.9)
@@ -61,6 +63,9 @@ function PANEL:Init()
     self:Margin(0.005, 0.005, 0.005, 0)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
     self.truename = arg
 end
@@ -69,6 +74,9 @@ function PANEL:GetName()
     return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Scaling in percentages (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Scale(...)
     local jv = jv()
     local data = {...}
@@ -81,20 +89,30 @@ function PANEL:Margin(...)
     jv["Margin"](self, data)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Fires on every resize :--:--:--:--:--:--:--:--:--:--:--:}>                                              |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:PerformLayout()
+    --[*] adapt the sizes
     if not (self.dockmargin) then return end
     self:Margin()
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Updating the text data of the number of elements :--:--:--:--:--:--:--:--:--:--:--:}>                   |>
+--------------------------------------------------------------------------------------------------------------|>
 local function UpdateText(self)
     if not (self.text) then return end
-    if (self.maxpage >= 100000) then 
+    if (self.maxpage >= 10000) then 
         self.text:SetText(tostring(self.currentpage) .. "/" .. "X")
     else
         self.text:SetText(tostring(self.currentpage) .. "/" .. tostring(self.maxpage))
     end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Filling the body with elements :--:--:--:--:--:--:--:--:--:--:--:}>                                     |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:FillContent()
     self.body:Restart()
     local data, keys = self.data, self.current_keys
@@ -158,6 +176,9 @@ function PANEL:FillContent()
     end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Let's create a footer :--:--:--:--:--:--:--:--:--:--:--:}>                                              |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:CreateFooter()
     local jv = jv()
     local size = self.pagesize
@@ -205,6 +226,9 @@ function PANEL:CreateFooter()
     end  
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Switching windows :--:--:--:--:--:--:--:--:--:--:--:}>                                                  |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:PageNext(bool)
     if not IsValid(self) then return end
 
@@ -227,6 +251,9 @@ function PANEL:PageNext(bool)
     UpdateText(self)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing data for body filling :--:--:--:--:--:--:--:--:--:--:--:}>                                     |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetData(data, size, restart)
     if not (IsValid(self)) then return end
     if not (data) or not (istable(data)) or (table.IsEmpty(data)) then return end
@@ -255,10 +282,17 @@ function PANEL:GetData()
     return self.data
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
+    --[*] we do nothing
     return false
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.table-main", PANEL, "Panel")
 
 -->                                              _M_                                      

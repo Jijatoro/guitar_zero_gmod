@@ -9,6 +9,9 @@ local function clr() return c()["themes"][c()["theme"]]  or {} end
 local function icon() return c()["icons"][c()["icon"]] end
 local function lan() return c()["lans"][c()["lan"]] or {} end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing the clone position :--:--:--:--:--:--:--:--:--:--:--:}>                                        |>
+--------------------------------------------------------------------------------------------------------------|>
 local function Render(target, drag)
     local jv = jv()
     local size_x, size_y = target:GetSize()
@@ -20,7 +23,7 @@ local function Render(target, drag)
 end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     self.truename = "drag"
@@ -31,14 +34,17 @@ function PANEL:Init()
     self:SetDrawOnTop(true)
     self:SetAlpha(200)
     self.status = false
-    self.data = nil
-    self.func = nil
-    self.old_mousepres = nil
-    self.old_remove = nil
+    self.data = false
+    self.func = false
+    self.old_mousepres = false
+    self.old_remove = false
     self:SetMouseInputEnabled(true)
     self:SetVisible(false)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
     self.truename = arg
 end
@@ -47,10 +53,16 @@ function PANEL:GetName()
     return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Set the function that will be executed when the mouse is released :--:--:--:--:--:--:--:--:--:--:--:}>  |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetFunc(arg)
     self.func = arg
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Data management :--:--:--:--:--:--:--:--:--:--:--:}>                                                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetData(data)
     if not (data) then return end
     local panel = self
@@ -75,6 +87,9 @@ function PANEL:SetData(data)
     end 
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
     local jv = jv()
     if (jv.drag_image) then
@@ -84,8 +99,12 @@ function PANEL:Paint(w, h)
     end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Every tick is executed :--:--:--:--:--:--:--:--:--:--:--:}>                                             |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Think()
     local jv = jv()
+    --[*] Controlling the position when clamped
     if (self.status) then
         local pos_x, pos_y = input.GetCursorPos()
         local data = jlib.vgui.drag_size
@@ -102,6 +121,9 @@ function PANEL:Think()
     end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.drag-main", PANEL, "Panel")
 
 -->                                              _M_                                      

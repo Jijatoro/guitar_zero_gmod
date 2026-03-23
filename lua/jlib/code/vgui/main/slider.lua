@@ -11,30 +11,40 @@ local function lan() return c()["lans"][c()["lan"]] or {} end
 AccessorFunc(PANEL, "m_fDefaultValue", "DefaultValue")
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     local jv, clr = jv(), clr()
     self.hasText, self.hasTitle, self.wrapped = false, false, false
+    self.isenable = true
     self.pnltype = "round"
     self.truename = "slider"
 
-    self.pnl_textarea = jlib.vgui.Create("panel", self)
+    self.mainbody = jlib.vgui.Create("panel", self)
+    self.mainbody:Dock(BOTTOM)
+    self.mainbody:Margin(0.01, 0, 0.01, 0.01)
+    self.mainbody:SetType("none")
+    self.mainbody:Scale(1, 0.7)    
+
+    --[*] data entry window
+    self.pnl_textarea = jlib.vgui.Create("panel", self.mainbody)
     self.pnl_textarea:Dock(RIGHT)
-    self.pnl_textarea:Margin(0.01, 0, 0.01, 0)
+    self.pnl_textarea:Margin(0.005, 0, 0.005, 0)
     self.pnl_textarea:SetType("none")
-    self.pnl_textarea:Scale(0.11, 0.8)
+    self.pnl_textarea:Scale(0.13, 0.8)
 
     self.TextArea:Remove()
     self.TextArea = jlib.vgui.Create("textentry", self.pnl_textarea)
     self.TextArea:Dock(FILL)
-    self.TextArea:Margin(0, 0.25, 0, 0)
+    self.TextArea:Margin(0, 0.05, 0, 0)
     self.TextArea:SetType("none")
     self.TextArea:SetNumeric(true)
+    self.TextArea:SetEnabled(false)
     self.TextArea.OnChange = function(textarea, val) self:SetValue(self.TextArea:GetText()) end
 
+    --[*] slider
     self.Slider:Remove()
-    self.Slider = vgui.Create("DSlider", self)
+    self.Slider = vgui.Create("DSlider", self.mainbody)
     --[*] the slider itself
     function self.Slider:Scale(...) 
         local data = {...}
@@ -58,7 +68,13 @@ function PANEL:Init()
         body:Margin()              
     end    
     self.Slider.ResetToDefaultValue = function(s) self:ResetToDefaultValue() end
-    self.Slider.Paint = function(self, w, h) draw.RoundedBox(0, 0, h*0.48, w, 2, clr["line"]) end
+    self.Slider.Paint = function(slider, w, h)
+        local max = self:GetMax()
+        local val = self:GetValue()
+        local progress = ((val/max)*w)-1
+        draw.RoundedBox(0, 0, h*0.48, w, 2, clr["slider"])
+        draw.RoundedBox(0, 0, h*0.48, progress, 2, clr["slider_b"]) 
+    end
 
     --[*] the slider we use to drag the mouse
     function self.Slider.Knob:Scale(...) 
@@ -79,7 +95,7 @@ function PANEL:Init()
         self:Margin()
     end    
 
-    self.Slider.Knob:Scale(0.05, 0.5)
+    self.Slider.Knob:Scale(0.02, 0.6)
     self.Slider.Knob:Margin(0, 0, 0, 0)
     self.Slider.Knob:SetSize(8, 25)
     self.Slider.Knob.Paint = function(self, w, h)
@@ -91,14 +107,17 @@ function PANEL:Init()
         end
     end
 
+    --[*] main text (what does the slider change?)
     self.Label:Remove()
     self.Label = jlib.vgui.Create("label", self)
-    self.Label:Dock(LEFT)
-    self.Label:Margin(0.02, 0.06, 0, 0.06)
-    self.Label:Scale(0.45, 0.8)
+    self.Label:Dock(TOP)
+    self.Label:SetContentAlignment(5)
+    self.Label:Margin(0.01, 0.1, 0, 0)
+    self.Label:Scale(1, 0.3)
     self.Label:SetMouseInputEnabled(true)
     jv.SetFont(self.Label, "p2", true)
 
+    --[*] the rest
     self.Scratch:Remove()
     self.Scratch = self.Label:Add("DNumberScratch")
     self.Scratch:SetImageVisible(false)
@@ -106,17 +125,18 @@ function PANEL:Init()
     self.Scratch.OnValueChanged = function() self:ValueChanged(self.Scratch:GetFloatValue()) end  
     self.Scratch:SetVisible(false)
 
-    self:SetTall(32)
     self:SetMin(0)
     self:SetMax(1)
     self:SetDecimals(2)
     self:SetText("")
     self:SetValue(0)
-    self:SetSize(230, 40)
     self:SetDecimals(0)
     self.Wang = self.Scratch
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
     self.truename = arg
 end
@@ -125,6 +145,9 @@ function PANEL:GetName()
     return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Scaling in percentages (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Scale(...)
     local jv = jv()
     local data = {...}
@@ -137,11 +160,18 @@ function PANEL:Margin(...)
     jv.Margin(self, data)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Fires on every resize :--:--:--:--:--:--:--:--:--:--:--:}>                                              |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:PerformLayout()
+    --[*] adapt the sizes
     if not (self.dockmargin) then return end
     self:Margin()
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Setting the type for different appearances :--:--:--:--:--:--:--:--:--:--:--:}>                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetType(type)
 	self.pnltype = type
 end
@@ -150,6 +180,31 @@ function PANEL:GetType()
 	return self.pnltype
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing the ability to change data :--:--:--:--:--:--:--:--:--:--:--:}>                                |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:Enable(arg)
+    self.isenable = arg
+    self.Slider:SetVisible(arg)
+    self.TextArea:SetVisible(arg)
+    if (arg) then 
+        self:SetAlpha(255) 
+        self:SetCursor("arrow")
+        for _, v in ipairs(self:GetChildren()) do
+            v:SetCursor("arrow")
+        end
+    else 
+        self:SetAlpha(150) 
+        self:SetCursor("no") 
+        for _, v in ipairs(self:GetChildren()) do
+            v:SetCursor("no")
+        end
+    end
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
     local jv, clr = jv(), clr()
     local border = jv.GetBorder("pnl")
@@ -163,6 +218,9 @@ function PANEL:Paint(w, h)
     end 
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.slider-main", PANEL, "DNumSlider")
 
 -->                                              _M_                                      

@@ -11,7 +11,7 @@ local function lan() return c()["lans"][c()["lan"]] or {} end
 local bool_typs = {["base"] = true, ["round"] = true}
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
 	local jv, clr, icon = jv(), clr(), icon()
@@ -26,6 +26,7 @@ function PANEL:Init()
     self.IsDisable = false
     self:SetStatus(false)    
 	
+	--[*] text element
 	self.string = jlib.vgui.Create("label", self)
 	self.string:SetText(self:GetText())
 	jv.SetFont(self.string, "p2", true)
@@ -34,6 +35,7 @@ function PANEL:Init()
 	self.string:DockMargin(0, 0, 0.005, 0)
 	self.string:SetContentAlignment(1)
 
+	--[*] the button itself with a check mark
 	self.checkbox = jlib.vgui.Create("button", self)
 	self.checkbox:SetText("")
 	self.checkbox:Dock(FILL)
@@ -64,6 +66,9 @@ function PANEL:Init()
 	end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
 	self.truename = arg
 end
@@ -72,6 +77,9 @@ function PANEL:GetName()
 	return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Scaling in percentages (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Scale(...)
     local jv = jv()
     local data = {...}
@@ -84,11 +92,18 @@ function PANEL:Margin(...)
     jv["Margin"](self, data)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Fires on every resize :--:--:--:--:--:--:--:--:--:--:--:}>                                              |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:PerformLayout()
+	--[*] adapt the sizes
     if not (self.dockmargin) then return end
     self:Margin()
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Setting the type for different appearances :--:--:--:--:--:--:--:--:--:--:--:}>                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetType(type)
 	self.pnltype = type
 end
@@ -97,6 +112,9 @@ function PANEL:GetType()
 	return self.pnltype
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Set by value (false/true) :--:--:--:--:--:--:--:--:--:--:--:}>                                          |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetValue(val)
 	self.value = val
 	self:SetStatus(val)
@@ -106,6 +124,9 @@ function PANEL:GetValue()
 	return self:GetStatus()
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Setting the text :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetText(val)
 	if not (val) or (val == "") then self.string:Remove() end
 	self.text = val
@@ -116,14 +137,23 @@ function PANEL:GetText()
 	return self.text
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Getting the status :--:--:--:--:--:--:--:--:--:--:--:}>                                                 |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:GetStatus()
     return self.status
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] We get a picture (cross or check mark?) :--:--:--:--:--:--:--:--:--:--:--:}>                            |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:GetImage()
     return self.image
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Controlling the ability to press :--:--:--:--:--:--:--:--:--:--:--:}>                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Disable()
 	self.checkbox.IsDisable = true
 	self.checkbox:SetCursor("no")
@@ -136,6 +166,9 @@ function PANEL:Enable()
 	self.checkbox:SetAlpha(255)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Technical setup (for manipulating positions in the button) :--:--:--:--:--:--:--:--:--:--:--:}>         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetStatus(val)
 	local icon, clr = icon(), clr()
     self.status = val
@@ -152,6 +185,9 @@ function PANEL:SetStatus(val)
     end
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
 	local jv, clr = jv(), clr()
     local circ, alpha = 0, 255
@@ -164,6 +200,9 @@ function PANEL:Paint(w, h)
     draw.RoundedBox(circ, border/2, border/2, w-border, h-border, ColorAlpha(clr["body"], alpha))
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.checkbox-main", PANEL, "Panel")
 
 -->                      						 _M_                                      

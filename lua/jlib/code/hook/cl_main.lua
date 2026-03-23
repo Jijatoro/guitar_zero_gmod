@@ -82,7 +82,7 @@ end)
 --------------------------------------------------------------------------------------------------------------|>
 --[+] The client closed the ui menu :--:--:--:--:--:--:--:--:--:--:--:}>                                      |>
 --------------------------------------------------------------------------------------------------------------|>
-hook.Add("jLib.CloseUI", "jlib.cleardata", function()
+hook.Add("jlib.CloseUI", "jlib.cleardata", function()
 	local jv = jv()
 	--[*] clearing deleted font items
 	local max_element = #jv["elements_font"]

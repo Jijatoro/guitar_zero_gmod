@@ -11,6 +11,9 @@ local function lan() return c()["lans"][c()["lan"]] or {} end
 local bool_typs = {["base"] = true, ["round"] = true}
 local circle = Material("jlib/img/circle.png", "noclamp smooth")
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Creating a button for switch :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
+--------------------------------------------------------------------------------------------------------------|>
 local function CreateButton(pnl, mar, x, y, adjust)
     local jv, clr = jv(), clr()
     pnl.button = jlib.vgui.Create("button", pnl)
@@ -32,11 +35,11 @@ local function CreateButton(pnl, mar, x, y, adjust)
             draw.RoundedBox(round, 0, 0, w, h, clr["btn_line"])
             draw.RoundedBox(round, border/2, border/2, w-border, h-border, parent:GetColor())     
         end
-        --[*] Circle
+        --[*] circle
         surface.SetMaterial(circle)
         surface.SetDrawColor(clr["btn"])
         surface.DrawTexturedRect(w*parent.point, h*0.21, w*0.33, h*0.6)        
-        --[*] Sign
+        --[*] sign
         surface.SetMaterial(parent:GetImage())
         surface.SetDrawColor(clr["btn_line"])
         surface.DrawTexturedRect(w*parent.num1, h*parent.num2, w*parent.num3, h*parent.num4)
@@ -51,7 +54,7 @@ local function CreateButton(pnl, mar, x, y, adjust)
 end
 
 --------------------------------------------------------------------------------------------------------------|>
---[+] Main functions :--:--:--:--:--:--:--:--:--:--:--:}>                                                     |>
+--[+] Emergence (primary function) :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
 --------------------------------------------------------------------------------------------------------------|>
 function PANEL:Init()
     local jv, clr, icon = jv(), clr(), icon()
@@ -79,6 +82,9 @@ function PANEL:Init()
     CreateButton(self, {0.4, 0.05, 0, 0}, 0.2, 0.45)    
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] True element name (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetName(arg)
     self.truename = arg
 end
@@ -87,6 +93,9 @@ function PANEL:GetName()
     return self.truename
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Scaling in percentages (custom) :--:--:--:--:--:--:--:--:--:--:--:}>                                    |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Scale(...)
     local jv = jv()
     local data = {...}
@@ -99,31 +108,29 @@ function PANEL:Margin(...)
     jv["Margin"](self, data)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Fires on every resize :--:--:--:--:--:--:--:--:--:--:--:}>                                              |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:PerformLayout()
+    --[*] adapt the sizes
     if not (self.dockmargin) then return end
     self:Margin()
 end
 
-function PANEL:GetImage()
-    return self.image
-end
-
-function PANEL:GetStatus()
-    return self.status
-end
-
-function PANEL:GetColor()
-    return self.color
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Value control (false/true) :--:--:--:--:--:--:--:--:--:--:--:}>                                         |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:SetValue(val)
+    self:SetStatus(val) 
 end
 
 function PANEL:GetValue()
     return self.status
 end
 
-function PANEL:SetValue(val)
-    self:SetStatus(val) 
-end
-
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Text control (what does pressing switch do?) :--:--:--:--:--:--:--:--:--:--:--:}>                       |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetText(val)
     self.text = val
     if not (val) or (val == "") then
@@ -139,6 +146,9 @@ function PANEL:GetText()
     return self.text
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Body type management (body appearance) :--:--:--:--:--:--:--:--:--:--:--:}>                             |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetType(type)
     self.pnltype = type
 end
@@ -147,6 +157,9 @@ function PANEL:GetType()
     return self.pnltype
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Manage status (on every click) :--:--:--:--:--:--:--:--:--:--:--:}>                                     |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:SetStatus(val)
     local icon, clr = icon(), clr()
     self.status = val
@@ -165,6 +178,27 @@ function PANEL:SetStatus(val)
     end
 end
 
+function PANEL:GetStatus()
+    return self.status
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Getting an icon (cross or check mark) :--:--:--:--:--:--:--:--:--:--:--:}>                              |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:GetImage()
+    return self.image
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Getting the background color :--:--:--:--:--:--:--:--:--:--:--:}>                                       |>
+--------------------------------------------------------------------------------------------------------------|>
+function PANEL:GetColor()
+    return self.color
+end
+
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Managing the ability to click :--:--:--:--:--:--:--:--:--:--:--:}>                                      |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Disable()
     self.button.IsDisable = true
     self.button:SetCursor("no")
@@ -177,6 +211,9 @@ function PANEL:Enable()
     self.button:SetAlpha(255)
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Drawing the body :--:--:--:--:--:--:--:--:--:--:--:}>                                                   |>
+--------------------------------------------------------------------------------------------------------------|>
 function PANEL:Paint(w, h)
     local jv, clr = jv(), clr()
     local border = jv.GetBorder("pnl")
@@ -189,6 +226,9 @@ function PANEL:Paint(w, h)
     draw.RoundedBox(circ, border/2, border/2, w-border, h-border, ColorAlpha(clr["body"], alpha))
 end
 
+--------------------------------------------------------------------------------------------------------------|>
+--[+] Registering a UI element :--:--:--:--:--:--:--:--:--:--:--:}>                                           |>
+--------------------------------------------------------------------------------------------------------------|>
 vgui.Register("jlib.switch-main", PANEL, "PANEL")
 
 -->                                              _M_                                      

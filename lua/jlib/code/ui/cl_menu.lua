@@ -57,7 +57,7 @@ function jlib.SettingsMenu()
 	local jv = jv()
 	
 	local frame = jlib.vgui.Create("frame")
-	frame:Scale(0.33, 0.54)
+	frame:Scale(0.33, 0.58)
 	frame:MakePopup()
 	frame:SetText(jlib.cfg.lans[jlib.cfg.lan]["settings"])
 	frame:Center()
