@@ -69,9 +69,9 @@ function PANEL:Init()
     end    
     self.Slider.ResetToDefaultValue = function(s) self:ResetToDefaultValue() end
     self.Slider.Paint = function(slider, w, h)
-        local max = self:GetMax()
+        local min, max = self:GetMin(), self:GetMax()
         local val = self:GetValue()
-        local progress = ((val/max)*w)-1
+        local progress = ((val-min)/(max-min))*w
         draw.RoundedBox(0, 0, h*0.48, w, 2, clr["slider"])
         draw.RoundedBox(0, 0, h*0.48, progress, 2, clr["slider_b"]) 
     end
@@ -84,6 +84,7 @@ function PANEL:Init()
 
     function self.Slider.Knob:Margin(...)
         local data = {...}
+        if (data) and not (table.IsEmpty(data)) then self.dockmargin = data end
         jv["Margin"](self, data)
     end
 
@@ -157,6 +158,7 @@ end
 function PANEL:Margin(...)
     local jv = jv()
     local data = {...}
+    if (data) and not (table.IsEmpty(data)) then self.dockmargin = data end
     jv.Margin(self, data)
 end
 

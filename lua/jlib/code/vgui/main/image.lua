@@ -53,6 +53,7 @@ end
 function PANEL:Margin(...)
     local jv = jv()
     local data = {...}
+    if (data) and not (table.IsEmpty(data)) then self.dockmargin = data end
     jv["Margin"](self, data)
 end
 
